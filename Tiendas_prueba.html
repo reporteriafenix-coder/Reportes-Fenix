@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Tiendas</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    #logoutBtn {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #34495e;
+      padding: 10px 0;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      margin: 0 6px;
+      border-radius: 4px 4px 0 0;
+      background-color: #3b5998;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid transparent;
+    }
+
+    .tab:hover {
+      background-color: #2a4373;
+    }
+
+    .tab.active {
+      background-color: #1abc9c;
+      color: #073b2d;
+    }
+
+    /* Dropdown specific */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .caret { font-size: 0.85em; }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 180px;
+      background: white;
+      border: 1px solid #dcdcdc;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      list-style: none;
+      margin: 0;
+      padding: 6px 0;
+      display: none;
+      z-index: 999;
+      border-radius: 8px;
+    }
+
+    .dropdown.open .dropdown-menu { display: block; }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 9px 14px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus {
+      background: #f2f4f8;
+      outline: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 640px) {
+      .dropdown-menu { left: auto; right: 0; min-width: 160px; }
+      #logoutBtn { right: 8px; top: 10px; padding: 6px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dashboard B2C - Tiendas</h1>
+    <p>Indicadores venta - vendedores/tiendas</p>
+    <button id="logoutBtn">Cerrar sesión</button>
+  </header>
+
+  <!-- Pestañas de navegación -->
+  <nav class="tabs" aria-label="Navegación principal">
+    <a href="index.html" class="tab">Panel Integral</a>
+    <a href="B2B.html" class="tab">B2B</a>
+    <a href="B2C.html" class="tab">B2C</a>
+    <a href="ECOM.html" class="tab">ECOM</a>
+    <a href="BATAS.html" class="tab">BATAS</a>
+
+    <!-- Aquí está el desplegable Tiendas: reemplaza href y texto 1..11 por los reales -->
+    <div class="tab dropdown active" id="tiendasDropdown">
+      <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="true" id="tiendasToggle">
+        Tiendas <span class="caret" aria-hidden="true">▾</span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu" aria-label="Lista de tiendas" id="tiendasMenu">
+        <li role="none"><a role="menuitem" href="tienda1.html" tabindex="0">Tienda1</a></li>
+        <li role="none"><a role="menuitem" href="tienda2.html" tabindex="-1">Tienda2</a></li>
+        <li role="none"><a role="menuitem" href="tienda3.html" tabindex="-1">Tienda3</a></li>
+        <li role="none"><a role="menuitem" href="tienda4.html" tabindex="-1">Tienda4</a></li>
+        <li role="none"><a role="menuitem" href="tienda5.html" tabindex="-1">Tienda5</a></li>
+        <li role="none"><a role="menuitem" href="tienda6.html" tabindex="-1">Tienda6</a></li>
+        <li role="none"><a role="menuitem" href="tienda7.html" tabindex="-1">Tienda7</a></li>
+        <li role="none"><a role="menuitem" href="tienda8.html" tabindex="-1">Tienda8</a></li>
+        <li role="none"><a role="menuitem" href="tienda9.html" tabindex="-1">Tienda9</a></li>
+        <li role="none"><a role="menuitem" href="tienda10.html" tabindex="-1">Tienda10</a></li>
+        <li role="none"><a role="menuitem" href="tienda11.html" tabindex="-1">Tienda11</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <p></p>
+    <iframe
+      title="REPORTE VENTAS - B2B"
+      width="1140"
+      height="541"
+      src="https://app.powerbi.com/reportEmbed?reportId=4cb2af29-282a-4b8d-b789-63681a9b3cb8&autoAuth=true&ctid=b529114b-bdfc-48ea-a201-e9d2ee342139"
+      frameborder="0"
+      allowFullScreen="true">
+    </iframe>
+  </div>
+
+  <footer>
+    &copy; 2025 Transformacion digital | Portal de Reportes
+  </footer>
+
+  <script>
+    // Código original de control de sesión y permisos (mantenido)
+    const rol = localStorage.getItem('rol');
+    const usuario = localStorage.getItem('usuario');
+
+    if (!rol) {
+      window.location.href = 'Login.html';
+    }
+
+    const pagina = window.location.pathname.split('/').pop();
+
+    const permisos = {
+      admin: ['index.html', 'B2B.html', 'B2C.html', 'BATAS.html', 'ECOM.html', 'Tiendas_retail.html', 'Tiendas_prueba.html'],
+      GERENCIA: ['index.html', 'b2b.html', 'B2C.html', 'BATAS.html', 'ECOM.html', 'Tiendas_retail.html','Tiendas_prueba.html'],
+      B2B: ['b2b.html'],
+      B2C: ['B2C.html', 'Tiendas_prueba.html'],
+      batas: ['BATAS.html'],
+      ecom: ['ECOM.html'],
+      Tienda_retail: ['Tiendas_prueba.html']
+    };
+
+    if (!permisos[rol] || !permisos[rol].includes(pagina)) {
+      alert('No tienes permiso para acceder a esta página');
+      window.location.href = 'Login.html';
+    }
+
+    // Logout button
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+      localStorage.removeItem("user");
+      window.location.href = "Login.html";
+    });
+
+    // ====== JS para desplegable Tiendas ======
+    (function () {
+      const dropdown = document.getElementById('tiendasDropdown');
+      const toggle = document.getElementById('tiendasToggle');
+      const menu = document.getElementById('tiendasMenu');
+      const menuLinks = Array.from(menu.querySelectorAll('a'));
+
+      // Inicial: abrir si tiene clase active
+      if (dropdown.classList.contains('active')) {
+        dropdown.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      } else {
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      function openDropdown() {
+        dropdown.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeDropdown() {
+        dropdown.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      // Toggle con click
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdown.classList.contains('open') ? closeDropdown() : openDropdown();
+      });
+
+      // Cerrar al clicar fuera
+      document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target)) closeDropdown();
+      });
+
+      // Teclado para accesibilidad
+      toggle.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'Down') {
+          e.preventDefault();
+          openDropdown();
+          menuLinks[0].focus();
+        } else if (e.key === 'Escape' || e.key === 'Esc') {
+          closeDropdown();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dropdown.classList.contains('open') ? closeDropdown() : openDropdown();
+        }
+      });
+
+      menu.addEventListener('keydown', function (e) {
+        const currentIndex = menuLinks.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown' || e.key === 'Down') {
+          e.preventDefault();
+          const next = (currentIndex + 1) % menuLinks.length;
+          menuLinks[next].focus();
+        } else if (e.key === 'ArrowUp' || e.key === 'Up') {
+          e.preventDefault();
+          const prev = (currentIndex - 1 + menuLinks.length) % menuLinks.length;
+          menuLinks[prev].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          menuLinks[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          menuLinks[menuLinks.length - 1].focus();
+        } else if (e.key === 'Escape' || e.key === 'Esc') {
+          closeDropdown();
+          toggle.focus();
+        }
+      });
+
+      // Ajustar tabindex para que solo el primer item sea tabulable cuando esté cerrado
+      function updateTabIndex() {
+        if (dropdown.classList.contains('open')) {
+          menuLinks.forEach(a => a.setAttribute('tabindex', '0'));
+        } else {
+          menuLinks.forEach((a, i) => a.setAttribute('tabindex', i === 0 ? '0' : '-1'));
+        }
+      }
+
+      const observer = new MutationObserver(updateTabIndex);
+      observer.observe(dropdown, { attributes: true, attributeFilter: ['class'] });
+      updateTabIndex();
+    })();
+  </script>
+</body>
+
+</html>
+
+
