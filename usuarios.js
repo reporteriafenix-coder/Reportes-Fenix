@@ -1,6 +1,7 @@
 // usuarios.js
 const usuarios = [
   { usuario: "admin", password: "Martel147", rol: "admin" },
+  { usuario: "oalvarenga@martel.com.py", password: "Martel147", rol: "admin" },
   { usuario: "raguayo@martel.com.py", password: "Martel147", rol: "Gerencia" },
   { usuario: "mpena@martel.com.py", password: "Martel147", rol: "Gerencia" },
   { usuario: "ggonzalez@martel.com.py", password: "Martel147", rol: "Gerencia" },
@@ -13,6 +14,7 @@ const usuarios = [
   { usuario: "Tienda_retail", password: "1234", rol: "tienda_retail" },
   { usuario: "mgreen@martel.com.py", password: "Martel008", rol: "B2C" }
 ];
+
 
 
 
