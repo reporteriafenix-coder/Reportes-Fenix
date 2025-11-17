@@ -13,8 +13,10 @@ const usuarios = [
   { usuario: "ecomuser", password: "1234", rol: "ecom" },
   { usuario: "Tienda_retail", password: "1234", rol: "tienda_retail" },
   { usuario: "mgreen@martel.com.py", password: "Martel008", rol: "B2C" },
-  { usuario: "tatianna.echeverria@enerbike.com.py", password: "Martel008", rol: "Gerencia" }
+  { usuario: "tatianna.echeverria@enerbike.com.py", password: "Martel008", rol: "Gerencia" },
+    { usuario: "natalia.gadea@martel.com.py", password: "Martel147", rol: "admin" }
 ];
+
 
 
 
