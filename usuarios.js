@@ -15,8 +15,9 @@ const usuarios = [
   { usuario: "mgreen@martel.com.py", password: "Martel147", rol: "B2C" },
   { usuario: "tatianna.echeverria@enerbike.com.py", password: "Martel147", rol: "Gerencia" },
   { usuario: "natalia.gadea@martel.com.py", password: "Martel147", rol: "admin" },
-  { usuario: "Tiendamcal", password: "Martelmcal", rol: "admin" }
+  { usuario: "Tiendamcal", password: "Martelmcal", rol: "Tiendamcal" }
 ];
+
 
 
 
