@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard INTEGRAL</title>
+  <button id="logoutBtn">Cerrar sesión</button>
+   <script>
+  const rol = localStorage.getItem('rol');
+  const usuario = localStorage.getItem('usuario');
+
+  if (!rol) {
+    window.location.href = 'Login.html';
+  }
+
+  // Reglas de acceso
+  const pagina = window.location.pathname.split('/').pop();
+
+  const permisos = {
+    admin: ['index.html', 'B2B.html', 'B2C.html', 'BATAS.html', 'ECOM.html'], 
+    GERENCIA: ['index.html', 'B2B.html', 'B2C.html', 'BATAS.html', 'ECOM.html', 'Tiendas_retail.html','Tiendas_prueba.html'],
+    B2B: ['B2B.html'],
+    B2C: ['B2C.html', 'Tiendas_prueba'],
+    batas: ['BATAS.html'],
+    ecom: ['ECOM.html'],
+    
+  };
+
+  if (!permisos[rol].includes(pagina)) {
+    alert('No tienes permiso para acceder a esta página');
+    window.location.href = 'Login.html';
+  }
+</script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #34495e;
+      padding: 10px 0;
+    }
+
+    .tab {
+      color: white;
+      text-decoration: none;
+      padding: 10px 30px;
+      margin: 0 10px;
+      border-radius: 4px 4px 0 0;
+      background-color: #3b5998;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab:hover {
+      background-color: #2a4373;
+    }
+
+    .tab.active {
+      background-color: #1abc9c;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dashboard Integral</h1>
+    <p>Indicadores generales</p>
+  </header>
+
+  <!-- Pestañas de navegación -->
+  <nav class="tabs">
+    <a href="index.html" class="tab active">Panel Integral</a>
+    <a href="B2B.html" class="tab">B2B</a>
+    <a href="B2C.html" class="tab">B2C</a>
+    <a href="ECOM.html" class="tab">ECOM</a>
+    <a href="BATAS.html" class="tab">BATAS</a>
+  <a href="Tiendas_prueba.html" class="tab">Tiendas</a>
+       <a href="Enerbike.html" class="tab">Enerbike</a>
+   
+    
+  </nav>
+
+  <div class="container">
+<iframe title="REPORTE VENTAS" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNzI3MjNhNDktNzZlNy00NjBlLWEzN2QtYzQ4NTM2NDg1MTRmIiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+  </div>
+
+  <footer>
+    &copy; 2025 Transformacion digital | Portal de Reportes
+  </footer>
+  <script>
+document.getElementById("logoutBtn").addEventListener("click", function() {
+    // Elimina los datos del usuario
+    localStorage.removeItem("user");
+
+    // Redirige al login
+    window.location.href = "Login.html";
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
