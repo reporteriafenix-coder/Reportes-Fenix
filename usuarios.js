@@ -17,7 +17,9 @@ const usuarios = [
   { usuario: "natalia.gadea@martel.com.py", password: "Martel147", rol: "admin" },
   { usuario: "Tiendamcal", password: "Martelmcal", rol: "Tiendamcal" },
   { usuario: "Tiendaestrella", password: "Marteltrella", rol: "Tiendaestrella" },
+  { usuario: "Tiendacerroalto", password: "Marteltrella", rol: "Tiendacerro" },
 ];
+
 
 
 
