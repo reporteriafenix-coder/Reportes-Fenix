@@ -17,7 +17,7 @@ const usuarios = [
   { usuario: "natalia.gadea@martel.com.py", password: "Martel147", rol: "admin" },
   { usuario: "Tiendamcal", password: "Martelmcal", rol: "Tiendamcal" },
   { usuario: "Tiendaestrella", password: "Marteltrella", rol: "Tiendaestrella" },
-  { usuario: "Tiendacerroalto", password: "Marteltrella", rol: "Tiendacerro" },
+  { usuario: "Tiendacerroalto", password: "Martelcerro", rol: "Tiendacerro" },
   { usuario: "Tiendagaleria", password: "Martelgaleria", rol: "Tiendagaleria" },
   { usuario: "Tiendapaseo", password: "Martelpaseo", rol: "Tiendapaseo" },
   { usuario: "Tiendamariano", password: "Martelmariano", rol: "Tiendamariano" },
@@ -28,6 +28,7 @@ const usuarios = [
   { usuario: "Tiendasur", password: "Martelsur", rol: "Tiendasur" },
   { usuario: "Tiendamsanlo", password: "Martelmsanlo", rol: "Tiendamsanlo" },  
 ];
+
 
 
 
