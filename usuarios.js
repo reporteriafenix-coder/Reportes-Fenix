@@ -18,7 +18,17 @@ const usuarios = [
   { usuario: "Tiendamcal", password: "Martelmcal", rol: "Tiendamcal" },
   { usuario: "Tiendaestrella", password: "Marteltrella", rol: "Tiendaestrella" },
   { usuario: "Tiendacerroalto", password: "Marteltrella", rol: "Tiendacerro" },
+  { usuario: "Tiendagaleria", password: "Martelgaleria", rol: "Tiendagaleria" },
+  { usuario: "Tiendapaseo", password: "Martelpaseo", rol: "Tiendapaseo" },
+  { usuario: "Tiendamariano", password: "Martelmariano", rol: "Tiendamariano" },
+  { usuario: "Tiendasmariscal", password: "Martelsmariscal", rol: "Tiendasmariscal" },
+  { usuario: "Tiendapinedo", password: "Martelpinedo", rol: "Tiendapinedo" },
+  { usuario: "Tiendasanlo", password: "Martelsanlo", rol: "Tiendasanlo" },
+  { usuario: "Tiendatluque", password: "Martelluque", rol: "Tiendaluque" },
+  { usuario: "Tiendasur", password: "Martelsur", rol: "Tiendasur" },
+  { usuario: "Tiendamsanlo", password: "Martelmsanlo", rol: "Tiendamsanlo" },  
 ];
+
 
 
 
