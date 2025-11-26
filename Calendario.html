@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendario 2026 - B2C</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 40px;
+    }
+
+    .mes {
+      margin-bottom: 50px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .mes h2 {
+      background-color: #34495e;
+      color: white;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      height: 40px;
+      vertical-align: top;
+      position: relative;
+    }
+
+    th {
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    .fecha {
+      font-size: 12px;
+      color: #555;
+      position: absolute;
+      top: 4px;
+      left: 6px;
+    }
+
+    .evento-verde {
+      background-color: #2ecc71;
+      color: white;
+      font-weight: bold;
+    }
+
+    .evento-azul {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+    }
+
+    .evento-marron {
+      background-color: #d34533;
+      color: white;
+      font-weight: bold;
+    }
+
+    .descripcion-evento {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+.panel-eventos {
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.panel-eventos h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.panel-eventos ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.panel-eventos li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.color-box {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+
+.color-box.verde { background-color: #2ecc71; }
+.color-box.azul { background-color: #3498db; }
+.color-box.marron { background-color: #d34533; }
+
+    .evento-texto {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #2c3e50;
+}
+.evento-multiple {
+  background-image: linear-gradient(45deg, #2ecc71 33%, #3498db 33% 66%, #d34533 66%);
+  color: white;
+  font-weight: bold;
+}
+.evento-multiple {
+  background-image: linear-gradient(45deg,
+    #2ecc71 33%,   /* verde */
+    #3498db 33% 66%, /* azul */
+    #c5210c 66%);   /* marrón */
+  color: white;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;       /* Centra todo el contenido */
+  padding: 20px;
+  color: #555;
+  font-size: 0.9em;
+}
+
+footer .contacto {
+  color: #25D366;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.evento-verde-azul {
+  background-image: linear-gradient(135deg, #2ecc71 50%, #d34533 50%);
+}
+
+.evento-verde-marron {
+  background-image: linear-gradient(135deg, #2ecc71 50%, #d34533 50%);
+}
+
+.evento-azul-marron {
+  background-image: linear-gradient(135deg, #3498db 50%, #d34533 50%);
+}
+
+.evento-doble {
+  background-image: linear-gradient(135deg, 
+    #2ecc71 50%,   /* verde */
+    #3498db 50%);  /* azul */
+  color: white;
+  font-weight: bold;
+}
+
+    .descripcion-evento h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    .descripcion-evento textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<h1>CALENDARIO 2026 - B2C / MARKETING / PRODUCTO</h1>
+
+<aside class="panel-eventos">
+  <h3>Eventos destacados</h3>
+  <ul>
+    <li><span class="color-box verde"></span> Summer Sale: 29/01 al 22/02</li>
+    <li><span class="color-box azul"></span> Back to Office / School: 09/02 al 28/02</li>
+    <li><span class="color-box marron"></span> Final Sale: 23/02 al 08/03</li>
+    <li><span class="color-box verde"></span> Lanzamiento colección otoño: 01/04</li>
+    <li><span class="color-box verde"></span> Black Friday: 27/11</li>
+    <li><span class="color-box verde"></span> Navidad: 24–25/12</li>
+  </ul>
+</aside>
+
+<!-- Cuadro de descripción -->
+<div class="descripcion-evento">
+  <h3>Descripción del evento</h3>
+  <textarea placeholder="Escriba aquí los detalles del evento, fechas, objetivos, responsables, etc."></textarea>
+</div>
+
+<!-- Julio a Diciembre -->
+<!-- Ejemplo de estructura mensual con semanas y fechas -->
+<!-- Podés duplicar y completar con tus fechas reales -->
+<!-- Enero 2026 -->
+<div class="mes"><h2>Enero</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W01</td><td></td><td></td><td></td><td><span class="fecha">1</span></td><td><span class="fecha">2</span></td><td><span class="fecha">3</span></td><td><span class="fecha">4</span></td></tr>
+<tr><td>W02</td><td><span class="fecha">5</span></td><td><span class="fecha">6</span></td><td><span class="fecha">7</span></td><td><span class="fecha">8</span></td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td><td><span class="fecha">11</span></td></tr>
+<tr><td>W03</td><td><span class="fecha">12</span></td><td><span class="fecha">13</span></td><td><span class="fecha">14</span></td><td><span class="fecha">15</span></td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td></tr>
+<tr><td>W04</td><td><span class="fecha">19</span></td><td><span class="fecha">20</span></td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td><td><span class="fecha">25</span></td></tr>
+<tr><td>W05</td>
+  <td><span class="fecha">26</span></td>
+  <td><span class="fecha">27</span></td>
+  <td><span class="fecha">28</span></td>
+  <td class="evento-verde"><span class="fecha">29</span></td>
+  <td class="evento-verde"><span class="fecha">30</span></td>
+  <td class="evento-verde"><span class="fecha">31</span></td>
+  <td></td>
+</tr>
+
+</tbody></table></div>
+
+<!-- Febrero 2026 -->
+<div class="mes"><h2>Febrero</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W05</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="evento-verde"><span class="fecha">1</span></td></tr>
+<tr><td>W06</td><td class="evento-verde"><span class="fecha">2</span></td><td class="evento-verde"><span class="fecha">3</span></td><td class="evento-verde"><span class="fecha">4</span></td><td class="evento-verde"><span class="fecha">5</span></td><td class="evento-verde"><span class="fecha">6</span></td><td class="evento-verde"><span class="fecha">7</span></td><td class="evento-verde"><span class="fecha">8</span></td></tr>
+<tr><td>W07</td>
+  <td class="evento-verde-azul"><span class="fecha">9</span></td>
+  <td class="evento-verde-azul"><span class="fecha">10</span></td>
+  <td class="evento-verde-azul"><span class="fecha">11</span></td>
+  <td class="evento-verde-azul"><span class="fecha">12</span></td>
+  <td class="evento-verde-azul"><span class="fecha">13</span></td>
+  <td class="evento-verde-azul"><span class="fecha">14</span></td>
+  <td class="evento-verde-azul"><span class="fecha">15</span></td>
+</tr>
+
+<tr><td>W08</td><td class="evento-verde-azul"><span class="fecha">16</span></td><td class="evento-verde-azul"><span class="fecha">17</span></td><td class="evento-verde-azul"><span class="fecha">18</span></td><td class="evento-verde-azul"><span class="fecha">19</span></td><td class="evento-verde-azul"><span class="fecha">20</span></td><td class="evento-verde-azul"><span class="fecha">21</span></td><td class="evento-verde-azul"><span class="fecha">22</span></td></tr>
+<tr><td>W09</td><td class="evento-azul-marron"><span class="fecha">23</span></td><td class="evento-azul-marron"><span class="fecha">24</span></td><td class="evento-azul-marron"><span class="fecha">25</span></td><td class="evento-azul-marron"><span class="fecha">26</span></td><td class="evento-azul-marron"><span class="fecha">27</span></td><td class="evento-azul-marron"><span class="fecha">28</span></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Marzo 2026 -->
+<div class="mes"><h2>Marzo</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W09</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="evento-marron"><span class="fecha">1</span></td></tr>
+<tr><td>W10</td>
+  <td class="evento-marron"><span class="fecha">2</span></td>
+  <td class="evento-marron"><span class="fecha">3</span></td>
+  <td class="evento-marron"><span class="fecha">4</span></td>
+  <td class="evento-marron"><span class="fecha">5</span></td>
+  <td class="evento-marron"><span class="fecha">6</span></td>
+  <td class="evento-marron"><span class="fecha">7</span></td>
+  <td class="evento-marron"><span class="fecha">8</span></td>
+</tr>
+
+<tr><td>W11</td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td><td><span class="fecha">11</span></td><td><span class="fecha">12</span></td><td><span class="fecha">13</span></td><td><span class="fecha">14</span></td><td><span class="fecha">15</span></td></tr>
+<tr><td>W12</td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td><td><span class="fecha">19</span></td><td><span class="fecha">20</span></td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td></tr>
+<tr><td>W13</td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td><td><span class="fecha">25</span></td><td><span class="fecha">26</span></td><td><span class="fecha">27</span></td><td><span class="fecha">28</span></td><td><span class="fecha">29</span></td></tr>
+<tr><td>W14</td><td><span class="fecha">30</span></td><td><span class="fecha">31</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Abril 2026 -->
+<div class="mes"><h2>Abril</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W14</td><td></td><td></td><td class="evento-verde"><span class="fecha">1</span></td><td><span class="fecha">2</span></td><td><span class="fecha">3</span></td><td><span class="fecha">4</span></td><td><span class="fecha">5</span></td></tr>
+<tr><td>W15</td><td><span class="fecha">6</span></td><td><span class="fecha">7</span></td><td><span class="fecha">8</span></td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td><td><span class="fecha">11</span></td><td><span class="fecha">12</span></td></tr>
+<tr><td>W16</td><td><span class="fecha">13</span></td><td><span class="fecha">14</span></td><td><span class="fecha">15</span></td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td><td><span class="fecha">19</span></td></tr>
+<tr><td>W17</td><td><span class="fecha">20</span></td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td><td><span class="fecha">25</span></td><td><span class="fecha">26</span></td></tr>
+<tr><td>W18</td><td><span class="fecha">27</span></td><td><span class="fecha">28</span></td><td><span class="fecha">29</span></td><td><span class="fecha">30</span></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Mayo 2026 -->
+<div class="mes"><h2>Mayo</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W18</td><td></td><td></td><td></td><td></td><td><span class="fecha">1</span></td><td><span class="fecha">2</span></td><td><span class="fecha">3</span></td></tr>
+<tr><td>W19</td><td><span class="fecha">4</span></td><td><span class="fecha">5</span></td><td><span class="fecha">6</span></td><td><span class="fecha">7</span></td><td><span class="fecha">8</span></td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td></tr>
+<tr><td>W20</td><td><span class="fecha">11</span></td><td><span class="fecha">12</span></td><td><span class="fecha">13</span></td><td><span class="fecha">14</span></td><td class="evento-verde"><span class="fecha">15</span></td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td></tr>
+<tr><td>W21</td><td><span class="fecha">18</span></td><td><span class="fecha">19</span></td><td><span class="fecha">20</span></td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td></tr>
+<tr><td>W22</td><td><span class="fecha">25</span></td><td><span class="fecha">26</span></td><td><span class="fecha">27</span></td><td><span class="fecha">28</span></td><td><span class="fecha">29</span></td><td><span class="fecha">30</span></td><td><span class="fecha">31</span></td></tr>
+</tbody></table></div>
+
+<!-- Junio 2026 -->
+<div class="mes"><h2>Junio</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W23</td><td><span class="fecha">1</span></td><td><span class="fecha">2</span></td><td><span class="fecha">3</span></td><td><span class="fecha">4</span></td><td><span class="fecha">5</span></td><td><span class="fecha">6</span></td><td><span class="fecha">7</span></td></tr>
+<tr><td>W24</td><td><span class="fecha">8</span></td><td><span class="fecha">9</span></td><td class="evento-verde"><span class="fecha">10</span></td><td><span class="fecha">11</span></td><td><span class="fecha">12</span></td><td><span class="fecha">13</span></td><td><span class="fecha">14</span></td></tr>
+<tr><td>W25</td><td><span class="fecha">15</span></td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td><td><span class="fecha">19</span></td><td><span class="fecha">20</span></td><td><span class="fecha">21</span></td></tr>
+<tr><td>W26</td><td><span class="fecha">22</span></td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td><td><span class="fecha">25</span></td><td><span class="fecha">26</span></td><td><span class="fecha">27</span></td><td><span class="fecha">28</span></td></tr>
+<tr><td>W27</td><td><span class="fecha">29</span></td><td><span class="fecha">30</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Julio 2026 -->
+<div class="mes"><h2>Julio</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W27</td><td></td><td></td><td><span class="fecha">1</span></td><td><span class="fecha">2</span></td><td><span class="fecha">3</span></td><td><span class="fecha">4</span></td><td><span class="fecha">5</span></td></tr>
+<tr><td>W28</td><td><span class="fecha">6</span></td><td><span class="fecha">7</span></td><td><span class="fecha">8</span></td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td><td><span class="fecha">11</span></td><td><span class="fecha">12</span></td></tr>
+<tr><td>W29</td><td><span class="fecha">13</span></td><td><span class="fecha">14</span></td><td><span class="fecha">15</span></td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td><td><span class="fecha">19</span></td></tr>
+<tr><td>W30</td><td><span class="fecha">20</span></td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td><td><span class="fecha">25</span></td><td><span class="fecha">26</span></td></tr>
+<tr><td>W31</td><td><span class="fecha">27</span></td><td><span class="fecha">28</span></td><td class="evento-marron"><span class="fecha">29</span></td><td class="evento-marron"><span class="fecha">30</span></td><td class="evento-marron"><span class="fecha">31</span></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Agosto 2026 -->
+<div class="mes"><h2>Agosto</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W31</td><td></td><td></td><td></td><td></td><td></td><td class="evento-marron"><span class="fecha">1</span></td><td class="evento-marron"><span class="fecha">2</span></td></tr>
+<tr><td>W32</td><td class="evento-marron"><span class="fecha">3</span></td><td class="evento-marron"><span class="fecha">4</span></td><td class="evento-marron"><span class="fecha">5</span></td><td class="evento-marron"><span class="fecha">6</span></td><td class="evento-marron"><span class="fecha">7</span></td><td class="evento-marron"><span class="fecha">8</span></td><td class="evento-marron"><span class="fecha">9</span></td></tr>
+<tr><td>W33</td><td class="evento-marron"><span class="fecha">10</span></td><td class="evento-marron"><span class="fecha">11</span></td><td class="evento-marron"><span class="fecha">12</span></td><td class="evento-marron"><span class="fecha">13</span></td><td class="evento-marron"><span class="fecha">14</span></td><td class="evento-marron"><span class="fecha">15</span></td><td class="evento-marron"><span class="fecha">16</span></td></tr>
+<tr><td>W34</td><td class="evento-azul"><span class="fecha">17</span></td><td class="evento-azul"><span class="fecha">18</span></td><td class="evento-azul"><span class="fecha">19</span></td><td class="evento-azul"><span class="fecha">20</span></td><td class="evento-azul"><span class="fecha">21</span></td><td class="evento-azul"><span class="fecha">22</span></td><td class="evento-azul"><span class="fecha">23</span></td></tr>
+<tr><td>W35</td><td class="evento-azul"><span class="fecha">24</span></td><td class="evento-azul"><span class="fecha">25</span></td><td class="evento-azul"><span class="fecha">26</span></td><td class="evento-azul"><span class="fecha">27</span></td><td class="evento-azul"><span class="fecha">28</span></td><td class="evento-azul"><span class="fecha">29</span></td><td class="evento-azul"><span class="fecha">30</span></td></tr>
+<tr><td>W36</td><td><span class="fecha">31</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Septiembre 2026 -->
+<div class="mes"><h2>Septiembre</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W36</td><td></td><td><span class="fecha">1</span></td><td class="evento-verde"><span class="fecha">2</span></td><td><span class="fecha">3</span></td><td><span class="fecha">4</span></td><td><span class="fecha">5</span></td><td><span class="fecha">6</span></td></tr>
+<tr><td>W37</td><td><span class="fecha">7</span></td><td><span class="fecha">8</span></td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td><td><span class="fecha">11</span></td><td><span class="fecha">12</span></td><td><span class="fecha">13</span></td></tr>
+<tr><td>W38</td><td><span class="fecha">14</span></td><td><span class="fecha">15</span></td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td><td><span class="fecha">19</span></td><td><span class="fecha">20</span></td></tr>
+<tr><td>W39</td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td><td><span class="fecha">25</span></td><td><span class="fecha">26</span></td><td><span class="fecha">27</span></td></tr>
+<tr><td>W40</td><td><span class="fecha">28</span></td><td><span class="fecha">29</span></td><td><span class="fecha">30</span></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Octubre 2026 -->
+<div class="mes"><h2>Octubre</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W40</td><td></td><td></td><td></td><td><span class="fecha">1</span></td><td><span class="fecha">2</span></td><td><span class="fecha">3</span></td><td><span class="fecha">4</span></td></tr>
+<tr><td>W41</td><td><span class="fecha">5</span></td><td><span class="fecha">6</span></td><td><span class="fecha">7</span></td><td><span class="fecha">8</span></td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td><td><span class="fecha">11</span></td></tr>
+<tr><td>W42</td><td><span class="fecha">12</span></td><td><span class="fecha">13</span></td><td><span class="fecha">14</span></td><td><span class="fecha">15</span></td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td></tr>
+<tr><td>W43</td><td><span class="fecha">19</span></td><td><span class="fecha">20</span></td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td><td><span class="fecha">25</span></td></tr>
+<tr><td>W44</td><td><span class="fecha">26</span></td><td><span class="fecha">27</span></td><td><span class="fecha">28</span></td><td><span class="fecha">29</span></td><td><span class="fecha">30</span></td><td><span class="fecha">31</span></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Noviembre 2026 -->
+<div class="mes"><h2>Noviembre</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W44</td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="fecha">1</span></td></tr>
+<tr><td>W45</td><td><span class="fecha">2</span></td><td><span class="fecha">3</span></td><td><span class="fecha">4</span></td><td><span class="fecha">5</span></td><td><span class="fecha">6</span></td><td><span class="fecha">7</span></td><td><span class="fecha">8</span></td></tr>
+<tr><td>W46</td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td><td><span class="fecha">11</span></td><td><span class="fecha">12</span></td><td><span class="fecha">13</span></td><td><span class="fecha">14</span></td><td><span class="fecha">15</span></td></tr>
+<tr><td>W47</td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td><td><span class="fecha">19</span></td><td><span class="fecha">20</span></td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td></tr>
+<tr><td>W48</td><td><span class="fecha">23</span></td><td><span class="fecha">24</span></td><td><span class="fecha">25</span></td><td><span class="fecha">26</span></td><td class="evento-verde"><span class="fecha">27</span></td><td><span class="fecha">28</span></td><td><span class="fecha">29</span></td></tr>
+<tr><td>W49</td><td><span class="fecha">30</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<!-- Diciembre 2026 -->
+<div class="mes"><h2>Diciembre</h2><table><thead><tr><th>Semana</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead><tbody>
+<tr><td>W49</td><td></td><td><span class="fecha">1</span></td><td><span class="fecha">2</span></td><td><span class="fecha">3</span></td><td><span class="fecha">4</span></td><td><span class="fecha">5</span></td><td><span class="fecha">6</span></td></tr>
+<tr><td>W50</td><td><span class="fecha">7</span></td><td><span class="fecha">8</span></td><td><span class="fecha">9</span></td><td><span class="fecha">10</span></td><td><span class="fecha">11</span></td><td><span class="fecha">12</span></td><td><span class="fecha">13</span></td></tr>
+<tr><td>W51</td><td><span class="fecha">14</span></td><td><span class="fecha">15</span></td><td><span class="fecha">16</span></td><td><span class="fecha">17</span></td><td><span class="fecha">18</span></td><td><span class="fecha">19</span></td><td><span class="fecha">20</span></td></tr>
+<tr><td>W52</td><td><span class="fecha">21</span></td><td><span class="fecha">22</span></td><td><span class="fecha">23</span></td><td class="evento-verde"><span class="fecha">24</span></td><td><span class="fecha">25</span></td><td><span class="fecha">26</span></td><td><span class="fecha">27</span></td></tr>
+<tr><td>W53</td><td><span class="fecha">28</span></td><td><span class="fecha">29</span></td><td><span class="fecha">30</span></td><td><span class="fecha">31</span></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+ <footer>
+  &copy; 2025 Transformación Digital | Portal de Reportes  
+  <br />
+  <a href="https://wa.me/595994640931?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..." 
+     target="_blank" 
+     class="contacto">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+         alt="WhatsApp" 
+         style="width:20px; vertical-align:middle; margin-right:5px;">
+    Contactar
+  </a>
+</footer>
+</body>
+</html>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const editableCells = document.querySelectorAll("td");
+
+    editableCells.forEach(cell => {
+      cell.addEventListener("click", function () {
+        const fecha = cell.querySelector(".fecha")?.textContent || "";
+        const actual = cell.querySelector(".evento-texto")?.textContent || "";
+        const nuevoTexto = prompt(`Agregar evento para el día ${fecha}:`, actual);
+
+        if (nuevoTexto !== null) {
+          let textoElemento = cell.querySelector(".evento-texto");
+          if (!textoElemento) {
+            textoElemento = document.createElement("div");
+            textoElemento.className = "evento-texto";
+            textoElemento.style.marginTop = "18px";
+            textoElemento.style.fontSize = "12px";
+            textoElemento.style.color = "#2c3e50";
+            cell.appendChild(textoElemento);
+          }
+          textoElemento.textContent = nuevoTexto;
+        }
+      });
+    });
+  });
+</script>
+
