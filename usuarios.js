@@ -27,7 +27,11 @@ const usuarios = [
   { usuario: "Tiendatluque", password: "Martelluque", rol: "Tiendaluque" },
   { usuario: "Tiendasur", password: "Martelsur", rol: "Tiendasur" },
   { usuario: "Tiendamsanlo", password: "Martelmsanlo", rol: "Tiendamsanlo" },  
+  { usuario: "manuel@enerbike.com.py", password: "Enerbike01", rol: "admin" },  
+  { usuario: "adrian.maiz@enerbike.com.py", password: "Enerbike54", rol: "admin" },  
+  
 ];
+
 
 
 
