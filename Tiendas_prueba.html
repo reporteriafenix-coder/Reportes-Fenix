@@ -222,7 +222,7 @@
     const usuario = localStorage.getItem('usuario');
 
     if (!rol) {
-      window.location.href = 'Login.html';
+      window.location.href = 'Inicio.html';
     }
 
     const pagina = window.location.pathname.split('/').pop();
@@ -241,13 +241,13 @@
 
     if (!permisos[rol] || !permisos[rol].includes(pagina)) {
       alert('No tienes permiso para acceder a esta página');
-      window.location.href = 'Login.html';
+      window.location.href = 'Inicio.html';
     }
 
     // Logout button
     document.getElementById("logoutBtn").addEventListener("click", function() {
       localStorage.removeItem("user");
-      window.location.href = "Login.html";
+      window.location.href = "Inicio.html";
     });
 
     // ====== JS para desplegable Tiendas ======
@@ -338,6 +338,7 @@
 </body>
 
 </html>
+
 
 
 
