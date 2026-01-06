@@ -10,7 +10,7 @@
   const usuario = localStorage.getItem('usuario');
 
   if (!rol) {
-    window.location.href = 'Inicio.html';
+    window.location.href = 'acceso-sistema.html';
   }
 
   // Reglas de acceso
@@ -30,7 +30,7 @@
 
   if (!permisos[rol].includes(pagina)) {
     alert('No tienes permiso para acceder a esta página');
-    window.location.href = 'Inicio.html';
+    window.location.href = 'acceso-sistema.html';
   }
 </script>
  
@@ -204,11 +204,12 @@ document.getElementById("logoutBtn").addEventListener("click", function() {
     localStorage.removeItem("user");
 
     // Redirige al login
-    window.location.href = "Inicio.html";
+    window.location.href = "acceso-sistema.html";
 });
 </script>
 </body>
 </html>
+
 
 
 
