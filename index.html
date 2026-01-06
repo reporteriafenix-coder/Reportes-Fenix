@@ -10,7 +10,7 @@
   const usuario = localStorage.getItem('usuario');
 
   if (!rol) {
-    window.location.href = 'Inicio.html';
+    window.location.href = 'acceso-sistema.html';
   }
 
   // Reglas de acceso
@@ -42,7 +42,7 @@
 
   if (!permisos[rol].includes(pagina)) {
     alert('No tienes permiso para acceder a esta página');
-    window.location.href = 'Inicio.html';
+    window.location.href = 'acceso-sistema.html';
   }
 </script>
   <style>
@@ -219,6 +219,7 @@ document.getElementById("logoutBtn").addEventListener("click", function() {
 
 </body>
 </html>
+
 
 
 
