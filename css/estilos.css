@@ -1,0 +1,1118 @@
+/* =========================================
+   REPORTES FENIX - ESTILOS PRINCIPALES
+   ========================================= */
+
+:root {
+    --color-fondo: #f6f6f6;
+    --color-sidebar: #111111;
+    --color-sidebar-hover: #242424;
+    --color-principal: #ffffff;
+    --color-principal-hover: #e9e9e9;
+    --color-texto: #1f1f1f;
+    --color-texto-suave: #6b6b6b;
+    --color-blanco: #ffffff;
+    --color-borde: #e5e5e5;
+    --sombra: 0 6px 20px rgba(0, 0, 0, 0.06);
+    --radio: 12px;
+}
+
+/* -------------------------
+   CONFIGURACIÓN GENERAL
+   ------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+/* -------------------------
+   BARRA LATERAL
+   ------------------------- */
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: var(--color-sidebar);
+    color: var(--color-blanco);
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 28px 16px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 10px;
+    margin-bottom: 25px;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.logo img {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Menú */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    margin-bottom: 4px;
+    border-radius: 8px;
+    color: #bdbdbd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.menu a:hover {
+    background: var(--color-sidebar-hover);
+    color: var(--color-blanco);
+}
+
+.menu a.active {
+    background: #ffffff;
+    color: #111111;
+}
+
+/* -------------------------
+   CONTENIDO PRINCIPAL
+   ------------------------- */
+
+.main-content {
+    margin-left: 250px;
+    min-height: 100vh;
+    padding: 35px;
+}
+
+/* Encabezado */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.module-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    text-decoration: none;
+    color: var(--color-texto);
+    box-shadow: var(--sombra);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.module-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
+}
+
+.module-icon {
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #f2f2f2;
+    font-size: 21px;
+}
+
+.module-card h3 {
+    margin: 0 0 5px;
+    font-size: 15px;
+}
+
+.module-card p {
+    margin: 0;
+    color: var(--color-texto-suave);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.module-arrow {
+    margin-left: auto;
+    font-size: 20px;
+    color: #777;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.page-header p {
+    margin: 7px 0 0;
+    color: var(--color-texto-suave);
+}
+
+/* -------------------------
+   TARJETAS
+   ------------------------- */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 22px;
+    box-shadow: var(--sombra);
+}
+
+.card h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+    color: var(--color-texto-suave);
+}
+
+.card p {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+/* -------------------------
+   CONTENEDOR POWER BI
+   ------------------------- */
+
+.powerbi-container {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 15px;
+    box-shadow: var(--sombra);
+    overflow: hidden;
+}
+
+.powerbi-container iframe {
+    display: block;
+    width: 100%;
+    height: 78vh;
+    min-height: 650px;
+    max-height: 900px;
+    border: 0;
+    border-radius: 8px;
+}
+/* -------------------------
+   BOTÓN CERRAR SESIÓN
+   ------------------------- */
+
+.logout-btn {
+    margin-top: auto;
+    width: 100%;
+    padding: 12px 15px;
+    border: 0;
+    border-radius: 10px;
+    background: #343b43;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logout-btn:hover {
+    background: #454e58;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    color: #bdbdbd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.contact-btn:hover {
+    background: var(--color-sidebar-hover);
+    color: #ffffff;
+}
+
+.logout-icon {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 8px;
+    color: #bdbdbd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.contact-btn:hover {
+    background: #242424;
+    color: #ffffff;
+}
+
+.contact-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}.sidebar-bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 8px;
+    color: #bdbdbd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.contact-btn:hover {
+    background: #242424;
+    color: #ffffff;
+}
+
+.contact-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+/* -------------------------
+   RESPONSIVE
+   ------------------------- */
+
+@media (max-width: 1100px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.menu a,
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;   /* todo pegado a la izquierda */
+  gap: 12px;
+  padding: 12px 16px;            /* mismo padding en ambos */
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.menu a .icono,
+.logout-btn .icono {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;                /* ancho fijo, no se encoge */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.logout-btn .logout-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.menu a .texto,
+.logout-btn .texto {
+  line-height: 1.2;
+}
+
+
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 13px;
+    margin-left: 250px;
+width: calc(100% - 250px);
+box-sizing: border-box;
+}
+
+.footer-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 4px;
+    color: #25D366;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-contact img {
+    width: 18px;
+    height: 18px;
+}
+
+/* ========================================
+   SIDEBAR PLEGABLE
+   ======================================== */
+
+.sidebar-toggle {
+    position: absolute;
+    top: 22px;
+    right: -12px;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #222222;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1100;
+
+    font-size: 18px;
+    line-height: 1;
+}
+
+.sidebar-toggle:hover {
+    background: #f0f0f0;
+}
+
+
+/* Sidebar plegado */
+
+.app-layout.sidebar-collapsed .sidebar {
+    width: 78px;
+}
+
+.app-layout.sidebar-collapsed .main-content {
+    margin-left: 78px;
+}
+
+
+/* Cuando el menú está plegado */
+.app-layout.sidebar-collapsed .logo .logo-full {
+    display: none !important;
+}
+
+.app-layout.sidebar-collapsed .logo .logo-mark {
+    display: block !important;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+/* Logo cuadrado cuando el menú está plegado */
+.app-layout.sidebar-collapsed .logo {
+    width: 48px;
+    height: 48px;
+    min-height: 48px;
+    padding: 0;
+    margin: 0 auto 24px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Ocultar textos del menú */
+
+.app-layout.sidebar-collapsed .menu a span:not(.icono) {
+    display: none;
+}
+
+.app-layout.sidebar-collapsed .menu a {
+    justify-content: center;
+    gap: 0;
+}
+
+
+/* Cerrar sesión plegado */
+
+.app-layout.sidebar-collapsed .logout-btn span {
+    display: none;
+}
+
+.app-layout.sidebar-collapsed .logout-btn {
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/* Cambiar la flecha */
+
+.app-layout.sidebar-collapsed .sidebar-toggle span {
+    transform: rotate(180deg);
+}
+
+/* ========================================
+   NAVEGACIÓN INTERNA B2B
+   ======================================== */
+
+.section-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0 0 14px;
+    padding: 7px;
+    background: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+}
+
+.section-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--color-texto);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.section-option:hover {
+    background: #f2f2f2;
+    border-color: #e5e5e5;
+}
+
+.section-option.active {
+    background: #1f1f1f;
+    color: #ffffff;
+}
+
+
+/* Desplegable de vendedores */
+
+.section-dropdown {
+    position: relative;
+}
+
+/* ========================================
+   DESPLEGABLE DE TIENDAS
+   ======================================== */
+
+.section-dropdown-content {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+
+    min-width: 230px;
+    max-height: 60vh;
+    overflow-y: auto;
+
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+    z-index: 1200;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(6px);
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease,
+        visibility 0.18s ease;
+}
+
+/* Mantener abierto al pasar el cursor o usar el teclado */
+
+.section-nav:not(.section-nav-b2c) .section-dropdown:hover .section-dropdown-content,
+.section-nav:not(.section-nav-b2c) .section-dropdown:focus-within .section-dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Puente invisible para que no se cierre al mover el mouse */
+
+.section-dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 0;
+    width: 100%;
+    height: 7px;
+}
+
+.section-dropdown:hover .section-dropdown-content,
+.section-dropdown:focus-within .section-dropdown-content {
+    display: block;
+}
+
+.section-dropdown-content button {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 40px;
+    padding: 10px 12px;
+
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+
+    color: var(--color-texto);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+
+    cursor: pointer;
+    transition:
+        background-color 0.18s ease,
+        color 0.18s ease;
+}
+
+.section-dropdown-content button:hover {
+    background: #f1f3f5;
+    color: #111111;
+}
+
+.section-dropdown-content button:focus-visible {
+    outline: 2px solid #777777;
+    outline-offset: -2px;
+}
+
+/* Logo corporativo en el encabezado */
+
+/* Logo Fénix en el encabezado */
+.page-brand {
+    width: 290px;
+    height: 105px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: flex-start;
+margin-top: -25px;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.page-brand img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Adaptación para pantallas pequeñas */
+
+@media (max-width: 600px) {
+    .page-header {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .page-brand {
+        width: 115px;
+        height: 48px;
+    }
+}
+
+/* Ajuste del encabezado del reporte B2B */
+
+.report-header {
+    margin-top: -6px;
+    margin-bottom: 10px;
+}
+
+.report-header h2 {
+    margin: 0 0 6px;
+}
+
+.report-header p {
+    margin: 0;
+}
+
+/* ========================================
+   LOGOS DEL SIDEBAR
+   ======================================== */
+
+/* Logo completo cuando el menú está abierto */
+.logo .logo-full {
+    display: block;
+    width: 170px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Monograma oculto por defecto */
+.logo .logo-mark {
+    display: none;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+/* Cuando el menú está plegado */
+.app-layout.sidebar-collapsed .logo .logo-full {
+    display: none;
+}
+
+.app-layout.sidebar-collapsed .logo .logo-mark {
+    display: block;
+    width: 42px;
+    height: 42px;
+    filter: invert(1);
+mix-blend-mode: screen;
+}
+
+/* ========================================
+   NAVEGACIÓN B2C
+   ======================================== */
+
+.section-nav.section-nav-b2c {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+}
+
+.section-nav-main {
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.section-nav-extra {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 35px;
+}
+
+/* AO: violeta suave */
+
+.section-option.brand-ao {
+    background: #f0e7f5;
+    border-color: #dbc5e6;
+    color: #633f78;
+    font-weight: 700;
+}
+
+.section-option.brand-ao:hover {
+    background: #e5d6ee;
+}
+
+/* Enerbike: verde suave */
+
+.section-option.brand-enerbike {
+    background: #e5f3e9;
+    border-color: #c5e3ce;
+    color: #276b45;
+    font-weight: 700;
+}
+
+.section-option.brand-enerbike:hover {
+    background: #d5eadc;
+}
+
+/* Adaptación a pantallas pequeñas */
+
+@media (max-width: 1000px) {
+    .section-nav.section-nav-b2c {
+        grid-template-columns: 1fr;
+    }
+
+    .section-nav-main,
+    .section-nav-extra {
+        grid-column: 1;
+        justify-self: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Apertura por clic del menú Tiendas en B2C */
+.section-nav-b2c .section-dropdown.is-open .section-dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Animación de la flecha */
+.section-nav-b2c .dropdown-arrow {
+    display: inline-block;
+    margin-left: 3px;
+    transition: transform 0.18s ease;
+}
+
+.section-nav-b2c .section-dropdown.is-open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* ========================================
+   SUBMENÚ B2C: AO Y ENERBIKE
+   ======================================== */
+
+.menu-group-b2c {
+    width: 100%;
+}
+
+.menu-parent-row {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.menu-parent-row > a {
+    flex: 1;
+    min-width: 0;
+    border-radius: 12px 0 0 12px;
+}
+
+/* Mantener el elemento padre alineado con el menú */
+.menu-parent-row.active {
+    background: #ffffff;
+}
+
+.menu-parent-row.active > a {
+    background: transparent;
+    color: #20252b;
+}
+
+/* Botón para desplegar AO y Enerbike */
+.submenu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    padding: 0;
+    border: none;
+    border-radius: 0 12px 12px 0;
+    background: transparent;
+    color: #b9c0c7;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.menu-parent-row.active .submenu-toggle {
+    color: #20252b;
+}
+
+.submenu-toggle:hover {
+    background: rgba(127, 127, 127, 0.12);
+}
+
+.submenu-chevron {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+
+/* ========================================
+   SUBMENÚ B2C: AO Y ENERBIKE
+   ======================================== */
+
+.menu-group-b2c {
+    width: 100%;
+}
+
+.menu-parent-row {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.menu-parent-row > a {
+    flex: 1;
+    min-width: 0;
+    border-radius: 12px 0 0 12px;
+}
+
+/* Mantener el elemento padre alineado con el menú */
+.menu-parent-row.active {
+    background: #ffffff;
+}
+
+.menu-parent-row.active > a {
+    background: transparent;
+    color: #20252b;
+}
+
+/* Botón para desplegar AO y Enerbike */
+.submenu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    padding: 0;
+    border: none;
+    border-radius: 0 12px 12px 0;
+    background: transparent;
+    color: #b9c0c7;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.menu-parent-row.active .submenu-toggle {
+    color: #20252b;
+}
+
+.submenu-toggle:hover {
+    background: rgba(127, 127, 127, 0.12);
+}
+
+.submenu-chevron {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+/* Submenú B2C: apertura suave */
+.submenu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 0;
+    padding-left: 8px;
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transform: translateY(-5px);
+
+    transition:
+        max-height 0.3s ease,
+        opacity 0.25s ease,
+        transform 0.3s ease,
+        margin-top 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.menu-group-b2c.is-open .submenu-links {
+    max-height: 120px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    margin-top: 5px;
+}
+
+.menu-group-b2c.is-open .submenu-chevron {
+    transform: rotate(180deg);
+}
+
+/* Botones AO y Enerbike */
+.submenu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 40px;
+    padding: 9px 12px 9px 18px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: #b9c0c7;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu-link .icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    flex-shrink: 0;
+}
+
+.submenu-link:hover {
+    background: #242424;
+    color: #ffffff;
+}
+
+/* En modo plegado, ocultar el submenú */
+.app-layout.sidebar-collapsed .menu-group-b2c .submenu-toggle {
+    display: none;
+}
+
+.app-layout.sidebar-collapsed .menu-group-b2c .submenu-links {
+    display: none;
+}
+
+/* =====================================
+   TRANSICIÓN ENTRE PÁGINAS
+   ===================================== */
+
+@keyframes entradaPagina {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animar el contenido al entrar */
+.main-content {
+    animation: entradaPagina 0.25s ease-out both;
+}
+
+/* Evitar movimientos innecesarios */
+@media (prefers-reduced-motion: reduce) {
+    .main-content {
+        animation: none;
+    }
+}
+
+/* Footer alineado con el contenido principal */
+.app-layout.sidebar-collapsed ~ .site-footer {
+    margin-left: 78px;
+    width: calc(100% - 78px);
+}

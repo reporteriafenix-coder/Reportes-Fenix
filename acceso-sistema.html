@@ -6,42 +6,94 @@
   <style>
 body {
   display: flex;
-  flex-direction: column; /* Apila el contenido verticalmente */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  font-family: 'Segoe UI';
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
   background: #eef2f3;
   margin: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+  margin-bottom: 25px;
+}
+.subtitle {
+  color: #666;
+  font-size: 14px;
+  margin-top: -5px;
+  margin-bottom: 25px;
 }
 
     .login-box {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ccc;
-      width: 300px;
-      text-align: center;
-    }
-    input {
-      width: 90%;
-      padding: 8px;
-      margin: 10px 0;
-    }
+  background: white;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+  width: 360px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+  input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  margin: 8px 0;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
+}
        footer {
       text-align: center;
       padding: 20px;
       color: #777;
       font-size: 0.9em;
     }
+
+
+
+/* Botón principal */
+
+button {
+  background: #1f1f1f;
+  ...
+}
+
+
+
     button {
-      background: #2c3e50;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      cursor: pointer;
-    }
+  background: #1f1f1f;
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background: #333333;
+}
+
+button:active {
+  transform: scale(0.99);
+}
     #error {
       color: red;
     }
@@ -49,87 +101,22 @@ body {
 </head>
 <body>
   <div class="login-box">
-    <h2>Transformación digital - Fenix Reportería</h2>
+    <img src="img/Fenix Brands Logo-02.png" alt="Fénix" class="logo">
+
+    <h2>Portal de Reportes</h2>
+    <p class="subtitle">Transformación Digital</p>
+
     <input type="text" id="usuario" placeholder="Usuario" required><br>
-    <input type="password" id="password" placeholder="Pin" required><br>
+
+ <input type="password" id="password" placeholder="PIN de acceso" required><br>
+
     <button onclick="login()">Entrar</button>
     <p id="error"></p>
   </div>
 
-  <script src="usuarios.js"></script>
-  <script>
-    function login() {
-      const user = document.getElementById('usuario').value.trim();
-      const pass = document.getElementById('password').value.trim();
-
-      const encontrado = usuarios.find(u => u.usuario === user && u.password === pass);
-
-      if (encontrado) {
-        localStorage.setItem('usuario', encontrado.usuario);
-        localStorage.setItem('rol', encontrado.rol);
-
-        switch (encontrado.rol) {
-          case 'admin':
-            window.location.href = 'index.html';
-            break;
-            case 'Gerencia':
-            window.location.href = 'index.html';
-            break;
-          case 'B2B':
-            window.location.href = 'B2B.html';
-            break;
-          case 'B2C':
-            window.location.href = 'B2C.html';
-            break;
-          case 'batas':
-            window.location.href = 'BATAS.html';
-            break;
-          case 'ecom':
-            window.location.href = 'ECOM.html';
-            break;
-            case 'Tiendamcal':
-            window.location.href = 'MariscalLopez.html';
-            break;
-            case 'Tiendaestrella':
-            window.location.href = 'Estrella.html';
-            break;
-             case 'Tiendacerro':
-            window.location.href = 'CerroAlto.html';
-            break;
-             case 'Tiendagaleria':
-            window.location.href = 'Galeria.html';
-            break;
-             case 'Tiendapaseo':
-            window.location.href = 'PaseoLambare.html';
-            break;
-             case 'Tiendamariano':
-            window.location.href = 'ShoppingMariano.html';
-            break;
-             case 'Tiendasmariscal':
-            window.location.href = 'ShoppingMariscalLopez.html';
-            break;
-             case 'Tiendapinedo':
-            window.location.href = 'ShoppingPinedo.html';
-            break;
-             case 'Tiendasanlo':
-            window.location.href = 'ShoppingSanLorenzo.html';
-            break;
-             case 'Tiendaluque':
-            window.location.href = 'TOLuque.html';
-            break;
-             case 'Tiendasur':
-            window.location.href = 'TOSur.html';
-            break;
-             case 'Tiendamsanlo':
-            window.location.href = 'MartelSanLorenzo.html';
-            break;
-            
-        }
-      } else {
-        document.getElementById('error').innerText = 'Usuario o contraseña incorrectos';
-      }
-    }
-  </script>
+  
+<script src="js/usuarios.js"></script>
+<script src="js/login.js"></script>
 
    <footer>
   &copy; 2025 Transformación Digital | Portal de Reportes | V1.01

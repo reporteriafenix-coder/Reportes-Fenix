@@ -1,235 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-   <button id="logoutBtn">Cerrar sesión</button>
-  <script>
-  const rol = localStorage.getItem('rol');
-  const usuario = localStorage.getItem('usuario');
-
-  if (!rol) {
-    window.location.href = 'acceso-sistema.html';
-  }
-
-  // Reglas de acceso
-  const pagina = window.location.pathname.split('/').pop();
-
-  const permisos = {
-    admin: ['index.html', 'B2B.html', 'B2C.html', 'BATAS.html', 'ECOM.html', 'MariscalLopez.html','ShoppingMariscalLopez.html','ShoppingPinedo.html',
-      'ShoppingMariano.html', 'ShoppingSanLorenzo.html','Galería.html','CerroAlto.html','Estrella.html','TOSur.html','TOLuque.html','PaseoLambare.html','Tiendas_prueba.html'], 
-   GERENCIA: ['index.html', 'B2B.html', 'B2C.html', 'BATAS.html', 'ECOM.html', 'Tiendas_retail.html','Tiendas_prueba.html'],
-    B2B: ['B2B.html'],
-    B2C: ['B2C.html', 'Tiendas_prueba.html'],
-    batas: ['BATAS.html'],
-    ecom: ['ECOM.html'],
-     tienda_retail: ['Tiendas_prueba.html']
-     Tiendamcal: ['MariscalLopez.html'],
-  };
-
-  if (!permisos[rol].includes(pagina)) {
-    alert('No tienes permiso para acceder a esta página');
-    window.location.href = 'acceso-sistema.html';
-  }
-</script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Dashboard B2B</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f4f8;
-      color: #333;
-    }
 
-    header {
-      background-color: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/auth.js"></script>
 
-    h1 {
-      margin: 0;
-      font-size: 2em;
-    }
 
-    .tabs {
-      display: flex;
-      justify-content: center;
-      background-color: #34495e;
-      padding: 10px 0;
-    }
-
-    .tab {
-      color: white;
-      text-decoration: none;
-      padding: 10px 30px;
-      margin: 0 10px;
-      border-radius: 4px 4px 0 0;
-      background-color: #3b5998;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .tab:hover {
-      background-color: #2a4373;
-    }
-
-    .tab.active {
-      background-color: #1abc9c;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 4px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      font-size: 0.9em;
-    }
-     .tabs {
-  display: flex;
-  background-color: #2c3e50;
-  padding: 10px;
-}
-
-.tab, .dropbtn {
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  font-weight: bold;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.tab:hover, .dropbtn:hover {
-  background-color: #34495e;
-  border-radius: 4px;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f4f6f8;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: #2c3e50;
-  padding: 10px 14px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-  </style>
 </head>
+
 <body>
-  <header>
-    <h1>Dashboard B2B</h1>
-    <p>Indicadores para uniformes y mayoristas</p>
-  </header>
 
-  <!-- Pestañas de navegación -->
-  <nav class="tabs">
-    <a href="index.html" class="tab">Panel Integral</a>
-    <a href="B2B.html" class="tab active">B2B</a>
-    <a href="B2C.html" class="tab">B2C</a>
-    <a href="ECOM.html" class="tab">ECOM</a>
-     <a href="BATAS.html" class="tab">BATAS</a>
-     <a href="Tiendas_retail.html" class="tab">Tiendas</a>  
-       <!-- Menú desplegable "Más" -->
-  <div class="dropdown">
-    <button class="dropbtn">Más ▾</button>
-    <div class="dropdown-content">
-      <a href="Enerbike.html">Enerbike</a>
-      <a href="Forecast2026.html">Forecast 2026</a>
-      <a href="Calendario.html">Calendario</a>
+  <div class="app-layout">
+    <script src="js/sidebar-init.js"></script>
+
+    <!-- MENÚ LATERAL -->
+    <aside class="sidebar">
+
+        <div class="logo">
+    <img
+        class="logo-full"
+        src="img/Fenix Brands Logo-02.png"
+        alt="Fénix Brands">
+
+    <img
+        class="logo-mark"
+        src="img/Fenix Logo-Photoroom.png"
+        alt="Fénix">
+</div>
+
+        <button
+    id="sidebarToggle"
+    class="sidebar-toggle"
+    type="button"
+    aria-label="Plegar menú">
+    <span>‹</span>
+</button>
+
+        <nav class="menu">
+
+            <a href="index.html">
+                <span class="icono">🏠︎</span>
+                <span>Panel Integral</span>
+            </a>
+
+            <a href="B2C.html">
+                <span class="icono">📊</span>
+                <span>B2C · Retail</span>
+            </a>
+
+            <a href="B2B.html" class="active">
+                <span class="icono">📈</span>
+                <span>B2B · Uniformes y Mayoristas</span>
+            </a>
+
+            <a href="BATAS.html">
+                <span class="icono">🥼</span>
+                <span>Batas</span>
+            </a>
+
+            <a href="Inventario.html">
+    <span class="icono">📦</span>
+    <span>Inventario</span>
+</a>
+
+        </nav>
+
+<div class="sidebar-bottom">
+
+
+    <button id="logoutBtn" class="logout-btn">
+        <svg class="logout-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/>
+            <path d="M16 8l4 4-4 4"/>
+            <path d="M9 12h11"/>
+        </svg>
+        <span>Cerrar sesión</span>
+    </button>
+
+</div>
+
+
+
+    </aside>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+
+        <div class="page-header">
+
+    <div class="page-header-text">
+        <h1>B2B · Uniformes y Mayoristas</h1>
+        <p>Bienvenido/a, <span id="nombreUsuario"></span></p>
     </div>
-  </div>
-  </nav>
 
-<div class="container">
-  <p></p>
-<iframe title="REPORTE VENTAS - b2b" width="600" height="373.5" 
-   src="https://app.powerbi.com/view?r=eyJrIjoiNmRmMjViNWMtNTk1Yy00MzczLWFkZmEtNjVmNzczNWE0NDAyIiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9" 
-   frameborder="0" allowFullScreen="true">
-</iframe>
-</div>
+    <div class="page-brand">
+        <img src="img/Fenix Brands Logo-02.png" alt="Fénix Brands">
+    </div>
 
-   <button id="mostrarMapaBtn">Mostrar mapa de paradas</button>
-    <div id="mapaContainer" style="display: none; margin-top: 20px;">
-  <iframe 
-    src="<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1-rK-UtVizDMod8GV59bBoI2FyQAO00U&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>"
-    width="95%"
-    height="500px"
-    frameborder="0"
-    allowfullscreen="true">
-  </iframe>
 </div>
 
 
-  <footer>
-  &copy; 2025 Transformación Digital | Portal de Reportes | V1.01
-  <br />
-  <a href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..." 
-     target="_blank" 
-     style="color: #25D366; text-decoration: none; font-weight: bold;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-         alt="WhatsApp" 
-         style="width:20px; vertical-align:middle; margin-right:5px;">
-    Contactar
-  </a>
+        <!-- NAVEGACIÓN INTERNA B2B -->
+        <nav class="section-nav">
+
+            <button class="section-option active" type="button">
+                Resumen
+            </button>
+
+            <div class="section-dropdown">
+
+                <button class="section-option" type="button">
+                    Vendedores ▾
+                </button>
+
+                <div class="section-dropdown-content">
+                </div>
+
+            </div>
+
+            <button class="section-option" type="button">
+                MARTEL
+            </button>
+
+            <button class="section-option" type="button">
+                LEE
+            </button>
+
+            <button class="section-option" type="button">
+                WRANGLER
+            </button>
+
+        </nav>
+
+
+        <!-- REPORTE B2B -->
+        <section class="powerbi-container">
+
+            <div class="report-header">
+                <div>
+                    <h2>Resumen B2B</h2>
+                    <p>Indicadores del canal Uniformes y Mayoristas</p>
+                </div>
+            </div>
+
+            <iframe
+                title="REPORTE VENTAS - B2B"
+                src="https://app.powerbi.com/view?r=eyJrIjoiNmRmMjViNWMtNTk1Yy00MzczLWFkZmEtNjVmNzczNWE0NDAyIiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9"
+                allowfullscreen="true">
+            </iframe>
+
+        </section>
+
+    </main>
+
+</div>
+
+<footer class="site-footer">
+    <div>
+        &copy; 2026 Transformación Digital | Portal de Reportes | V2.01
+    </div>
+
+    <a
+        href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..."
+        target="_blank"
+        class="footer-contact">
+
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp">
+
+        <span>Contactar</span>
+    </a>
 </footer>
 
-   <script>
-  document.getElementById("mostrarMapaBtn").addEventListener("click", function() {
-    const mapa = document.getElementById("mapaContainer");
-    mapa.style.display = mapa.style.display === "none" ? "block" : "none";
-  });
-</script>
 
-  <script>
-document.getElementById("logoutBtn").addEventListener("click", function() {
-    // Elimina los datos del usuario
-    localStorage.removeItem("user");
 
-    // Redirige al login
-    window.location.href = "acceso-sistema.html";
-});
-</script>
+<script src="js/dashboard.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/b2b.js"></script>
+
 </body>
 </html>
+
 
 
 

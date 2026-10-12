@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Dashboard Inventario</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/auth.js"></script>
+</head>
+
+<div class="app-layout">
+  <script src="js/sidebar-init.js"></script>
+
+    <!-- MENÚ LATERAL -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <img
+                class="logo-full"
+                src="img/Fenix Brands Logo-02.png"
+                alt="Fénix Brands">
+
+            <img
+                class="logo-mark"
+                src="img/Fenix Logo-Photoroom.png"
+                alt="Fénix">
+        </div>
+
+        <button
+            id="sidebarToggle"
+            class="sidebar-toggle"
+            type="button"
+            aria-label="Plegar menú">
+            <span>‹</span>
+        </button>
+
+        <nav class="menu">
+
+            <a href="index.html">
+                <span class="icono">🏠︎</span>
+                <span>Panel Integral</span>
+            </a>
+
+            <a href="B2C.html">
+                <span class="icono">📊</span>
+                <span>B2C · Retail</span>
+            </a>
+
+            <a href="B2B.html">
+                <span class="icono">📈</span>
+                <span>B2B · Uniformes y Mayoristas</span>
+            </a>
+
+            <a href="BATAS.html">
+    <span class="icono">🥼</span>
+    <span>Batas</span>
+</a>
+
+   <a href="Inventario.html" class="active">
+    <span class="icono">📦</span>
+    <span>Inventario</span>
+</a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutBtn" class="logout-btn" type="button">
+                <svg
+                    class="logout-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true">
+                    <path d="M13 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/>
+                    <path d="M16 8l4 4-4 4"/>
+                    <path d="M9 12h11"/>
+                </svg>
+
+                <span>Cerrar sesión</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+
+        <div class="page-header">
+
+            <div class="page-header-text">
+                <h1>Inventario</h1>
+<p>Bienvenido/a, <span id="nombreUsuario"></span></p>
+            </div>
+
+            <div class="page-brand">
+                <img
+                    src="img/Fenix Brands Logo-02.png"
+                    alt="Fénix Brands">
+            </div>
+
+        </div>
+
+
+        <!-- RESUMEN GENERAL DE BATAS -->
+        <section class="powerbi-container">
+
+            <div class="report-header">
+    <div>
+        <h2>Resumen de Inventario</h2>
+        <p>Indicadores generales de inventario</p>
+    </div>
+</div>
+
+<div class="report-placeholder">
+    <h3>Reporte de Inventario</h3>
+    <p>El reporte estará disponible próximamente.</p>
+</div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- PIE DE PÁGINA -->
+<footer class="site-footer">
+
+    <div>
+        &copy; 2026 Transformación Digital | Portal de Reportes | V2.01
+    </div>
+
+    <a
+        href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-contact">
+
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp">
+
+        <span>Contactar</span>
+    </a>
+
+</footer>
+
+
+<!-- JAVASCRIPT EXTERNO -->
+<script src="js/dashboard.js"></script>
+<script src="js/sidebar.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
