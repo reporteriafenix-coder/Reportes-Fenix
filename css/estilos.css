@@ -1116,3 +1116,24 @@ mix-blend-mode: screen;
     margin-left: 78px;
     width: calc(100% - 78px);
 }
+
+.menu .menu-brand-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    margin: 0 0 8px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.menu .menu-brand-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
