@@ -1137,3 +1137,25 @@ mix-blend-mode: screen;
 .menu .menu-brand-button:hover {
     background: rgba(255, 255, 255, 0.08);
 }
+
+/* Centrar el encabezado del reporte B2C */
+.report-header-b2c {
+    justify-content: center;
+    text-align: center;
+}
+
+.report-header-b2c > div {
+    width: 100%;
+    text-align: center;
+}
+
+/* Centrar encabezado del Panel Integral */
+.report-header-integral {
+    justify-content: center;
+    text-align: center;
+}
+
+.report-header-integral > div {
+    width: 100%;
+    text-align: center;
+}
