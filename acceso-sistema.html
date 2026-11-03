@@ -3,101 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Sistema Interno de Reportes Fénix - Uso Privado</title>
-  <style>
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-  background: #eef2f3;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.logo {
-  width: 300px;
-  height: auto;
-  margin-bottom: 25px;
-}
-.subtitle {
-  color: #666;
-  font-size: 14px;
-  margin-top: -5px;
-  margin-bottom: 25px;
-}
-
-    .login-box {
-  background: white;
-  padding: 40px;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
-  width: 360px;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-  input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 13px 14px;
-  margin: 8px 0;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  font-size: 14px;
-  font-family: 'Segoe UI', sans-serif;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-input:focus {
-  border-color: #333;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
-}
-       footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      font-size: 0.9em;
-    }
-
-
-
-/* Botón principal */
-
-button {
-  background: #1f1f1f;
-  ...
-}
-
-
-
-    button {
-  background: #1f1f1f;
-  color: white;
-  border: none;
-  padding: 14px;
-  width: 100%;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: 'Segoe UI', sans-serif;
-  transition: background 0.2s, transform 0.1s;
-}
-
-button:hover {
-  background: #333333;
-}
-
-button:active {
-  transform: scale(0.99);
-}
-    #error {
-      color: red;
-    }
-  </style>
+  <link rel="stylesheet" href="css/acceso.css">
 </head>
 <body>
   <div class="login-box">
@@ -106,29 +12,47 @@ button:active {
     <h2>Portal de Reportes</h2>
     <p class="subtitle">Transformación Digital</p>
 
-    <input type="text" id="usuario" placeholder="Usuario" required><br>
+    <input
+    type="email"
+    id="usuario"
+    placeholder="Correo corporativo"
+    autocomplete="username"
+    required>
 
- <input type="password" id="password" placeholder="PIN de acceso" required><br>
+<input
+    type="password"
+    id="password"
+    placeholder="Contraseña"
+    autocomplete="current-password"
+    required>
 
-    <button onclick="login()">Entrar</button>
-    <p id="error"></p>
+<button onclick="login()">Entrar</button>
+
+<p id="error"></p>
+
   </div>
 
   
-<script src="js/usuarios.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
 <script src="js/login.js"></script>
-
    <footer>
-  &copy; 2025 Transformación Digital | Portal de Reportes | V1.01
-  <br />
-  <a href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..." 
-     target="_blank" 
-     style="color: #25D366; text-decoration: none; font-weight: bold;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-         alt="WhatsApp" 
-         style="width:20px; vertical-align:middle; margin-right:5px;">
-    Contactar
-  </a>
+    <div>
+        &copy; 2026 Transformación Digital | Portal de Reportes | V2.01
+    </div>
+
+    <a
+        href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-contact">
+
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp">
+
+        <span>Contactar</span>
+    </a>
 </footer>
 
 </body>

@@ -1159,3 +1159,90 @@ mix-blend-mode: screen;
     width: 100%;
     text-align: center;
 }
+
+/* Centrar encabezado del reporte B2B */
+.report-header-b2b {
+    justify-content: center;
+    text-align: center;
+}
+
+.report-header-b2b > div {
+    width: 100%;
+    text-align: center;
+}
+
+
+/* ========================================
+   TRANSICIÓN ENTRE PÁGINAS - FÉNIX
+======================================== */
+
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 180ms;
+    animation-timing-function: ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @view-transition {
+        navigation: none;
+    }
+}
+/* ========================================
+   SPA FÉNIX: VISTAS Y CARGA INICIAL
+======================================== */
+
+#appContent > .spa-view[hidden] {
+    display: none !important;
+}
+
+#appContent > .spa-view {
+    min-width: 0;
+    animation: fenixViewIn 140ms ease-out both;
+}
+
+@keyframes fenixViewIn {
+    from { opacity: 0.88; }
+    to { opacity: 1; }
+}
+
+html.fenix-auth-pending::after {
+    content: "Verificando acceso a Reportes Fénix...";
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f6f6f6;
+    color: #333;
+    font: 600 15px 'Segoe UI', sans-serif;
+}
+
+.menu-parent-row > a.active {
+    background: #ffffff;
+    color: #111111;
+}
+
+.menu-group-b2c .submenu-link.active {
+    background: #242424;
+    color: #ffffff;
+}
+
+.menu-group-b2c [hidden],
+.sidebar .menu a[hidden],
+.module-card[hidden] {
+    display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #appContent > .spa-view {
+        animation: none;
+    }
+}
+.menu-group-b2c[hidden] {
+    display: none !important;
+}

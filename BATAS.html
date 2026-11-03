@@ -1,168 +1,99 @@
 <!DOCTYPE html>
+
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard BATAS</title>
+<link href="css/estilos.css" rel="stylesheet"/>
 
-    <title>Dashboard BATAS</title>
-
-    <link rel="stylesheet" href="css/estilos.css">
-    <script src="js/auth.js"></script>
-</head>
-
+<script>(function () {
+    const pagina = window.location.pathname.split("/").pop() || "BATAS.html";
+    const consulta = window.location.search || "";
+    window.location.replace("index.html#" + pagina + consulta);
+})();</script></head>
 <div class="app-layout">
-    <script src="js/sidebar-init.js"></script>
 
-    <!-- MENÚ LATERAL -->
-    <aside class="sidebar">
-
-        <div class="logo">
-            <img
-                class="logo-full"
-                src="img/Fenix Brands Logo-02.png"
-                alt="Fénix Brands">
-
-            <img
-                class="logo-mark"
-                src="img/Fenix Logo-Photoroom.png"
-                alt="Fénix">
-        </div>
-
-        <button
-            id="sidebarToggle"
-            class="sidebar-toggle"
-            type="button"
-            aria-label="Plegar menú">
-            <span>‹</span>
-        </button>
-
-        <nav class="menu">
-
-            <a href="index.html">
-                <span class="icono">🏠︎</span>
-                <span>Panel Integral</span>
-            </a>
-
-            <a href="B2C.html">
-                <span class="icono">📊</span>
-                <span>B2C · Retail</span>
-            </a>
-
-            <a href="B2B.html">
-                <span class="icono">📈</span>
-                <span>B2B · Uniformes y Mayoristas</span>
-            </a>
-
-            <a href="BATAS.html" class="active">
-                <span class="icono">🥼</span>
-                <span>Batas</span>
-            </a>
-
-            <a href="Inventario.html">
-    <span class="icono">📦</span>
-    <span>Inventario</span>
-</a>
-
-        </nav>
-
-        <div class="sidebar-bottom">
-
-            <button id="logoutBtn" class="logout-btn" type="button">
-                <svg
-                    class="logout-icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true">
-                    <path d="M13 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/>
-                    <path d="M16 8l4 4-4 4"/>
-                    <path d="M9 12h11"/>
-                </svg>
-
-                <span>Cerrar sesión</span>
-            </button>
-
-        </div>
-
-    </aside>
-
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="main-content">
-
-        <div class="page-header">
-
-            <div class="page-header-text">
-                <h1>Batas</h1>
-                <p>Bienvenido/a, <span id="nombreUsuario"></span></p>
-            </div>
-
-            <div class="page-brand">
-                <img
-                    src="img/Fenix Brands Logo-02.png"
-                    alt="Fénix Brands">
-            </div>
-
-        </div>
-
-
-        <!-- RESUMEN GENERAL DE BATAS -->
-        <section class="powerbi-container">
-
-            <div class="report-header">
-                <div>
-                    <h2>Resumen Batas</h2>
-                    <p>Indicadores de existencia y facturación</p>
-                </div>
-            </div>
-
-            <!-- El reporte se incorporará cuando tengamos su URL real -->
-            <div class="report-placeholder">
-                <h3>Reporte de Batas</h3>
-                <p>El reporte estará disponible próximamente.</p>
-            </div>
-
-        </section>
-
-    </main>
-
+<!-- MENÚ LATERAL -->
+<aside class="sidebar">
+<div class="logo">
+<img alt="Fénix Brands" class="logo-full" src="img/Fenix Brands Logo-02.png"/>
+<img alt="Fénix" class="logo-mark" src="img/Fenix Logo-Photoroom.png"/>
 </div>
-
-
+<button aria-label="Plegar menú" class="sidebar-toggle" id="sidebarToggle" type="button">
+<span>‹</span>
+</button>
+<nav class="menu">
+<a href="index.html">
+<span class="icono">🏠︎</span>
+<span>Panel Integral</span>
+</a>
+<a href="B2C.html">
+<span class="icono">📊</span>
+<span>B2C · Retail</span>
+</a>
+<a href="B2B.html">
+<span class="icono">📈</span>
+<span>B2B · Uniformes y Mayoristas</span>
+</a>
+<a class="active" href="BATAS.html">
+<span class="icono">🥼</span>
+<span>Batas</span>
+</a>
+<a href="Inventario.html">
+<span class="icono">📦</span>
+<span>Inventario</span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<button class="logout-btn" id="logoutBtn" type="button">
+<svg aria-hidden="true" class="logout-icon" viewbox="0 0 24 24">
+<path d="M13 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"></path>
+<path d="M16 8l4 4-4 4"></path>
+<path d="M9 12h11"></path>
+</svg>
+<span>Cerrar sesión</span>
+</button>
+</div>
+</aside>
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main-content">
+<div class="page-header">
+<div class="page-header-text">
+<h1>Batas</h1>
+<p>Bienvenido/a, <span id="nombreUsuario"></span></p>
+</div>
+<div class="page-brand">
+<img alt="Fénix Brands" src="img/Fenix Brands Logo-02.png"/>
+</div>
+</div>
+<!-- RESUMEN GENERAL DE BATAS -->
+<section class="powerbi-container">
+<div class="report-header">
+<div>
+<h2>Resumen Batas</h2>
+<p>Indicadores de existencia y facturación</p>
+</div>
+</div>
+<!-- El reporte se incorporará cuando tengamos su URL real -->
+<div class="report-placeholder">
+<h3>Reporte de Batas</h3>
+<p>El reporte estará disponible próximamente.</p>
+</div>
+</section>
+</main>
+</div>
 <!-- PIE DE PÁGINA -->
 <footer class="site-footer">
-
-    <div>
-        &copy; 2026 Transformación Digital | Portal de Reportes | V2.01
+<div>
+        © 2026 Transformación Digital | Portal de Reportes | V2.01
     </div>
-
-    <a
-        href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..."
-        target="_blank"
-        rel="noopener noreferrer"
-        class="footer-contact">
-
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp">
-
-        <span>Contactar</span>
-    </a>
-
+<a class="footer-contact" href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..." rel="noopener noreferrer" target="_blank">
+<img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"/>
+<span>Contactar</span>
+</a>
 </footer>
-
-
 <!-- JAVASCRIPT EXTERNO -->
-<script src="js/dashboard.js"></script>
-<script src="js/sidebar.js"></script>
+
+
 </html>
-
-
-
-
-
-
-
-
-
-
-

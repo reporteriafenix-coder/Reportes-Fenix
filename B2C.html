@@ -1,234 +1,159 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Dashboard B2C</title>
+<link href="css/estilos.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="css/estilos.css">
-<script src="js/auth.js"></script>
-  
-</head>
+<script>(function () {
+    const pagina = window.location.pathname.split("/").pop() || "B2C.html";
+    const consulta = window.location.search || "";
+    window.location.replace("index.html#" + pagina + consulta);
+})();</script></head>
 <body>
-  <div class="app-layout">
-    <script src="js/sidebar-init.js"></script>
+<div class="app-layout">
 
-    <!-- MENÚ LATERAL -->
-    <aside class="sidebar">
-
-        <div class="logo">
-            <img
-                class="logo-full"
-                src="img/Fenix Brands Logo-02.png"
-                alt="Fénix Brands">
-
-            <img
-                class="logo-mark"
-                src="img/Fenix Logo-Photoroom.png"
-                alt="Fénix">
-        </div>
-
-        <button
-            id="sidebarToggle"
-            class="sidebar-toggle"
-            type="button"
-            aria-label="Plegar menú">
-            <span>‹</span>
-        </button>
-
-        <nav class="menu">
-
-            <a href="index.html">
-                <span class="icono">🏠︎</span>
-                <span>Panel Integral</span>
-            </a>
-
-            <a href="B2C.html" class="active">
-    <span class="icono">📊</span>
-    <span>B2C · Retail</span>
+<!-- MENÚ LATERAL -->
+<aside class="sidebar">
+<div class="logo">
+<img alt="Fénix Brands" class="logo-full" src="img/Fenix Brands Logo-02.png"/>
+<img alt="Fénix" class="logo-mark" src="img/Fenix Logo-Photoroom.png"/>
+</div>
+<button aria-label="Plegar menú" class="sidebar-toggle" id="sidebarToggle" type="button">
+<span>‹</span>
+</button>
+<nav class="menu">
+<a href="index.html">
+<span class="icono">🏠︎</span>
+<span>Panel Integral</span>
 </a>
-
- <a href="Enerbike.html">
-    <span class="icono">🏃</span>
-    <span>Enerbike</span>
+<!-- GRUPO B2C -->
+<div class="menu-group menu-group-b2c">
+<div class="menu-parent-row">
+<a class="active" href="B2C.html">
+<span class="icono">📊</span>
+<span>B2C · Retail</span>
 </a>
-   
-            <a href="B2B.html">
-                <span class="icono">📈</span>
-                <span>B2B · Uniformes y Mayoristas</span>
-            </a>
-
-            <a href="BATAS.html">
-                <span class="icono">🥼</span>
-                <span>Batas</span>
-            </a>
-
-            <a href="Inventario.html">
-    <span class="icono">📦</span>
-    <span>Inventario</span>
-
-    </a>
-
-
-        </nav>
-
-        <div class="sidebar-bottom">
-
-            <button id="logoutBtn" class="logout-btn" type="button">
-                <svg class="logout-icon"
-                     viewBox="0 0 24 24"
-                     aria-hidden="true">
-                    <path d="M13 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/>
-                    <path d="M16 8l4 4-4 4"/>
-                    <path d="M9 12h11"/>
-                </svg>
-                <span>Cerrar sesión</span>
-            </button>
-
-        </div>
-
-    </aside>
-
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="main-content">
-
-        <div class="page-header">
-
-            <div class="page-header-text">
-                <h1>B2C · Retail</h1>
-                <p>Bienvenido/a, <span id="nombreUsuario"></span></p>
-            </div>
-
-            <div class="page-brand">
-                <img
-                    src="img/Fenix Brands Logo-02.png"
-                    alt="Fénix Brands">
-            </div>
-
-        </div>
-
-
-        <!-- NAVEGACIÓN INTERNA B2C -->
-        <nav class="section-nav section-nav-b2c">
-
-    <!-- BOTONES PRINCIPALES CENTRADOS -->
-    <div class="section-nav-main">
-
-        <button
-            id="resumenBtn"
-            class="section-option active"
-            type="button">
+<button aria-controls="b2cSubmenu" aria-expanded="false" aria-label="Mostrar opciones B2C" class="submenu-toggle" id="b2cSubmenuToggle" type="button">
+<span class="submenu-chevron">▾</span>
+</button>
+</div>
+<div class="submenu-links" id="b2cSubmenu">
+<a class="submenu-link" href="Enerbike.html">
+<span class="icono">🏃</span>
+<span>Enerbike</span>
+</a>
+<a class="submenu-link" href="B2C.html?vista=ao" id="aoMenuLink">
+<span class="icono">📈</span>
+<span>AO</span>
+</a>
+</div>
+</div>
+<a href="B2B.html">
+<span class="icono">📈</span>
+<span>B2B · Uniformes y Mayoristas</span>
+</a>
+<a href="BATAS.html">
+<span class="icono">🥼</span>
+<span>Batas</span>
+</a>
+<a href="Inventario.html">
+<span class="icono">📦</span>
+<span>Inventario</span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<button class="logout-btn" id="logoutBtn" type="button">
+<svg aria-hidden="true" class="logout-icon" viewbox="0 0 24 24">
+<path d="M13 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"></path>
+<path d="M16 8l4 4-4 4"></path>
+<path d="M9 12h11"></path>
+</svg>
+<span>Cerrar sesión</span>
+</button>
+</div>
+</aside>
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main-content">
+<div class="page-header">
+<div class="page-header-text">
+<h1>B2C · Retail</h1>
+<p>Bienvenido/a, <span id="nombreUsuario"></span></p>
+</div>
+<div class="page-brand">
+<img alt="Fénix Brands" src="img/Fenix Brands Logo-02.png"/>
+</div>
+</div>
+<!-- NAVEGACIÓN INTERNA B2C -->
+<nav class="section-nav section-nav-b2c">
+<!-- BOTONES PRINCIPALES CENTRADOS -->
+<div class="section-nav-main">
+<button class="section-option active" id="resumenBtn" type="button">
             Resumen
         </button>
-
-        <div class="section-dropdown">
-
-            <button
-    id="tiendasBtn"
-    class="section-option"
-    type="button"
-    aria-expanded="false">
-    Tiendas <span class="dropdown-arrow" aria-hidden="true">▾</span>
+<div class="section-dropdown">
+<button aria-expanded="false" class="section-option" id="tiendasBtn" type="button">
+    Tiendas <span aria-hidden="true" class="dropdown-arrow">▾</span>
 </button>
-
-            <div class="section-dropdown-content">
-
-    <button type="button" data-store="Galeria">WR Galería</button>
-    <button type="button" data-store="ShoppingPinedo">WR Pinedo</button>
-    <button type="button" data-store="ShoppingMariscalLopez">WR Shop. Mariscal</button>
-    <button type="button" data-store="PaseoLambare">WR Multiplaza</button>
-    <button type="button" data-store="ShoppingSanLorenzo">WR San Lorenzo</button>
-    <button type="button" data-store="MariscalLopez">Martel Mariscal</button>
-    <button type="button" data-store="ShoppingPinedo">Martel Pinedo</button>
-    <button type="button" data-store="ShoppingMariscalLopez">Shop. Mariscal Martel</button>
-    <button type="button" data-store="MartelSanLorenzo">Martel San Lorenzo</button>
-    <button type="button" data-store="Estrella">Estrella</button>
-    <button type="button" data-store="CerroAlto">Cerro Alto</button>
-    <button type="button" data-store="ShoppingMariano">Shopping Mariano</button>
-    <button type="button" data-store="TOLuque">Martel Luque</button>
-    <button type="button" data-store="TOSur">TO Sur</button>
- 
+<div class="section-dropdown-content">
+<button data-store="Galeria" type="button">WR Galería</button>
+<button data-store="ShoppingPinedo" type="button">WR Pinedo</button>
+<button data-store="ShoppingMariscalLopez" type="button">WR Shop. Mariscal</button>
+<button data-store="PaseoLambare" type="button">WR Multiplaza</button>
+<button data-store="ShoppingSanLorenzo" type="button">WR San Lorenzo</button>
+<button data-store="MariscalLopez" type="button">Martel Mariscal</button>
+<button data-store="ShoppingPinedo" type="button">Martel Pinedo</button>
+<button data-store="ShoppingMariscalLopez" type="button">Shop. Mariscal Martel</button>
+<button data-store="MartelSanLorenzo" type="button">Martel San Lorenzo</button>
+<button data-store="Estrella" type="button">Estrella</button>
+<button data-store="CerroAlto" type="button">Cerro Alto</button>
+<button data-store="ShoppingMariano" type="button">Shopping Mariano</button>
+<button data-store="TOLuque" type="button">Martel Luque</button>
+<button data-store="TOSur" type="button">TO Sur</button>
 </div>
-
-        </div>
-
-        <button class="section-option" type="button" data-brand="Lee">
+</div>
+<button class="section-option" data-brand="Lee" type="button">
             LEE
         </button>
-
-        <button class="section-option" type="button" data-brand="Martel">
+<button class="section-option" data-brand="Martel" type="button">
             MARTEL
         </button>
-
-        <button class="section-option" type="button" data-brand="Wrangler">
+<button class="section-option" data-brand="Wrangler" type="button">
             WRANGLER
         </button>
-<button
-    id="aoReportBtn"
-    class="section-option"
-    type="button">
+<button class="section-option" id="aoReportBtn" type="button">
     AO
 </button>
-
-    </div>
-
-  
-
-</nav>
-
-
-        <!-- REPORTE POWER BI B2C -->
-        <section class="powerbi-container">
-
-            <div class="report-header report-header-b2c">
-                <div>
-                    <h2>Resumen B2C</h2>
-                    <p>Indicadores del canal Retail</p>
-                </div>
-            </div>
-
-            <iframe
-                title="REPORTE VENTAS - B2C"
-                src="https://app.powerbi.com/view?r=eyJrIjoiNzcxMWZkNzUtYjdhYS00MDc0LWE3Y2UtZTlhZjZlNWRiNDQ5IiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9"
-                allowfullscreen="true">
-            </iframe>
-
-        </section>
-
-    </main>
-
 </div>
-
-
+</nav>
+<!-- REPORTE POWER BI B2C -->
+<section class="powerbi-container">
+<div class="report-header report-header-b2c">
+<div>
+<h2>Resumen B2C</h2>
+<p>Indicadores del canal Retail</p>
+</div>
+</div>
+<iframe allowfullscreen="true" src="https://app.powerbi.com/view?r=eyJrIjoiNzcxMWZkNzUtYjdhYS00MDc0LWE3Y2UtZTlhZjZlNWRiNDQ5IiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9" title="REPORTE VENTAS - B2C">
+</iframe>
+</section>
+</main>
+</div>
 <!-- PIE DE PÁGINA -->
 <footer class="site-footer">
-
-    <div>
-        &copy; 2026 Transformación Digital | Portal de Reportes | V2.01
+<div>
+        © 2026 Transformación Digital | Portal de Reportes | V2.01
     </div>
-
-    <a
-        href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..."
-        target="_blank"
-        rel="noopener noreferrer"
-        class="footer-contact">
-
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp">
-
-        <span>Contactar</span>
-    </a>
-
+<a class="footer-contact" href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..." rel="noopener noreferrer" target="_blank">
+<img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"/>
+<span>Contactar</span>
+</a>
 </footer>
-
-
 <!-- ARCHIVOS JAVASCRIPT EXTERNOS -->
-<script src="js/dashboard.js"></script>
-<script src="js/sidebar.js"></script>
-<script src="js/b2c.js"></script>
+
+
+
 </body>
 </html>
-

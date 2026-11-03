@@ -1,49 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard TO Sur </title>
-  <button id="logoutBtn">Cerrar sesión</button>
-   <script>
-  const rol = localStorage.getItem('rol');
-  const usuario = localStorage.getItem('usuario');
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard TO Sur </title>
+<button id="logoutBtn">Cerrar sesión</button>
 
-  if (!rol) {
-    window.location.href = 'acceso-sistema.html';
-  }
-
-  // Reglas de acceso
-  const pagina = window.location.pathname.split('/').pop();
-
-  const permisos = {
-    admin: ['index.html', 'B2B.html', 'B2C.html', 'BATAS.html', 'ECOM.html', 'MariscalLopez.html','ShoppingMariscalLopez.html','ShoppingPinedo.html',
-      'ShoppingMariano.html', 'ShoppingSanLorenzo.html','Galería.html','CerroAlto.html','Estrella.html','TOSur.html','TOLuque.html','PaseoLambare.html','Tiendas_prueba.html'], 
-    GERENCIA: ['index.html', 'B2B.html', 'B2C.html', 'BATAS.html', 'ECOM.html', 'Tiendas_retail.html','Tiendas_prueba.html'],
-    B2B: ['B2B.html'],
-    B2C: ['B2C.html', 'Tiendas_prueba'],
-    batas: ['BATAS.html'],
-    ecom: ['ECOM.html'],
-       Tiendamcal: ['MariscalLopez.html'],
- Tiendaestrella: ['Estrella.html'],
- Tiendacerro: ['CerroAlto.html'],
- Tiendagaleria: ['Galería.html'],
- Tiendapaseo: ['PaseoLambare.html'],
- Tiendamariano: ['ShoppingMariano.html'],
- Tiendasmariscal: ['ShoppingMariscalLopez.html'],
- Tiendapinedo: ['ShoppingPinedo.html'],
- Tiendasanlo: ['ShoppingSanLorenzo.html'],
- Tiendaluque: ['TOLuque.html'],
- Tiendasur: ['TOSur.html'],
-    
-  };
-
-  if (!permisos[rol].includes(pagina)) {
-    alert('No tienes permiso para acceder a esta página');
-    window.location.href = 'acceso-sistema.html';
-  }
-</script>
-  <style>
+<style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -112,68 +76,31 @@
       font-size: 0.9em;
     }
   </style>
-</head>
+<script>(function () {
+    const pagina = window.location.pathname.split("/").pop() || "TOSur.html";
+    const consulta = window.location.search || "";
+    window.location.replace("index.html#" + pagina + consulta);
+})();</script></head>
 <body>
-  <header>
-    <h1>Dashboard Integral</h1>
-    <p>Indicadores generales</p>
-  </header>
-
-  <!-- Pestañas de navegación -->
-  <nav class="tabs">
-    <a href="index.html" class="tab active">Panel Integral</a>
-
-  <a href="Tiendas_prueba.html" class="tab">Tiendas</a>
-
-   
-    
-  </nav>
-
-  <div class="container">
-<iframe title="TO Sur" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiODhiZWUyN2QtOGIzNC00OGM1LWJjMGUtMGZhN2UzNTNjYjk3IiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>  </div>
-
-   <footer>
-  &copy; 2025 Transformación Digital | Portal de Reportes | V1.01
-  <br />
-  <a href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..." 
-     target="_blank" 
-     style="color: #25D366; text-decoration: none; font-weight: bold;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-         alt="WhatsApp" 
-         style="width:20px; vertical-align:middle; margin-right:5px;">
+<header>
+<h1>Dashboard Integral</h1>
+<p>Indicadores generales</p>
+</header>
+<!-- Pestañas de navegación -->
+<nav class="tabs">
+<a class="tab active" href="index.html">Panel Integral</a>
+<a class="tab" href="Tiendas_prueba.html">Tiendas</a>
+</nav>
+<div class="container">
+<iframe allowfullscreen="true" frameborder="0" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiODhiZWUyN2QtOGIzNC00OGM1LWJjMGUtMGZhN2UzNTNjYjk3IiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9" title="TO Sur" width="600"></iframe> </div>
+<footer>
+  © 2025 Transformación Digital | Portal de Reportes | V1.01
+  <br/>
+<a href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..." style="color: #25D366; text-decoration: none; font-weight: bold;" target="_blank">
+<img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:20px; vertical-align:middle; margin-right:5px;"/>
     Contactar
   </a>
 </footer>
-  <script>
-document.getElementById("logoutBtn").addEventListener("click", function() {
-    // Elimina los datos del usuario
-    localStorage.removeItem("user");
-
-    // Redirige al login
-    window.location.href = "acceso-sistema.html";
-});
-</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

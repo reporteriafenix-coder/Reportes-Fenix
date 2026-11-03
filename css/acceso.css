@@ -1,0 +1,178 @@
+
+/* =================================
+   ACCESO - REPORTES FÉNIX
+================================= */
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef2f3;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 300px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 25px;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+    width: 360px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    margin: 8px 0;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    border-color: #333;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
+}
+
+button {
+    background: #1f1f1f;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: #333333;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+#error {
+    color: red;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* Tamaño del icono de WhatsApp */
+footer img {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* =================================
+   PIE DE PÁGINA Y WHATSAPP
+================================= */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+.footer-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #25D366;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-contact:hover {
+    color: #128C4A;
+    text-decoration: none;
+}
+
+.footer-contact img {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+}/* =================================
+   PIE DE PÁGINA Y WHATSAPP
+================================= */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+.footer-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #25D366;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-contact:hover {
+    color: #128C4A;
+    text-decoration: none;
+}
+
+.footer-contact img {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+}

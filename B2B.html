@@ -1,210 +1,119 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard B2B</title>
+<link href="css/estilos.css" rel="stylesheet"/>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Dashboard B2B</title>
-
-  <link rel="stylesheet" href="css/estilos.css">
-  <script src="js/auth.js"></script>
-
-
-</head>
-
+<script>(function () {
+    const pagina = window.location.pathname.split("/").pop() || "B2B.html";
+    const consulta = window.location.search || "";
+    window.location.replace("index.html#" + pagina + consulta);
+})();</script></head>
 <body>
+<div class="app-layout">
 
-  <div class="app-layout">
-    <script src="js/sidebar-init.js"></script>
-
-    <!-- MENÚ LATERAL -->
-    <aside class="sidebar">
-
-        <div class="logo">
-    <img
-        class="logo-full"
-        src="img/Fenix Brands Logo-02.png"
-        alt="Fénix Brands">
-
-    <img
-        class="logo-mark"
-        src="img/Fenix Logo-Photoroom.png"
-        alt="Fénix">
+<!-- MENÚ LATERAL -->
+<aside class="sidebar">
+<div class="logo">
+<img alt="Fénix Brands" class="logo-full" src="img/Fenix Brands Logo-02.png"/>
+<img alt="Fénix" class="logo-mark" src="img/Fenix Logo-Photoroom.png"/>
 </div>
-
-        <button
-    id="sidebarToggle"
-    class="sidebar-toggle"
-    type="button"
-    aria-label="Plegar menú">
-    <span>‹</span>
+<button aria-label="Plegar menú" class="sidebar-toggle" id="sidebarToggle" type="button">
+<span>‹</span>
 </button>
-
-        <nav class="menu">
-
-            <a href="index.html">
-                <span class="icono">🏠︎</span>
-                <span>Panel Integral</span>
-            </a>
-
-            <a href="B2C.html">
-                <span class="icono">📊</span>
-                <span>B2C · Retail</span>
-            </a>
-
-            <a href="B2B.html" class="active">
-                <span class="icono">📈</span>
-                <span>B2B · Uniformes y Mayoristas</span>
-            </a>
-
-            <a href="BATAS.html">
-                <span class="icono">🥼</span>
-                <span>Batas</span>
-            </a>
-
-            <a href="Inventario.html">
-    <span class="icono">📦</span>
-    <span>Inventario</span>
+<nav class="menu">
+<a href="index.html">
+<span class="icono">🏠︎</span>
+<span>Panel Integral</span>
 </a>
-
-        </nav>
-
+<a href="B2C.html">
+<span class="icono">📊</span>
+<span>B2C · Retail</span>
+</a>
+<a class="active" href="B2B.html">
+<span class="icono">📈</span>
+<span>B2B · Uniformes y Mayoristas</span>
+</a>
+<a href="BATAS.html">
+<span class="icono">🥼</span>
+<span>Batas</span>
+</a>
+<a href="Inventario.html">
+<span class="icono">📦</span>
+<span>Inventario</span>
+</a>
+</nav>
 <div class="sidebar-bottom">
-
-
-    <button id="logoutBtn" class="logout-btn">
-        <svg class="logout-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M13 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/>
-            <path d="M16 8l4 4-4 4"/>
-            <path d="M9 12h11"/>
-        </svg>
-        <span>Cerrar sesión</span>
-    </button>
-
+<button class="logout-btn" id="logoutBtn">
+<svg aria-hidden="true" class="logout-icon" viewbox="0 0 24 24">
+<path d="M13 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"></path>
+<path d="M16 8l4 4-4 4"></path>
+<path d="M9 12h11"></path>
+</svg>
+<span>Cerrar sesión</span>
+</button>
 </div>
-
-
-
-    </aside>
-
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="main-content">
-
-        <div class="page-header">
-
-    <div class="page-header-text">
-        <h1>B2B · Uniformes y Mayoristas</h1>
-        <p>Bienvenido/a, <span id="nombreUsuario"></span></p>
-    </div>
-
-    <div class="page-brand">
-        <img src="img/Fenix Brands Logo-02.png" alt="Fénix Brands">
-    </div>
-
+</aside>
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main-content">
+<div class="page-header">
+<div class="page-header-text">
+<h1>B2B · Uniformes y Mayoristas</h1>
+<p>Bienvenido/a, <span id="nombreUsuario"></span></p>
 </div>
-
-
-        <!-- NAVEGACIÓN INTERNA B2B -->
-        <nav class="section-nav">
-
-            <button class="section-option active" type="button">
+<div class="page-brand">
+<img alt="Fénix Brands" src="img/Fenix Brands Logo-02.png"/>
+</div>
+</div>
+<!-- NAVEGACIÓN INTERNA B2B -->
+<nav class="section-nav">
+<button class="section-option active" type="button">
                 Resumen
             </button>
-
-            <div class="section-dropdown">
-
-                <button class="section-option" type="button">
+<div class="section-dropdown">
+<button class="section-option" type="button">
                     Vendedores ▾
                 </button>
-
-                <div class="section-dropdown-content">
-                </div>
-
-            </div>
-
-            <button class="section-option" type="button">
+<div class="section-dropdown-content">
+</div>
+</div>
+<button class="section-option" type="button">
                 MARTEL
             </button>
-
-            <button class="section-option" type="button">
+<button class="section-option" type="button">
                 LEE
             </button>
-
-            <button class="section-option" type="button">
+<button class="section-option" type="button">
                 WRANGLER
             </button>
-
-        </nav>
-
-
-        <!-- REPORTE B2B -->
-        <section class="powerbi-container">
-
-            <div class="report-header">
-                <div>
-                    <h2>Resumen B2B</h2>
-                    <p>Indicadores del canal Uniformes y Mayoristas</p>
-                </div>
-            </div>
-
-            <iframe
-                title="REPORTE VENTAS - B2B"
-                src="https://app.powerbi.com/view?r=eyJrIjoiZTk0N2VhYzItYmZkZC00NWI5LWI4NzItZDcwOWZmZTY0YWNlIiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9"
-                allowfullscreen="true">
-            </iframe>
-
-        </section>
-
-    </main>
-
+</nav>
+<!-- REPORTE B2B -->
+<section class="powerbi-container">
+<div class="report-header report-header-b2b">
+<div>
+<h2>Resumen B2B</h2>
+<p>Análisis de ventas, facturación y rendimiento comercial del canal mayorista.</p>
 </div>
-
+</div>
+<iframe allowfullscreen="true" src="https://app.powerbi.com/view?r=eyJrIjoiZTk0N2VhYzItYmZkZC00NWI5LWI4NzItZDcwOWZmZTY0YWNlIiwidCI6ImE2ZTVkODdiLWEyNTMtNGMxNS1iNGI3LTQwNTc4YjU5ZDQ5OSIsImMiOjR9" title="REPORTE VENTAS - B2B">
+</iframe>
+</section>
+</main>
+</div>
 <footer class="site-footer">
-    <div>
-        &copy; 2026 Transformación Digital | Portal de Reportes | V2.01
+<div>
+        © 2026 Transformación Digital | Portal de Reportes | V2.01
     </div>
-
-    <a
-        href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..."
-        target="_blank"
-        class="footer-contact">
-
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp">
-
-        <span>Contactar</span>
-    </a>
+<a class="footer-contact" href="https://wa.me/595983044405?text=Escribo%20por%20una%20consulta%20de%20la%20plataforma..." target="_blank">
+<img alt="WhatsApp" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"/>
+<span>Contactar</span>
+</a>
 </footer>
 
 
 
-<script src="js/dashboard.js"></script>
-<script src="js/sidebar.js"></script>
-<script src="js/b2b.js"></script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,91 +1,83 @@
-function login() {
-    const user = document.getElementById('usuario').value.trim();
-    const pass = document.getElementById('password').value.trim();
 
-    const encontrado = usuarios.find(
-        u => u.usuario === user && u.password === pass
-    );
+// ========================================
+// LOGIN SEGURO - REPORTES FÉNIX
+// ========================================
 
-    if (encontrado) {
-        localStorage.setItem('usuario', encontrado.usuario);
-        localStorage.setItem('rol', encontrado.rol);
+window.login = async function () {
+    const email = document.getElementById("usuario").value
+        .trim()
+        .toLowerCase();
 
-        switch (encontrado.rol) {
-            case 'admin':
-                window.location.href = 'index.html';
-                break;
+    const password = document.getElementById("password").value;
+    const errorElement = document.getElementById("error");
+    const boton = document.querySelector(".login-box button");
 
-            case 'Gerencia':
-                window.location.href = 'index.html';
-                break;
+    errorElement.textContent = "";
 
-            case 'B2B':
-                window.location.href = 'B2B.html';
-                break;
+    if (!email || !password) {
+        errorElement.textContent = "Ingresá tu correo y contraseña.";
+        return;
+    }
 
-            case 'B2C':
-                window.location.href = 'B2C.html';
-                break;
+    if (!window.fenixSupabase) {
+        errorElement.textContent = "No se pudo conectar con el sistema.";
+        return;
+    }
 
-            case 'batas':
-                window.location.href = 'BATAS.html';
-                break;
+    boton.disabled = true;
+    boton.textContent = "Verificando...";
 
-            case 'ecom':
-                window.location.href = 'ECOM.html';
-                break;
+    try {
+        // 1. Autenticar mediante Supabase
+        const { data, error } =
+            await window.fenixSupabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
 
-            case 'Tiendamcal':
-                window.location.href = 'MariscalLopez.html';
-                break;
-
-            case 'Tiendaestrella':
-                window.location.href = 'Estrella.html';
-                break;
-
-            case 'Tiendacerro':
-                window.location.href = 'CerroAlto.html';
-                break;
-
-            case 'Tiendagaleria':
-                window.location.href = 'Galeria.html';
-                break;
-
-            case 'Tiendapaseo':
-                window.location.href = 'PaseoLambare.html';
-                break;
-
-            case 'Tiendamariano':
-                window.location.href = 'ShoppingMariano.html';
-                break;
-
-            case 'Tiendasmariscal':
-                window.location.href = 'ShoppingMariscalLopez.html';
-                break;
-
-            case 'Tiendapinedo':
-                window.location.href = 'ShoppingPinedo.html';
-                break;
-
-            case 'Tiendasanlo':
-                window.location.href = 'ShoppingSanLorenzo.html';
-                break;
-
-            case 'Tiendaluque':
-                window.location.href = 'TOLuque.html';
-                break;
-
-            case 'Tiendasur':
-                window.location.href = 'TOSur.html';
-                break;
-
-            case 'Tiendamsanlo':
-                window.location.href = 'MartelSanLorenzo.html';
-                break;
+        if (error) {
+            throw new Error("Correo o contraseña incorrectos.");
         }
 
-    } else {
-        document.getElementById('error').innerText =
-            'Usuario o contraseña incorrectos';
+        // 2. Consultar el rol asignado al usuario
+        const { data: registro, error: errorRol } =
+            await window.fenixSupabase
+                .from("user_roles")
+                .select("role")
+                .eq("user_id", data.user.id)
+                .single();
+
+        if (errorRol || !registro) {
+            await window.fenixSupabase.auth.signOut({
+                scope: "local"
+            });
+
+            console.error("Error consultando rol:", errorRol);
+
+            throw new Error(
+                "Tu cuenta no tiene un rol asignado. Contactá al administrador."
+            );
+        }
+
+        // 3. Validar que el rol esté habilitado.
+        const rolesHabilitados = ["admin_gerencia", "b2b", "b2c", "ao"];
+
+        if (!rolesHabilitados.includes(registro.role)) {
+            await window.fenixSupabase.auth.signOut({ scope: "local" });
+            throw new Error("Tu rol no está habilitado.");
+        }
+
+        // 4. Todos los usuarios comienzan en Panel Integral.
+        // El rol sigue controlando qué módulos pueden abrir desde el menú.
+        window.location.replace("index.html");
+
+    } catch (error) {
+        console.error("Error de acceso:", error);
+        errorElement.textContent =
+            error.message || "No se pudo iniciar sesión.";
+
+    } finally {
+        boton.disabled = false;
+        boton.textContent = "Entrar";
     }
-}
+};
