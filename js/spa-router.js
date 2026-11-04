@@ -3,46 +3,42 @@
 // Mantiene el menú y las vistas Power BI montadas.
 // ========================================
 (function () {
-    const ROLE_ROUTES = {
-        admin_gerencia: [
-            "index.html", "B2B.html", "B2C.html", "Enerbike.html", "BATAS.html", "ECOM.html", "Inventario.html",
-            "CerroAlto.html", "Estrella.html", "Galeria.html", "MariscalLopez.html", "MartelSanLorenzo.html",
-            "PaseoLambare.html", "ShoppingMariano.html", "ShoppingMariscalLopez.html", "ShoppingPinedo.html",
-            "ShoppingSanLorenzo.html", "TOLuque.html", "TOSur.html", "Tiendas_prueba.html", "Tiendas_retail.html"
-        ],
-        b2b: ["index.html", "B2B.html", "Inventario.html"],
-        b2c: [
-            "index.html", "B2C.html", "Enerbike.html", "Inventario.html", "CerroAlto.html", "Estrella.html",
-            "Galeria.html", "MariscalLopez.html", "MartelSanLorenzo.html", "PaseoLambare.html",
-            "ShoppingMariano.html", "ShoppingMariscalLopez.html", "ShoppingPinedo.html",
-            "ShoppingSanLorenzo.html", "TOLuque.html", "TOSur.html", "Tiendas_prueba.html", "Tiendas_retail.html"
-        ],
-        ao: ["index.html", "B2C.html", "Inventario.html"]
-    };
+    const TODAS_LAS_RUTAS = [
+    "index.html", "B2B.html", "B2C.html", "Enerbike.html",
+    "BATAS.html", "ECOM.html", "Inventario.html",
+    "CerroAlto.html", "Estrella.html", "Galeria.html",
+    "MariscalLopez.html", "MartelSanLorenzo.html",
+    "PaseoLambare.html", "ShoppingMariano.html",
+    "ShoppingMariscalLopez.html", "ShoppingPinedo.html",
+    "ShoppingSanLorenzo.html", "TOLuque.html", "TOSur.html",
+    "Tiendas_prueba.html", "Tiendas_retail.html"
+];
 
-    const ROUTE_TITLES = {
-        "index.html": "Panel Integral",
-        "B2C.html": "B2C · Retail",
-        "B2B.html": "B2B · Uniformes y Mayoristas",
-        "Enerbike.html": "Enerbike",
-        "BATAS.html": "Batas",
-        "ECOM.html": "ECOM",
-        "Inventario.html": "Inventario",
-        "CerroAlto.html": "Cerro Alto",
-        "Estrella.html": "Estrella",
-        "Galeria.html": "Galería",
-        "MariscalLopez.html": "Mariscal López",
-        "MartelSanLorenzo.html": "Martel San Lorenzo",
-        "PaseoLambare.html": "Paseo Lambaré",
-        "ShoppingMariano.html": "Shopping Mariano",
-        "ShoppingMariscalLopez.html": "Shopping Mariscal López",
-        "ShoppingPinedo.html": "Shopping Pinedo",
-        "ShoppingSanLorenzo.html": "Shopping San Lorenzo",
-        "TOLuque.html": "TO Luque",
-        "TOSur.html": "TO Sur",
-        "Tiendas_prueba.html": "Tiendas",
-        "Tiendas_retail.html": "Tiendas Retail"
-    };
+const ROLE_ROUTES = {
+    admin_gerencia: TODAS_LAS_RUTAS,
+
+    mkt: TODAS_LAS_RUTAS.filter(
+        ruta => !["BATAS.html", "Inventario.html"].includes(ruta)
+    ),
+
+    brands: TODAS_LAS_RUTAS.filter(
+        ruta => ruta !== "BATAS.html"
+    ),
+
+    b2b: ["index.html", "B2B.html", "Inventario.html"],
+
+    b2c: [
+        "index.html", "B2C.html", "Enerbike.html", "Inventario.html",
+        "CerroAlto.html", "Estrella.html", "Galeria.html",
+        "MariscalLopez.html", "MartelSanLorenzo.html",
+        "PaseoLambare.html", "ShoppingMariano.html",
+        "ShoppingMariscalLopez.html", "ShoppingPinedo.html",
+        "ShoppingSanLorenzo.html", "TOLuque.html", "TOSur.html",
+        "Tiendas_prueba.html", "Tiendas_retail.html"
+    ],
+
+    ao: ["index.html", "B2C.html", "Inventario.html"]
+};
 
     const ROUTES = new Set(Object.keys(ROUTE_TITLES));
     const cache = new Map();
@@ -136,12 +132,23 @@
         // Opciones compartidas para todos los roles.
         const panel = menu.querySelector('a[href="index.html"]');
         const inventario = menu.querySelector('a[href="Inventario.html"]');
-        if (panel) panel.hidden = false;
-        if (inventario) inventario.hidden = false;
+      if (panel) panel.hidden = false;
 
-        if (group) group.hidden = !(role === "admin_gerencia" || role === "b2c" || role === "ao");
-        if (b2b) b2b.hidden = !(role === "admin_gerencia" || role === "b2b");
-        if (batas) batas.hidden = role !== "admin_gerencia";
+if (inventario) {
+    inventario.hidden = !isAllowed("Inventario.html", new URLSearchParams());
+}
+
+if (group) {
+    group.hidden = !["admin_gerencia", "b2c", "ao", "mkt", "brands"].includes(role);
+}
+
+if (b2b) {
+    b2b.hidden = !["admin_gerencia", "b2b", "mkt", "brands"].includes(role);
+}
+
+if (batas) {
+    batas.hidden = role !== "admin_gerencia";
+}
 
         if (role === "ao") {
             if (b2cParent) {
@@ -161,8 +168,8 @@
             }
             if (toggle) toggle.hidden = false;
             if (submenu) submenu.hidden = false;
-            if (enerbike) enerbike.hidden = role !== "admin_gerencia" && role !== "b2c";
-            if (aoLink) aoLink.hidden = role !== "admin_gerencia" && role !== "b2c";
+           if (enerbike) enerbike.hidden = !["admin_gerencia", "b2c", "mkt", "brands"].includes(role);
+if (aoLink) aoLink.hidden = !["admin_gerencia", "b2c", "mkt", "brands"].includes(role);
         }
 
         // En Panel Integral, ocultar tarjetas de módulos que el rol no puede abrir.
