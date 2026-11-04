@@ -1246,3 +1246,8 @@ html.fenix-auth-pending::after {
 .menu-group-b2c[hidden] {
     display: none !important;
 }
+
+/* Ocultar botones deshabilitados de la navegación B2C */
+.section-nav-b2c .section-option[hidden] {
+    display: none !important;
+}
