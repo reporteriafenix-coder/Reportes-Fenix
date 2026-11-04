@@ -648,8 +648,8 @@ box-sizing: border-box;
 
 /* Mantener abierto al pasar el cursor o usar el teclado */
 
-.section-nav:not(.section-nav-b2c) .section-dropdown:hover .section-dropdown-content,
-.section-nav:not(.section-nav-b2c) .section-dropdown:focus-within .section-dropdown-content {
+.section-nav:not(.section-nav-main) .section-dropdown:hover .section-dropdown-content,
+.section-nav:not(.section-nav-main) .section-dropdown:focus-within .section-dropdown-content {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -799,7 +799,7 @@ mix-blend-mode: screen;
    NAVEGACIÓN B2C
    ======================================== */
 
-.section-nav.section-nav-b2c {
+.section-nav.section-nav-main {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
@@ -853,7 +853,7 @@ mix-blend-mode: screen;
 /* Adaptación a pantallas pequeñas */
 
 @media (max-width: 1000px) {
-    .section-nav.section-nav-b2c {
+    .section-nav.section-nav-main {
         grid-template-columns: 1fr;
     }
 
@@ -866,7 +866,7 @@ mix-blend-mode: screen;
 }
 
 /* Apertura por clic del menú Tiendas en B2C */
-.section-nav-b2c .section-dropdown.is-open .section-dropdown-content {
+.section-nav-main .section-dropdown.is-open .section-dropdown-content {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -874,13 +874,13 @@ mix-blend-mode: screen;
 }
 
 /* Animación de la flecha */
-.section-nav-b2c .dropdown-arrow {
+.section-nav-main .dropdown-arrow {
     display: inline-block;
     margin-left: 3px;
     transition: transform 0.18s ease;
 }
 
-.section-nav-b2c .section-dropdown.is-open .dropdown-arrow {
+.section-nav-main .section-dropdown.is-open .dropdown-arrow {
     transform: rotate(180deg);
 }
 
@@ -1248,6 +1248,19 @@ html.fenix-auth-pending::after {
 }
 
 /* Ocultar botones deshabilitados de la navegación B2C */
-.section-nav-b2c .section-option[hidden] {
+.section-nav-main .section-option[hidden] {
+    display: none !important;
+}
+
+
+/* Ocultar marcas temporalmente en todas las vistas B2C */
+.section-nav-main .section-option[data-brand="Lee"],
+.section-nav-main .section-option[data-brand="Martel"],
+.section-nav-main .section-option[data-brand="Wrangler"] {
+    display: none !important;
+}
+
+/* Respetar los elementos ocultos por JavaScript */
+.section-nav-main [hidden] {
     display: none !important;
 }

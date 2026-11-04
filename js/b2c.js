@@ -95,26 +95,33 @@
             contenedor.dataset.b2cInitialized = "true";
         }
 
-        const rol = window.FENIX_USER?.role;
+                const rol = window.FENIX_USER?.role;
         const esAO = rol === "ao";
 
-     // Ocultar LEE, MARTEL y WRANGLER para todos los usuarios.
-contenedor.querySelectorAll(".section-nav-b2c .section-option").forEach(function (boton) {
-   const nombre = boton.textContent.trim().toUpperCase();
-const esMarca = ["LEE", "MARTEL", "WRANGLER"].includes(nombre);
+        // Ocultar LEE, MARTEL y WRANGLER para todos.
+        contenedor.querySelectorAll(".section-nav-b2c .section-option").forEach(function (boton) {
+            const marca = (boton.dataset.brand || "").trim().toUpperCase();
+            const esMarcaOculta = ["LEE", "MARTEL", "WRANGLER"].includes(marca);
 
-boton.hidden = esMarca || (esAO && boton !== aoBtn);
-});
+            boton.hidden = esMarcaOculta || (esAO && boton !== aoBtn);
+        });
 
-if (tiendasDropdown) tiendasDropdown.hidden = esAO;
+        if (tiendasDropdown) tiendasDropdown.hidden = esAO;
 
+        // Cargar el reporte solicitado.
+        const vista = esAO ? "ao" : (vistaSolicitada === "ao" ? "ao" : "resumen");
+        mostrarReporte(vista);
+    }
+
+    // Registrar la vista para que pueda utilizarla el router SPA.
     window.FENIX_VIEWS = window.FENIX_VIEWS || {};
     window.FENIX_VIEWS.b2c = inicializarB2C;
 
-    // Compatibilidad con la página B2C abierta directamente fuera del SPA.
+    // Compatibilidad con apertura directa.
     document.addEventListener("DOMContentLoaded", function () {
         if (!document.getElementById("appContent")) {
             const main = document.querySelector("main.main-content");
+
             if (main) {
                 const query = new URLSearchParams(window.location.search);
                 inicializarB2C(main, query.get("vista"));

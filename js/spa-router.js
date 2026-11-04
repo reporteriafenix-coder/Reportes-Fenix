@@ -40,6 +40,30 @@ const ROLE_ROUTES = {
     ao: ["index.html", "B2C.html", "Inventario.html"]
 };
 
+const ROUTE_TITLES = {
+    "index.html": "Panel Integral",
+    "B2C.html": "B2C · Retail",
+    "B2B.html": "B2B · Uniformes y Mayoristas",
+    "Enerbike.html": "Enerbike",
+    "BATAS.html": "Batas",
+    "ECOM.html": "ECOM",
+    "Inventario.html": "Inventario",
+    "CerroAlto.html": "Cerro Alto",
+    "Estrella.html": "Estrella",
+    "Galeria.html": "Galería",
+    "MariscalLopez.html": "Mariscal López",
+    "MartelSanLorenzo.html": "Martel San Lorenzo",
+    "PaseoLambare.html": "Paseo Lambaré",
+    "ShoppingMariano.html": "Shopping Mariano",
+    "ShoppingMariscalLopez.html": "Shopping Mariscal López",
+    "ShoppingPinedo.html": "Shopping Pinedo",
+    "ShoppingSanLorenzo.html": "Shopping San Lorenzo",
+    "TOLuque.html": "TO Luque",
+    "TOSur.html": "TO Sur",
+    "Tiendas_prueba.html": "Tiendas",
+    "Tiendas_retail.html": "Tiendas Retail"
+};
+
     const ROUTES = new Set(Object.keys(ROUTE_TITLES));
     const cache = new Map();
     let activePage = "index.html";
