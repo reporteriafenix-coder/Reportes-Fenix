@@ -98,15 +98,15 @@
         const rol = window.FENIX_USER?.role;
         const esAO = rol === "ao";
 
-        // AO solo dispone de su reporte; B2C y Gerencia pueden alternar ambos.
-        contenedor.querySelectorAll(".section-nav-b2c .section-option").forEach(function (boton) {
-            boton.hidden = esAO && boton !== aoBtn;
-        });
-        if (tiendasDropdown) tiendasDropdown.hidden = esAO;
+     // Ocultar LEE, MARTEL y WRANGLER para todos los usuarios.
+contenedor.querySelectorAll(".section-nav-b2c .section-option").forEach(function (boton) {
+   const nombre = boton.textContent.trim().toUpperCase();
+const esMarca = ["LEE", "MARTEL", "WRANGLER"].includes(nombre);
 
-        const vista = esAO ? "ao" : (vistaSolicitada === "ao" ? "ao" : "resumen");
-        mostrarReporte(vista);
-    }
+boton.hidden = esMarca || (esAO && boton !== aoBtn);
+});
+
+if (tiendasDropdown) tiendasDropdown.hidden = esAO;
 
     window.FENIX_VIEWS = window.FENIX_VIEWS || {};
     window.FENIX_VIEWS.b2c = inicializarB2C;
