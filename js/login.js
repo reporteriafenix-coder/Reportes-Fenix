@@ -2,6 +2,15 @@
 // ========================================
 // LOGIN SEGURO - REPORTES FÉNIX
 // ========================================
+if (new URLSearchParams(window.location.search).get("expirada") === "1") {
+    const aviso = document.getElementById("error");
+
+    if (aviso) {
+        aviso.textContent =
+            "Tu sesión expiró. Iniciá sesión nuevamente.";
+    }
+}
+
 
 window.login = async function () {
     const email = document.getElementById("usuario").value
@@ -60,13 +69,23 @@ window.login = async function () {
         }
 
         // 3. Validar que el rol esté habilitado.
-        const rolesHabilitados = ["admin_gerencia", "b2b", "b2c", "ao"];
-
+const rolesHabilitados = [
+    "admin_gerencia",
+    "b2b",
+    "b2c",
+    "ao",
+    "mkt",
+    "brands"
+];
         if (!rolesHabilitados.includes(registro.role)) {
             await window.fenixSupabase.auth.signOut({ scope: "local" });
             throw new Error("Tu rol no está habilitado.");
         }
 
+       localStorage.setItem(
+    "fenix_session_started_at",
+    String(Date.now())
+);
         // 4. Todos los usuarios comienzan en Panel Integral.
         // El rol sigue controlando qué módulos pueden abrir desde el menú.
         window.location.replace("index.html");
