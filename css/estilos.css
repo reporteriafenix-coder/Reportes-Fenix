@@ -648,8 +648,8 @@ box-sizing: border-box;
 
 /* Mantener abierto al pasar el cursor o usar el teclado */
 
-.section-nav:not(.section-nav-main) .section-dropdown:hover .section-dropdown-content,
-.section-nav:not(.section-nav-main) .section-dropdown:focus-within .section-dropdown-content {
+.section-nav:not(.section-nav-b2c) .section-dropdown:hover .section-dropdown-content,
+.section-nav:not(.section-nav-b2c) .section-dropdown:focus-within .section-dropdown-content {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -799,14 +799,14 @@ mix-blend-mode: screen;
    NAVEGACIÓN B2C
    ======================================== */
 
-.section-nav.section-nav-main {
+.section-nav.section-nav-b2c {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
     gap: 8px;
 }
 
-.section-nav-main {
+.section-nav-b2c {
     grid-column: 2;
     display: flex;
     align-items: center;
@@ -853,11 +853,11 @@ mix-blend-mode: screen;
 /* Adaptación a pantallas pequeñas */
 
 @media (max-width: 1000px) {
-    .section-nav.section-nav-main {
+    .section-nav.section-nav-b2c {
         grid-template-columns: 1fr;
     }
 
-    .section-nav-main,
+    .section-nav-b2c,
     .section-nav-extra {
         grid-column: 1;
         justify-self: center;
@@ -866,7 +866,7 @@ mix-blend-mode: screen;
 }
 
 /* Apertura por clic del menú Tiendas en B2C */
-.section-nav-main .section-dropdown.is-open .section-dropdown-content {
+.section-nav-b2c .section-dropdown.is-open .section-dropdown-content {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -874,13 +874,13 @@ mix-blend-mode: screen;
 }
 
 /* Animación de la flecha */
-.section-nav-main .dropdown-arrow {
+.section-nav-b2c .dropdown-arrow {
     display: inline-block;
     margin-left: 3px;
     transition: transform 0.18s ease;
 }
 
-.section-nav-main .section-dropdown.is-open .dropdown-arrow {
+.section-nav-b2c .section-dropdown.is-open .dropdown-arrow {
     transform: rotate(180deg);
 }
 
@@ -1101,7 +1101,11 @@ mix-blend-mode: screen;
 
 /* Animar el contenido al entrar */
 .main-content {
-    animation: entradaPagina 0.25s ease-out both;
+    /* "backwards" (y no "both") para que al terminar la animación
+       no quede un transform aplicado: si queda, los modales con
+       position: fixed se ubican respecto al contenido y no a la
+       pantalla (se cortan y se mueven con el scroll). */
+    animation: entradaPagina 0.25s ease-out backwards;
 }
 
 /* Evitar movimientos innecesarios */
@@ -1248,19 +1252,19 @@ html.fenix-auth-pending::after {
 }
 
 /* Ocultar botones deshabilitados de la navegación B2C */
-.section-nav-main .section-option[hidden] {
+.section-nav-b2c .section-option[hidden] {
     display: none !important;
 }
 
 
 /* Ocultar marcas temporalmente en todas las vistas B2C */
-.section-nav-main .section-option[data-brand="Lee"],
-.section-nav-main .section-option[data-brand="Martel"],
-.section-nav-main .section-option[data-brand="Wrangler"] {
+.section-nav-b2c .section-option[data-brand="Lee"],
+.section-nav-b2c .section-option[data-brand="Martel"],
+.section-nav-b2c .section-option[data-brand="Wrangler"] {
     display: none !important;
 }
 
 /* Respetar los elementos ocultos por JavaScript */
-.section-nav-main [hidden] {
+.section-nav-b2c [hidden] {
     display: none !important;
 }

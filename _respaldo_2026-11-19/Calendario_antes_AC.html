@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario | Fénix Brands</title>
+</head>
+<body>
+
+<main class="main-content">
+<section class="fenix-calendar" id="fenixCalendar">
+
+   <!-- ENCABEZADO -->
+<header class="cal-header">
+    <div>
+        <h1>Calendario de Actividades</h1>
+        <p>Gestión de campañas, lanzamientos y eventos de Marketing y Brands</p>
+    </div>
+
+    <div class="cal-header-actions">
+
+        <button
+            type="button"
+            id="calNotificationsButton"
+            class="cal-notifications-button"
+            aria-expanded="false"
+            aria-controls="calNotificationsPanel">
+
+            <span aria-hidden="true">🔔</span>
+            <span>Notificaciones</span>
+
+            <span id="calNotificationCount"
+                  class="cal-notification-count"
+                  hidden>0</span>
+        </button>
+
+        <div id="calNotificationsPanel"
+             class="cal-notifications-panel"
+             hidden>
+
+            <div class="cal-notifications-heading">
+                Notificaciones pendientes
+            </div>
+
+            <div id="calNotificationsList">
+                <p class="cal-empty-text">
+                    No tenés notificaciones pendientes.
+                </p>
+            </div>
+
+        </div>
+
+        <button class="cal-primary-btn"
+                id="calNewEvent"
+                type="button">
+            + Nuevo evento
+        </button>
+
+        <button class="cal-primary-btn"
+        id="calImportExcel"
+        type="button">
+    📥 Importar Excel
+</button>
+
+<input
+    type="file"
+    id="calImportExcelFile"
+    accept=".xlsx,.xls,.csv"
+    hidden>
+
+    </div>
+</header>
+
+    <!-- INDICADORES -->
+    <section class="cal-stats">
+        <article class="cal-stat">
+            <span>Eventos del mes</span>
+            <strong id="calStatEvents">0</strong>
+        </article>
+        <article class="cal-stat">
+            <span>Campañas activas</span>
+            <strong id="calStatCampaigns">0</strong>
+        </article>
+        <article class="cal-stat">
+            <span>Lanzamientos</span>
+            <strong id="calStatLaunches">0</strong>
+        </article>
+        <article class="cal-stat">
+            <span>Ferias / Sucursales</span>
+            <strong id="calStatBranches">0</strong>
+        </article>
+    </section>
+
+    <!-- FILTROS -->
+    <section class="cal-filters">
+
+        <div class="cal-filter">
+            <label>Marca</label>
+            <details>
+                <summary id="calBrandLabel">Todas</summary>
+                <div class="cal-dropdown">
+                    <label><input type="checkbox" value="all" data-brand-option checked> Todas</label>
+                    <label><input type="checkbox" value="AO" data-brand-option> AO</label>
+                    <label><input type="checkbox" value="MARTEL" data-brand-option> MARTEL</label>
+                    <label><input type="checkbox" value="WRANGLER" data-brand-option> WRANGLER</label>
+                    <label><input type="checkbox" value="LEE" data-brand-option> LEE</label>
+                    <label><input type="checkbox" value="ENERBIKE" data-brand-option> ENERBIKE</label>
+                </div>
+            </details>
+        </div>
+
+        <div class="cal-filter">
+            <label>Categoría</label>
+            <details>
+                <summary id="calCategoryLabel">Todas</summary>
+                <div class="cal-dropdown">
+                    <label><input type="checkbox" value="all" data-category-option checked> Todas</label>
+                    <label><input type="checkbox" value="campana" data-category-option> Campaña</label>
+                    <label><input type="checkbox" value="contenido" data-category-option> Contenido</label>
+                    <label><input type="checkbox" value="publicacion" data-category-option> Publicación</label>
+                    <label><input type="checkbox" value="lanzamiento" data-category-option> Lanzamiento</label>
+                    <label><input type="checkbox" value="feria" data-category-option> Feria</label>
+                    <label><input type="checkbox" value="activacion" data-category-option> Activación</label>
+                    <label><input type="checkbox" value="entrega" data-category-option> Entrega</label>
+                    <label><input type="checkbox" value="fecha_comercial" data-category-option> Fecha comercial</label>
+                    <label><input type="checkbox" value="sucursal" data-category-option> Sucursal</label>
+                </div>
+            </details>
+        </div>
+
+        <div class="cal-filter">
+            <label>Sucursal</label>
+            <details>
+                <summary id="calBranchLabel">Todas</summary>
+                <div class="cal-dropdown">
+                    <label><input type="checkbox" value="all" data-branch-option checked> Todas</label>
+                    <label><input type="checkbox" value="not_applicable" data-branch-option> No corresponde</label>
+                    <div id="calBranchOptions">
+                        <label><input type="checkbox" value="Monumental" data-branch-option> Monumental</label>
+                        <label><input type="checkbox" value="Cerro Alto" data-branch-option> Cerro Alto</label>
+                        <label><input type="checkbox" value="Estrella" data-branch-option> Estrella</label>
+                        <label><input type="checkbox" value="Galería" data-branch-option> Galería</label>
+                        <label><input type="checkbox" value="Mariscal López" data-branch-option> Mariscal López</label>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="cal-filter">
+            <label for="calFilterResponsible">Responsable</label>
+            <select id="calFilterResponsible">
+                <option value="all">Todos</option>
+                <option value="not_applicable">No aplica</option>
+            </select>
+        </div>
+
+        <button type="button" class="cal-clear-btn" id="calClearFilters">
+            Limpiar filtros
+        </button>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="cal-layout">
+
+        <section class="cal-main-panel">
+
+            <!-- NAVEGACIÓN DEL CALENDARIO -->
+            <div class="cal-toolbar">
+                <div class="cal-month-navigation">
+                    <button type="button" id="calPrevMonth" aria-label="Mes anterior">‹</button>
+                    <button type="button" id="calNextMonth" aria-label="Mes siguiente">›</button>
+                    <h2 id="calCurrentMonth">Noviembre 2026</h2>
+                </div>
+
+                <div class="cal-views">
+                    <button type="button" data-view="month" class="active">Mes</button>
+                    <button type="button" data-view="week">Semana</button>
+                    <button type="button" data-view="agenda">Agenda</button>
+                    <button type="button" data-view="list">Listado</button>
+                </div>
+            </div>
+
+            <!-- CALENDARIO DINÁMICO -->
+            <div class="cal-weekdays">
+                <span>Lun</span>
+                <span>Mar</span>
+                <span>Mié</span>
+                <span>Jue</span>
+                <span>Vie</span>
+                <span>Sáb</span>
+                <span>Dom</span>
+            </div>
+
+            <div class="cal-grid" id="calendarGrid" aria-live="polite">
+                <div class="cal-empty">
+                    Los eventos aparecerán aquí.
+                </div>
+            </div>
+
+            <!-- PRÓXIMOS MESES -->
+            <button type="button" class="cal-next-months" id="calShowNextMonths">
+                ↓ Mostrar próximos meses
+            </button>
+
+            <div id="calFutureMonths" hidden></div>
+
+        </section>
+
+        <!-- PANEL LATERAL -->
+        <aside class="cal-side-panel">
+
+            <section class="cal-side-card">
+                <div class="cal-side-title">
+                    <h3>Próximos eventos</h3>
+                    <button type="button" id="calViewAllEvents">Ver todos →</button>
+                </div>
+                <div id="calUpcomingEvents">
+                    <p class="cal-empty-text">No hay eventos registrados.</p>
+                </div>
+            </section>
+
+            <section class="cal-side-card cal-detail-card">
+                <div class="cal-side-title">
+                    <h3>Detalle del evento</h3>
+                </div>
+                <div id="calEventDetail">
+                    <p class="cal-empty-text">
+                        Seleccioná un evento del calendario para consultar sus detalles.
+                    </p>
+                </div>
+            </section>
+
+        </aside>
+    </div>
+
+
+<!-- VENTANA EMERGENTE: DETALLE DEL EVENTO -->
+<div class="cal-detail-modal" id="calEventDetailModal" hidden>
+
+    <div class="cal-detail-modal-backdrop"
+         data-close-detail-modal></div>
+
+    <section class="cal-detail-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="calEventDetailModalTitle">
+
+        <header class="cal-detail-modal-header">
+            <h2 id="calEventDetailModalTitle">
+                Detalle del evento
+            </h2>
+
+            <button type="button"
+                class="cal-close-btn"
+                data-close-detail-modal
+                aria-label="Cerrar">×</button>
+        </header>
+
+        <div id="calEventDetailModalBody"
+             class="cal-detail-modal-body">
+        </div>
+
+    </section>
+</div>
+<!-- VENTANA DE IMPORTACIÓN EXCEL -->
+<div class="cal-import-modal" id="calImportModal" hidden>
+
+    <div class="cal-import-backdrop" data-close-import></div>
+
+    <section class="cal-import-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="calImportTitle">
+
+        <header class="cal-import-header">
+            <div class="cal-import-brand">
+                <img class="cal-import-logo"
+                    src="img/fenix-logo-importador.png"
+                    alt="Fénix Brands">
+
+                <div>
+                    <h2 id="calImportTitle">Importar eventos desde Excel</h2>
+                    <p>Revisá y completá los datos antes de importar.</p>
+                </div>
+            </div>
+
+            <button type="button"
+                class="cal-close-btn"
+                data-close-import
+                aria-label="Cerrar">×</button>
+        </header>
+
+        <div class="cal-import-file-info">
+            <strong id="calImportFileName">Ningún archivo seleccionado</strong>
+            <span id="calImportSummary">
+                Seleccioná un archivo Excel para comenzar.
+            </span>
+        </div>
+
+        <div id="calImportAlerts" aria-live="polite"></div>
+
+        <div id="calImportPreview" class="cal-import-preview">
+
+            <div class="cal-empty">
+                Los eventos detectados aparecerán aquí.
+            </div>
+
+        </div>
+
+        <footer class="cal-import-footer">
+
+            <button type="button"
+                class="cal-secondary-btn"
+                data-close-import>
+                Cancelar
+            </button>
+
+            <button type="button"
+                class="cal-primary-btn"
+                id="calImportConfirm"
+                disabled>
+                Importar eventos
+            </button>
+
+        </footer>
+
+    </section>
+</div>
+
+    <!-- FORMULARIO DE EVENTOS -->
+    <div class="cal-modal" id="calEventModal" hidden>
+        <div class="cal-modal-backdrop" data-close-modal></div>
+
+        <section class="cal-modal-content" role="dialog"
+            aria-modal="true" aria-labelledby="calModalTitle">
+
+            <div class="cal-modal-header">
+                <div>
+                    <h2 id="calModalTitle">Nuevo evento</h2>
+                    <p>Completá los datos de la actividad.</p>
+                </div>
+                <button type="button" class="cal-close-btn" data-close-modal
+                    aria-label="Cerrar">×</button>
+            </div>
+
+            <form id="calEventForm">
+
+                <div class="cal-form-grid">
+
+                    <div class="cal-form-field cal-full">
+                        <label for="calEventName">Nombre del evento *</label>
+                        <input type="text" id="calEventName" required
+                            maxlength="180" placeholder="Ej.: Feria Monumental">
+                    </div>
+
+                    <div class="cal-form-field">
+                        <label for="calEventCategory">Categoría *</label>
+                        <select id="calEventCategory" required>
+                            <option value="">Seleccionar categoría</option>
+                            <option value="campana">Campaña</option>
+                            <option value="contenido">Contenido</option>
+                            <option value="publicacion">Publicación</option>
+                            <option value="lanzamiento">Lanzamiento</option>
+                            <option value="feria">Feria</option>
+                            <option value="activacion">Activación</option>
+                            <option value="entrega">Entrega</option>
+                            <option value="fecha_comercial">Fecha comercial</option>
+                            <option value="sucursal">Sucursal</option>
+                        </select>
+                    </div>
+
+                    <div class="cal-form-field" id="calLaunchField" hidden>
+                        <label for="calLaunchName">Nombre del lanzamiento</label>
+                        <input type="text" id="calLaunchName"
+                            placeholder="Nombre del lanzamiento">
+                    </div>
+
+                    <div class="cal-form-field">
+                        <label for="calStartDate">Fecha de inicio *</label>
+                        <input type="date" id="calStartDate" required>
+                    </div>
+
+                    <div class="cal-form-field">
+                        <label for="calEndDate">Fecha de finalización</label>
+                        <input type="date" id="calEndDate">
+                    </div>
+
+                    <div class="cal-form-field cal-full">
+                        <label>Marcas *</label>
+                        <select id="calEventBrandScope">
+                            <option value="all">Todas las marcas</option>
+                            <option value="selected">Seleccionar marcas</option>
+                        </select>
+                        <div id="calEventBrands" class="cal-option-list" hidden>
+                            <label><input type="checkbox" value="AO"> AO</label>
+                            <label><input type="checkbox" value="MARTEL"> MARTEL</label>
+                            <label><input type="checkbox" value="WRANGLER"> WRANGLER</label>
+                            <label><input type="checkbox" value="LEE"> LEE</label>
+                            <label><input type="checkbox" value="ENERBIKE"> ENERBIKE</label>
+                        </div>
+                    </div>
+
+                    <div class="cal-form-field cal-full">
+                        <label for="calEventBranchScope">Sucursales *</label>
+                        <select id="calEventBranchScope">
+                            <option value="not_applicable">No corresponde</option>
+                            <option value="all">Todas las sucursales</option>
+                            <option value="selected">Seleccionar sucursales</option>
+                        </select>
+                        <div id="calEventBranches" class="cal-option-list" hidden>
+                            <label><input type="checkbox" value="Monumental"> Monumental</label>
+                            <label><input type="checkbox" value="Cerro Alto"> Cerro Alto</label>
+                            <label><input type="checkbox" value="Estrella"> Estrella</label>
+                            <label><input type="checkbox" value="Galería"> Galería</label>
+                            <label><input type="checkbox" value="Mariscal López"> Mariscal López</label>
+                        </div>
+                    </div>
+
+                    <div class="cal-form-field">
+                        <label for="calEventResponsible">Responsable</label>
+                        <select id="calEventResponsible">
+                            <option value="not_applicable">No aplica</option>
+                        </select>
+                    </div>
+<div class="cal-form-field">
+    <label for="calEventArea">Área *</label>
+    <select id="calEventArea" required>
+        <option value="not_applicable">No aplica</option>
+        <option value="marketing">Marketing</option>
+        <option value="brands">Brands</option>
+        <option value="retail">Retail</option>
+        <option value="mayorista">Mayorista</option>
+        <option value="otros">Otros</option>
+    </select>
+</div>
+                    <div class="cal-form-field">
+                        <label for="calEventStatus">Estado</label>
+                        <select id="calEventStatus">
+                            <option value="planificado">Planificado</option>
+                            <option value="en_progreso">En progreso</option>
+                            <option value="completado">Completado</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                    </div>
+
+                    <div class="cal-form-field cal-full">
+                        <label for="calEventDescription">Descripción</label>
+                        <textarea id="calEventDescription" rows="3"
+                            placeholder="Detalles de la actividad..."></textarea>
+                    </div>
+
+                    <div class="cal-form-field cal-full">
+                        <label for="calEventLocation">Nombre de ubicación</label>
+                        <input type="text" id="calEventLocation"
+                            placeholder="Ej.: Sucursal Monumental">
+                    </div>
+
+                    <div class="cal-form-field cal-full">
+                        <label for="calEventMapUrl">Enlace de ubicación / Google Maps</label>
+                        <input type="url" id="calEventMapUrl"
+                            placeholder="https://maps.google.com/...">
+                    </div>
+
+                    <div class="cal-form-field cal-full">
+                        <label for="calEventUrl">Enlace del evento / briefing</label>
+                        <input type="url" id="calEventUrl"
+                            placeholder="https://...">
+                    </div>
+
+                   
+
+<div class="cal-form-field cal-full">
+
+    <label>Imágenes del evento</label>
+
+    <div class="cal-image-upload-area">
+
+        <div class="cal-file-picker">
+            <input type="file"
+                id="calEventImages"
+                accept="image/jpeg,image/png,image/webp"
+                multiple>
+
+            <label for="calEventImages" class="cal-file-button">
+                Elegir archivos
+            </label>
+
+            <span id="calImagePickerText">
+                Podés seleccionar varias imágenes
+            </span>
+        </div>
+
+        <small class="cal-file-help">
+            JPG, PNG o WebP. Máximo 10 MB por imagen.
+        </small>
+
+        <div id="calImageSelectionStatus"
+             class="cal-image-selection-status"
+             aria-live="polite">
+            Todavía no hay imágenes preparadas.
+        </div>
+
+    </div>
+
+</div>
+
+
+
+                </div>
+
+                <div class="cal-modal-footer">
+                    <button type="button" class="cal-secondary-btn" data-close-modal>
+                        Cancelar
+                    </button>
+                    <button type="submit" class="cal-primary-btn" id="calSaveEvent">
+                        Guardar evento
+                    </button>
+                </div>
+
+            </form>
+        </section>
+    </div>
+
+<!-- EDITOR DE ENCUADRE DE IMÁGENES -->
+<div class="cal-crop-modal" id="calCropModal" hidden>
+
+    <div class="cal-crop-backdrop"></div>
+
+    <section class="cal-crop-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="calCropTitle">
+
+        <header class="cal-crop-header">
+            <div>
+                <h2 id="calCropTitle">Encuadrar fotografía</h2>
+                <p id="calCropCounter">Imagen 1 de 1</p>
+            </div>
+
+            <button type="button"
+                id="calCropClose"
+                class="cal-crop-close"
+                aria-label="Cerrar">×</button>
+        </header>
+
+        <div class="cal-crop-body">
+
+            <div class="cal-crop-preview">
+                <canvas id="calCropCanvas"
+                    width="1200"
+                    height="675"></canvas>
+
+                <p>
+                    Arrastrá la imagen para elegir el encuadre.
+                </p>
+            </div>
+
+            <div class="cal-crop-controls">
+
+                <div class="cal-crop-field">
+                    <label for="calCropAspect">
+                        Formato de imagen
+                    </label>
+
+                    <select id="calCropAspect">
+                        <option value="16:9">Horizontal 16:9</option>
+                        <option value="1:1">Cuadrado 1:1</option>
+                    </select>
+                </div>
+
+                <div class="cal-crop-field">
+                    <label for="calCropZoom">
+                        Ampliación
+                        <span id="calCropZoomValue">100%</span>
+                    </label>
+
+                    <input type="range"
+                        id="calCropZoom"
+                        min="1"
+                        max="3"
+                        step="0.05"
+                        value="1">
+                </div>
+
+                <p class="cal-crop-tip">
+                    Podés mover la fotografía con el mouse
+                    o con el dedo.
+                </p>
+
+            </div>
+        </div>
+
+        <footer class="cal-crop-footer">
+
+            <button type="button"
+                id="calCropCancel"
+                class="cal-secondary-btn">
+                Cancelar selección
+            </button>
+
+            <div class="cal-crop-navigation">
+                <button type="button"
+                    id="calCropPrevious"
+                    class="cal-secondary-btn"
+                    disabled>
+                    Anterior
+                </button>
+
+                <button type="button"
+                    id="calCropConfirm"
+                    class="cal-primary-btn">
+                    Confirmar encuadre
+                </button>
+            </div>
+
+        </footer>
+
+    </section>
+</div>
+
+</section>
+</main>
+
+</body>
+</html>

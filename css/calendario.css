@@ -1,0 +1,4694 @@
+
+/* ========================================
+   CALENDARIO DE ACTIVIDADES - FÉNIX BRANDS
+   Estilos aislados del resto del portal
+======================================== */
+
+.fenix-calendar {
+    --cal-primary: #153b60;
+    --cal-primary-dark: #102f4e;
+    --cal-blue-light: #eaf3fc;
+    --cal-border: #dce3eb;
+    --cal-text: #202b38;
+    --cal-muted: #778392;
+    --cal-bg: #ffffff;
+    --cal-purple: #8244c5;
+    --cal-gold: #c18b19;
+    --cal-green: #159b68;
+    --cal-red: #d74747;
+
+    width: 100%;
+    color: var(--cal-text);
+    font-family: "Inter", "Segoe UI", sans-serif;
+    padding-bottom: 28px;
+}
+
+.fenix-calendar *,
+.fenix-calendar *::before,
+.fenix-calendar *::after {
+    box-sizing: border-box;
+}
+
+.fenix-calendar [hidden] {
+    display: none !important;
+}
+
+.fenix-calendar button,
+.fenix-calendar input,
+.fenix-calendar select,
+.fenix-calendar textarea {
+    font: inherit;
+}
+
+.fenix-calendar button {
+    cursor: pointer;
+}
+
+/* ENCABEZADO */
+
+.cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.cal-header h1 {
+    margin: 0 0 5px;
+    color: var(--cal-primary-dark);
+    font-size: clamp(22px, 2vw, 30px);
+    font-weight: 700;
+}
+
+.cal-header p {
+    margin: 0;
+    color: var(--cal-muted);
+    font-size: 14px;
+}
+
+/* BOTONES */
+
+.cal-primary-btn {
+    border: 0;
+    border-radius: 9px;
+    background: var(--cal-primary);
+    color: white;
+    padding: 12px 20px;
+    font-weight: 600;
+    transition: background .2s, transform .2s;
+}
+
+.cal-primary-btn:hover {
+    background: var(--cal-primary-dark);
+    transform: translateY(-1px);
+}
+
+.cal-secondary-btn {
+    background: #edf1f5;
+    color: #344456;
+    border: 1px solid var(--cal-border);
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-weight: 600;
+}
+
+/* INDICADORES */
+
+.cal-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.cal-stat {
+    background: var(--cal-bg);
+    border: 1px solid var(--cal-border);
+    border-left: 4px solid var(--cal-primary);
+    border-radius: 12px;
+    padding: 17px 20px;
+    box-shadow: 0 3px 12px rgba(25, 48, 73, .06);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.cal-stat:nth-child(2) {
+    border-left-color: var(--cal-purple);
+}
+
+.cal-stat:nth-child(3) {
+    border-left-color: var(--cal-gold);
+}
+
+.cal-stat:nth-child(4) {
+    border-left-color: var(--cal-green);
+}
+
+.cal-stat span {
+    color: var(--cal-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.cal-stat strong {
+    color: var(--cal-primary-dark);
+    font-size: 27px;
+    line-height: 1;
+}
+
+/* FILTROS */
+
+.cal-filters {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(130px, 1fr)) auto;
+    align-items: end;
+    gap: 14px;
+    padding: 17px;
+    margin-bottom: 18px;
+    background: white;
+    border: 1px solid var(--cal-border);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(25, 48, 73, .04);
+}
+
+.cal-filter {
+    position: relative;
+    min-width: 0;
+}
+
+.cal-filter > label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cal-primary-dark);
+}
+
+.cal-filter details {
+    position: relative;
+}
+
+.cal-filter summary,
+.cal-filter select {
+    width: 100%;
+    min-height: 37px;
+    padding: 8px 12px;
+    border: 1px solid #cbd6e2;
+    border-radius: 7px;
+    background: white;
+    color: #344456;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.cal-filter summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cal-filter summary::-webkit-details-marker {
+    display: none;
+}
+
+.cal-filter summary::after {
+    content: "⌄";
+    color: var(--cal-primary);
+    font-size: 17px;
+}
+
+.cal-dropdown {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 230px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 10px;
+    background: white;
+    border: 1px solid var(--cal-border);
+    border-radius: 9px;
+    box-shadow: 0 8px 25px rgba(20, 40, 60, .15);
+}
+
+.cal-dropdown label,
+.cal-option-list label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.cal-dropdown label:hover,
+.cal-option-list label:hover {
+    background: var(--cal-blue-light);
+}
+
+.cal-dropdown input,
+.cal-option-list input {
+    accent-color: var(--cal-primary);
+}
+
+.cal-clear-btn {
+    min-height: 37px;
+    border: 0;
+    border-radius: 7px;
+    color: var(--cal-primary);
+    background: transparent;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.cal-clear-btn:hover {
+    background: var(--cal-blue-light);
+}
+
+/* DISTRIBUCIÓN PRINCIPAL */
+
+.cal-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 345px;
+    gap: 18px;
+    align-items: start;
+}
+
+.cal-main-panel,
+.cal-side-card {
+    background: white;
+    border: 1px solid var(--cal-border);
+    border-radius: 13px;
+    box-shadow: 0 3px 12px rgba(25, 48, 73, .05);
+}
+
+.cal-main-panel {
+    padding: 15px;
+    min-width: 0;
+}
+
+/* BARRA DEL CALENDARIO */
+
+.cal-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.cal-month-navigation {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.cal-month-navigation button {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--cal-border);
+    border-radius: 8px;
+    background: white;
+    color: var(--cal-primary);
+    font-size: 24px;
+    line-height: 1;
+}
+
+.cal-month-navigation button:hover {
+    background: var(--cal-blue-light);
+}
+
+.cal-month-navigation h2 {
+    margin: 0 0 0 10px;
+    color: var(--cal-primary-dark);
+    font-size: 19px;
+}
+
+.cal-views {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border: 1px solid var(--cal-border);
+    border-radius: 9px;
+    background: #f5f8fb;
+}
+
+.cal-views button {
+    border: 0;
+    border-radius: 6px;
+    padding: 9px 13px;
+    background: transparent;
+    color: #536173;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.cal-views button.active {
+    background: var(--cal-primary);
+    color: white;
+    box-shadow: 0 2px 5px rgba(21, 59, 96, .2);
+}
+
+/* DÍAS DE LA SEMANA */
+
+.cal-weekdays,
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.cal-weekdays {
+    border: 1px solid var(--cal-border);
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    background: #eaf2fb;
+}
+
+.cal-weekdays span {
+    padding: 11px 4px;
+    text-align: center;
+    color: var(--cal-primary-dark);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* CASILLAS DEL CALENDARIO */
+
+.cal-grid {
+    border-left: 1px solid var(--cal-border);
+    border-top: 1px solid var(--cal-border);
+    overflow: hidden;
+    border-radius: 0 0 8px 8px;
+}
+
+.cal-day {
+    position: relative;
+    min-width: 0;
+    min-height: 105px;
+    padding: 8px;
+    border-right: 1px solid var(--cal-border);
+    border-bottom: 1px solid var(--cal-border);
+    background: white;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+.cal-day:hover {
+    background: #f2f7fc;
+}
+
+.cal-day.is-today {
+    background: #edf5ff;
+    outline: 2px solid #4a98df;
+    outline-offset: -2px;
+}
+
+.cal-day.is-outside {
+    background: #f8fafc;
+}
+
+.cal-day.is-outside .cal-day-number {
+    color: #aeb8c5;
+}
+
+.cal-day-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    color: #303e4d;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cal-day.is-today .cal-day-number {
+    color: white;
+    background: var(--cal-primary);
+}
+
+/* EVENTOS EN EL CALENDARIO */
+
+.cal-event-chip {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 4px;
+    padding: 5px 7px;
+    border: 0;
+    border-radius: 5px;
+    background: var(--cal-primary);
+    color: white;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.cal-event-chip.category-campana {
+    background: var(--cal-purple);
+}
+
+.cal-event-chip.category-lanzamiento {
+    background: var(--cal-gold);
+}
+
+.cal-event-chip.category-feria,
+.cal-event-chip.category-sucursal {
+    background: var(--cal-red);
+}
+
+.cal-event-chip.category-activacion {
+    background: var(--cal-green);
+}
+
+.cal-event-chip.category-contenido,
+.cal-event-chip.category-publicacion {
+    background: #3285c7;
+}
+
+.cal-event-chip.category-entrega,
+.cal-event-chip.category-fecha_comercial {
+    background: #536779;
+}
+
+.cal-more-events {
+    margin-top: 5px;
+    color: var(--cal-primary);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* PANEL LATERAL */
+
+.cal-side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 0;
+}
+
+.cal-side-card {
+    padding: 16px;
+    min-width: 0;
+}
+
+.cal-side-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e9edf2;
+}
+
+.cal-side-title h3 {
+    margin: 0;
+    color: var(--cal-primary-dark);
+    font-size: 16px;
+}
+
+.cal-side-title button {
+    border: 0;
+    background: transparent;
+    color: #2875b9;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.cal-upcoming-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #edf0f4;
+    cursor: pointer;
+}
+
+.cal-upcoming-item:last-child {
+    border-bottom: 0;
+}
+
+.cal-upcoming-date {
+    flex: 0 0 46px;
+    padding: 7px 3px;
+    border-radius: 7px;
+    background: #edf2f8;
+    color: var(--cal-primary-dark);
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.cal-upcoming-info {
+    min-width: 0;
+}
+
+.cal-upcoming-info strong {
+    display: block;
+    overflow: hidden;
+    color: #273748;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cal-upcoming-info span {
+    display: block;
+    margin-top: 4px;
+    color: var(--cal-muted);
+    font-size: 10px;
+}
+
+.cal-empty-text {
+    padding: 15px 5px;
+    color: var(--cal-muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* DETALLES DEL EVENTO */
+
+.cal-detail-card {
+    overflow: hidden;
+}
+
+.cal-detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.cal-detail-content h4 {
+    margin: 0;
+    color: var(--cal-primary-dark);
+    font-size: 15px;
+}
+
+.cal-detail-content p {
+    margin: 0;
+    color: #596675;
+    line-height: 1.5;
+}
+
+.cal-detail-image {
+    width: 100%;
+    max-height: 170px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cal-detail-content a {
+    color: #246eae;
+    font-weight: 600;
+}
+
+/* PRÓXIMOS MESES */
+
+.cal-next-months {
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px;
+    border: 1px solid var(--cal-border);
+    border-radius: 9px;
+    background: #f7f9fc;
+    color: var(--cal-primary);
+    font-weight: 600;
+}
+
+.cal-next-months:hover {
+    background: var(--cal-blue-light);
+}
+
+/* MODAL */
+
+.cal-modal {
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cal-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 28, 43, .55);
+    backdrop-filter: blur(3px);
+}
+
+.cal-modal-content {
+    position: relative;
+    z-index: 1;
+    width: min(720px, 100%);
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 24px;
+    border: 1px solid var(--cal-border);
+    border-radius: 14px;
+    background: white;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .22);
+}
+
+.cal-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding-bottom: 17px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--cal-border);
+}
+
+.cal-modal-header h2 {
+    margin: 0 0 5px;
+    color: var(--cal-primary-dark);
+    font-size: 21px;
+}
+
+.cal-modal-header p {
+    margin: 0;
+    color: var(--cal-muted);
+    font-size: 12px;
+}
+
+.cal-close-btn {
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 7px;
+    background: #f0f3f7;
+    color: #46566a;
+    font-size: 22px;
+}
+
+/* FORMULARIO */
+
+.cal-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.cal-form-field {
+    min-width: 0;
+}
+
+.cal-form-field.cal-full {
+    grid-column: 1 / -1;
+}
+
+.cal-form-field > label {
+    display: block;
+    margin-bottom: 7px;
+    color: #344456;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cal-form-field input:not([type="checkbox"]):not([type="file"]),
+.cal-form-field select,
+.cal-form-field textarea {
+    width: 100%;
+    min-height: 39px;
+    padding: 10px 11px;
+    border: 1px solid #cbd6e2;
+    border-radius: 7px;
+    background: white;
+    color: #344456;
+    font-size: 13px;
+}
+
+.cal-form-field textarea {
+    resize: vertical;
+}
+
+.cal-form-field input:focus,
+.cal-form-field select:focus,
+.cal-form-field textarea:focus {
+    outline: none;
+    border-color: #428bc9;
+    box-shadow: 0 0 0 3px rgba(66, 139, 201, .12);
+}
+
+.cal-form-field small {
+    display: block;
+    margin-top: 6px;
+    color: var(--cal-muted);
+    font-size: 11px;
+}
+
+.cal-option-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    padding: 9px;
+    margin-top: 8px;
+    border: 1px solid var(--cal-border);
+    border-radius: 7px;
+}
+
+.cal-option-list label {
+    font-size: 12px;
+}
+
+.cal-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid var(--cal-border);
+}
+
+/* MENSAJES VACÍOS */
+
+.cal-empty {
+    grid-column: 1 / -1;
+    padding: 45px 15px;
+    color: var(--cal-muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* VISTAS ALTERNATIVAS */
+
+.cal-agenda-list,
+.cal-list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 0;
+}
+
+.cal-agenda-item,
+.cal-list-item {
+    padding: 13px;
+    border: 1px solid var(--cal-border);
+    border-left: 4px solid var(--cal-primary);
+    border-radius: 8px;
+    background: white;
+}
+
+.cal-agenda-item strong,
+.cal-list-item strong {
+    display: block;
+    color: var(--cal-primary-dark);
+    font-size: 13px;
+}
+
+.cal-agenda-item span,
+.cal-list-item span {
+    display: block;
+    margin-top: 5px;
+    color: var(--cal-muted);
+    font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+    .cal-layout {
+        grid-template-columns: minmax(0, 1fr) 290px;
+    }
+
+    .cal-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .cal-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cal-side-panel {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cal-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .cal-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cal-header .cal-primary-btn {
+        width: 100%;
+    }
+
+    .cal-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .cal-side-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .cal-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .cal-views {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cal-views button {
+        padding: 9px 4px;
+        font-size: 10px;
+    }
+
+    .cal-day {
+        min-height: 76px;
+        padding: 4px;
+    }
+
+    .cal-day-number {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .cal-event-chip {
+        padding: 4px 3px;
+        font-size: 8px;
+    }
+
+    .cal-weekdays span {
+        font-size: 10px;
+    }
+
+    .cal-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cal-form-field.cal-full {
+        grid-column: auto;
+    }
+
+    .cal-modal-content {
+        padding: 17px;
+    }
+
+    .cal-modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .cal-modal-footer button {
+        width: 100%;
+    }
+}
+
+
+/* ========================================
+   MEJORAS DE INTERFAZ Y NOTIFICACIONES
+======================================== */
+
+/* Notificaciones flotantes */
+
+.fenix-calendar .cal-toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.fenix-calendar .cal-toast {
+    min-width: 280px;
+    max-width: 400px;
+    padding: 15px 20px;
+    border-radius: 9px;
+    background: white;
+    color: #263747;
+    border-left: 5px solid #159b68;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .16);
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.fenix-calendar .cal-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fenix-calendar .cal-toast-error {
+    border-left-color: #d74747;
+}
+
+/* Botones de eliminación */
+
+.fenix-calendar [data-delete-attachment],
+.fenix-calendar .cal-delete-btn {
+    background: #d74747;
+    color: white;
+    border: 1px solid #c63838;
+    border-radius: 7px;
+    padding: 9px 13px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background .2s, transform .2s;
+}
+
+.fenix-calendar [data-delete-attachment]:hover,
+.fenix-calendar .cal-delete-btn:hover {
+    background: #b92f35;
+    transform: translateY(-1px);
+}
+
+/* Acciones del detalle */
+
+.fenix-calendar .cal-detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.fenix-calendar .cal-attachment {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 10px;
+}
+
+/* Flechas del calendario */
+
+.fenix-calendar .cal-month-navigation {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.fenix-calendar .cal-month-navigation button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    line-height: 1;
+    font-size: 23px;
+    border: 1px solid #dce3eb;
+    border-radius: 9px;
+    background: white;
+    color: #153b60;
+}
+
+.fenix-calendar .cal-month-navigation button:hover {
+    background: #eaf3fc;
+    border-color: #9bb9d5;
+}
+
+.fenix-calendar .cal-month-navigation button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.fenix-calendar .cal-month-navigation button:focus-visible {
+    outline: 2px solid #428bc9;
+    outline-offset: 2px;
+}
+
+
+
+/* NOTIFICACIÓN CENTRADA */
+
+.fenix-calendar .cal-toast-container {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.fenix-calendar .cal-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px 14px 16px;
+    border-radius: 50px;
+    background: #ffffff;
+    color: #243c30;
+    border: 1px solid #d5eadc;
+    box-shadow: 0 10px 35px rgba(0,0,0,.20);
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(10px) scale(.95);
+    transition: opacity .25s, transform .25s;
+}
+
+.fenix-calendar .cal-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.fenix-calendar .cal-toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 29px;
+    height: 29px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #159b68;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.fenix-calendar .cal-toast-error {
+    border-color: #f1d1d1;
+}
+
+/* CENTRAR EDITAR Y ELIMINAR EVENTO */
+
+.fenix-calendar .cal-detail-actions {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 18px;
+}
+
+/* BOTÓN ELEGIR ARCHIVOS */
+
+.fenix-calendar #calEventImages {
+    width: 100%;
+    padding: 12px;
+    border: 1px dashed #aebed0;
+    border-radius: 9px;
+    background: #f7f9fc;
+    color: #344456;
+    font-size: 12px;
+}
+
+.fenix-calendar #calEventImages::file-selector-button {
+    background: #153b60;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 15px;
+    margin-right: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.fenix-calendar #calEventImages::file-selector-button:hover {
+    background: #102f4e;
+}
+
+
+/* ========================================
+   AJUSTES DE ACABADO - FÉNIX CALENDARIO
+======================================== */
+
+/* Botón Nuevo evento */
+
+.fenix-calendar .cal-header .cal-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 10px 17px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Flechas para cambiar de mes */
+
+.fenix-calendar .cal-month-navigation {
+    gap: 8px;
+}
+
+.fenix-calendar .cal-month-navigation button {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d5dfeb;
+    border-radius: 8px;
+    background: #fff;
+    color: #153b60;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(20, 45, 70, .05);
+    transition: background .2s, border-color .2s;
+}
+
+.fenix-calendar .cal-month-navigation button:hover {
+    background: #eaf3fc;
+    border-color: #9bb9d5;
+}
+
+/* Flechas de filtros desplegables */
+
+.fenix-calendar .cal-filter summary {
+    padding-right: 13px;
+}
+
+.fenix-calendar .cal-filter summary::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-right: 1.8px solid #153b60;
+    border-bottom: 1.8px solid #153b60;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform .2s;
+}
+
+.fenix-calendar .cal-filter details[open] summary::after {
+    transform: rotate(225deg) translateY(-2px);
+}
+
+/* Flecha de los selectores nativos */
+
+.fenix-calendar .cal-filter select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 36px;
+    background-color: white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23153b60' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+/* Notificación centrada con fondo desenfocado */
+
+.fenix-calendar .cal-toast-container {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(14, 30, 46, .24);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    pointer-events: auto;
+}
+
+.fenix-calendar .cal-toast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+    width: min(430px, 100%);
+    min-width: 0;
+    padding: 23px 28px;
+    border: 1px solid #d7ebdf;
+    border-left: 5px solid #159b68;
+    border-radius: 18px;
+    background: white;
+    color: #263c31;
+    box-shadow: 0 18px 55px rgba(0, 0, 0, .22);
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(12px) scale(.94);
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.fenix-calendar .cal-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.fenix-calendar .cal-toast-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #159b68;
+    color: white;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.fenix-calendar .cal-toast-error {
+    border-color: #f1d1d1;
+    border-left-color: #d74747;
+}
+
+.fenix-calendar .cal-toast-error .cal-toast-icon {
+    background: #d74747;
+}
+
+
+/* Corregir fondo de notificaciones */
+.fenix-calendar .cal-toast-container {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    pointer-events: none !important;
+}
+
+
+
+/* ========================================
+   NOTIFICACIONES FÉNIX - TRES VARIANTES
+======================================== */
+
+.fenix-calendar .cal-toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: min(380px, calc(100vw - 32px));
+    pointer-events: none;
+}
+
+/* Tarjeta general */
+
+.fenix-calendar .cal-toast {
+    position: relative;
+    overflow: hidden;
+    padding: 16px 17px 19px;
+    border: 1px solid #dce3eb;
+    border-radius: 13px;
+    background: #ffffff;
+    color: #24364a;
+    box-shadow: 0 12px 35px rgba(20, 40, 60, .18);
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity .25s ease, transform .25s ease;
+    pointer-events: auto;
+}
+
+.fenix-calendar .cal-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Encabezado */
+
+.fenix-calendar .cal-toast-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.fenix-calendar .cal-toast-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #16864b;
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.fenix-calendar .cal-toast-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.fenix-calendar .cal-toast-content strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #24364a;
+    font-size: 14px;
+}
+
+.fenix-calendar .cal-toast-content p {
+    margin: 0;
+    color: #627184;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.fenix-calendar .cal-toast-close {
+    border: 0;
+    background: transparent;
+    color: #64748b;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+/* Botones opcionales */
+
+.fenix-calendar .cal-toast-actions {
+    display: flex;
+    gap: 8px;
+    padding-left: 46px;
+    margin-top: 12px;
+}
+
+.fenix-calendar .cal-toast-actions button {
+    padding: 9px 14px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fenix-calendar .cal-toast-action-primary {
+    border: 1px solid #153b60;
+    background: #153b60;
+    color: white;
+}
+
+.fenix-calendar .cal-toast-action-secondary {
+    border: 1px solid #d2dce8;
+    background: white;
+    color: #153b60;
+}
+
+.fenix-calendar .cal-toast-actions button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* Variante: guardado */
+
+.fenix-calendar .cal-toast-success {
+    border-left: 5px solid #16864b;
+}
+
+.fenix-calendar .cal-toast-success .cal-toast-icon {
+    background: #16864b;
+}
+
+/* Variante: eliminado */
+
+.fenix-calendar .cal-toast-deleted {
+    border-left: 5px solid #52647b;
+}
+
+.fenix-calendar .cal-toast-deleted .cal-toast-icon {
+    background: #52647b;
+}
+
+/* Variante: error */
+
+.fenix-calendar .cal-toast-error {
+    border: 1px solid #efcaca;
+    border-left: 5px solid #d33d3d;
+}
+
+.fenix-calendar .cal-toast-error .cal-toast-icon {
+    background: #d33d3d;
+}
+
+/* Variante: información */
+
+.fenix-calendar .cal-toast-info {
+    border-left: 5px solid #3285c7;
+}
+
+.fenix-calendar .cal-toast-info .cal-toast-icon {
+    background: #3285c7;
+}
+
+/* Barra inferior */
+
+.fenix-calendar .cal-toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: #e8edf2;
+}
+
+.fenix-calendar .cal-toast-progress::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #16864b;
+    transform-origin: left;
+    animation: calToastProgress linear forwards;
+}
+
+.fenix-calendar .cal-toast-deleted .cal-toast-progress::after {
+    background: #52647b;
+}
+
+.fenix-calendar .cal-toast-info .cal-toast-progress::after {
+    background: #3285c7;
+}
+
+@keyframes calToastProgress {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+}
+
+@media (max-width: 600px) {
+    .fenix-calendar .cal-toast-container {
+        top: 12px;
+        right: 12px;
+        width: calc(100vw - 24px);
+    }
+}
+
+
+
+/* NOTIFICACIÓN FIJA EN LA ESQUINA SUPERIOR DERECHA */
+
+.cal-toast-container {
+    position: fixed !important;
+    top: 24px !important;
+    right: 24px !important;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 999999 !important;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    width: min(380px, calc(100vw - 32px));
+    pointer-events: none;
+}
+
+.cal-toast {
+    position: relative;
+    width: 100%;
+    pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+    .cal-toast-container {
+        top: 12px !important;
+        right: 12px !important;
+        width: calc(100vw - 24px);
+    }
+}
+
+
+/* ========================================
+   NOTIFICACIONES FÉNIX - ESTILO GLOBAL
+======================================== */
+
+.cal-toast-container {
+    position: fixed !important;
+    top: 22px !important;
+    right: 24px !important;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 999999 !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+
+    width: min(380px, calc(100vw - 32px));
+    pointer-events: none;
+}
+
+.cal-toast {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 17px 18px 20px;
+    overflow: hidden;
+
+    background: #ffffff;
+    color: #24364a;
+    border: 1px solid #dce3eb;
+    border-left: 5px solid #16864b;
+    border-radius: 13px;
+
+    box-shadow: 0 10px 30px rgba(20, 40, 60, .18);
+
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity .25s ease, transform .25s ease;
+
+    pointer-events: auto;
+}
+
+.cal-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cal-toast-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.cal-toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+
+    border-radius: 50%;
+    background: #16864b;
+    color: white;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.cal-toast-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.cal-toast-content strong {
+    display: block;
+    margin: 1px 0 5px;
+    color: #24364a;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cal-toast-content p {
+    margin: 0;
+    color: #627184;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.cal-toast-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+    padding: 0;
+
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #64748b;
+
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.cal-toast-close:hover {
+    background: #f0f3f7;
+}
+
+.cal-toast-actions {
+    display: flex;
+    gap: 8px;
+    padding-left: 48px;
+    margin-top: 12px;
+}
+
+.cal-toast-actions button {
+    padding: 9px 14px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cal-toast-action-primary {
+    border: 1px solid #153b60;
+    background: #153b60;
+    color: white;
+}
+
+.cal-toast-action-secondary {
+    border: 1px solid #d2dce8;
+    background: white;
+    color: #153b60;
+}
+
+/* Estados */
+
+.cal-toast-success {
+    border-left-color: #16864b;
+}
+
+.cal-toast-deleted {
+    border-left-color: #52647b;
+}
+
+.cal-toast-deleted .cal-toast-icon {
+    background: #52647b;
+}
+
+.cal-toast-error {
+    border-color: #efcaca;
+    border-left-color: #d33d3d;
+}
+
+.cal-toast-error .cal-toast-icon {
+    background: #d33d3d;
+}
+
+.cal-toast-info {
+    border-left-color: #3285c7;
+}
+
+.cal-toast-info .cal-toast-icon {
+    background: #3285c7;
+}
+
+/* Barra de progreso */
+
+.cal-toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #e8edf2;
+}
+
+.cal-toast-progress::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #16864b;
+    transform-origin: left;
+    animation: calToastProgress linear forwards;
+}
+
+.cal-toast-deleted .cal-toast-progress::after {
+    background: #52647b;
+}
+
+.cal-toast-error .cal-toast-progress::after {
+    background: #d33d3d;
+}
+
+@media (max-width: 600px) {
+    .cal-toast-container {
+        top: 12px !important;
+        right: 12px !important;
+        width: calc(100vw - 24px);
+    }
+}
+
+
+/* ========================================
+   EDITOR DE ENCUADRE DE FOTOGRAFÍAS
+======================================== */
+
+.fenix-calendar .cal-crop-modal[hidden] {
+    display: none !important;
+}
+
+.fenix-calendar .cal-crop-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cal-crop-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 29, 45, .72);
+    backdrop-filter: blur(3px);
+}
+
+.cal-crop-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(850px, 100%);
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 24px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+}
+
+.cal-crop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding-bottom: 17px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dce3eb;
+}
+
+.cal-crop-header h2 {
+    margin: 0 0 5px;
+    color: #153b60;
+    font-size: 21px;
+}
+
+.cal-crop-header p {
+    margin: 0;
+    color: #778392;
+    font-size: 12px;
+}
+
+.cal-crop-close {
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 7px;
+    background: #f0f3f7;
+    color: #52647b;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.cal-crop-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 210px;
+    gap: 22px;
+    align-items: start;
+}
+
+.cal-crop-preview {
+    min-width: 0;
+}
+
+.cal-crop-preview canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 1px solid #cbd6e2;
+    border-radius: 9px;
+    background-color: #e9edf2;
+    touch-action: none;
+    cursor: grab;
+}
+
+.cal-crop-preview canvas:active {
+    cursor: grabbing;
+}
+
+.cal-crop-preview > p {
+    margin: 9px 0 0;
+    color: #778392;
+    font-size: 11px;
+    text-align: center;
+}
+
+.cal-crop-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cal-crop-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.cal-crop-field label {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: #344456;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cal-crop-field label span {
+    color: #153b60;
+}
+
+.cal-crop-field select {
+    width: 100%;
+    min-height: 40px;
+    padding: 9px 11px;
+    border: 1px solid #cbd6e2;
+    border-radius: 7px;
+    background: white;
+    color: #344456;
+    font-size: 12px;
+}
+
+.cal-crop-field input[type="range"] {
+    width: 100%;
+    accent-color: #153b60;
+    cursor: pointer;
+}
+
+.cal-crop-tip {
+    margin: 0;
+    padding: 12px;
+    border-radius: 8px;
+    background: #edf4fb;
+    color: #52647b;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.cal-crop-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #dce3eb;
+}
+
+.cal-crop-navigation {
+    display: flex;
+    gap: 9px;
+}
+
+.cal-crop-footer button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+@media (max-width: 650px) {
+    .fenix-calendar .cal-crop-modal {
+        padding: 10px;
+    }
+
+    .cal-crop-dialog {
+        padding: 17px;
+    }
+
+    .cal-crop-body {
+        grid-template-columns: 1fr;
+    }
+
+    .cal-crop-controls {
+        gap: 13px;
+    }
+
+    .cal-crop-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .cal-crop-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cal-crop-footer button {
+        min-height: 42px;
+    }
+}
+
+
+
+
+/* ========================================
+   CARGA DE IMÁGENES - FÉNIX
+   Un solo bloque de estilos
+======================================== */
+
+/* Contenedor: centrado en el formulario */
+
+#fenixCalendar .cal-form-field.cal-full > .cal-image-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+
+    box-sizing: border-box;
+}
+
+/* Primer recuadro */
+
+#fenixCalendar .cal-image-upload-area .cal-file-picker {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    min-height: 110px;
+    padding: 15px;
+
+    border: 1px dashed #aebed0;
+    border-radius: 9px;
+    background: #f7f9fc;
+
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Input nativo oculto */
+
+#fenixCalendar #calEventImages {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* Botón elegir archivos */
+
+#fenixCalendar .cal-file-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 7px;
+
+    background: #153b60;
+    color: white;
+
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-file-button:hover {
+    background: #102f4e;
+}
+
+/* Texto junto al botón */
+
+#fenixCalendar #calImagePickerText {
+    width: 100%;
+    color: #64748b;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Texto de formatos */
+
+#fenixCalendar .cal-image-upload-area .cal-file-help {
+    display: block;
+    width: 100%;
+    margin: 0;
+    color: #778392;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* Segundo recuadro: estado de las imágenes */
+
+#fenixCalendar .cal-image-upload-area .cal-image-selection-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 42px;
+    margin: 0;
+    padding: 10px 12px;
+
+    border: 1px solid #dce3eb;
+    border-radius: 8px;
+    background: #f5f7fa;
+
+    color: #64748b;
+    font-size: 12px;
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+/* Cuando hay imágenes preparadas */
+
+#fenixCalendar .cal-image-selection-status.is-ready {
+    border-color: #c7e6d1;
+    background: #edf8f0;
+    color: #176b3a;
+    font-weight: 600;
+}
+
+/* Adaptación a pantallas pequeñas */
+
+@media (max-width: 600px) {
+    #fenixCalendar .cal-form-field.cal-full > .cal-image-upload-area {
+        max-width: 100%;
+    }
+}
+
+
+
+/* ==========================================
+   NOTIFICACIONES FÉNIX - DISEÑO FINAL
+========================================== */
+
+#fenixCalendar .cal-header {
+    position: relative;
+}
+
+#fenixCalendar .cal-header-actions {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Botón de notificaciones */
+
+#fenixCalendar .cal-notifications-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 14px;
+
+    border: 1px solid #dce3eb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #153b60;
+
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+
+    transition: background .2s, transform .2s, box-shadow .2s;
+}
+
+#fenixCalendar .cal-notifications-button:hover {
+    background: #f2f6fa;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(21, 59, 96, .12);
+}
+
+#fenixCalendar .cal-notifications-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Contador */
+
+#fenixCalendar .cal-notification-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 21px;
+    height: 21px;
+    padding: 0 5px;
+
+    border-radius: 50px;
+    background: #d74747;
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+#fenixCalendar .cal-notification-count[hidden] {
+    display: none !important;
+}
+
+/* Panel flotante */
+
+#fenixCalendar .cal-notifications-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 140px;
+    z-index: 1000;
+
+    width: min(370px, calc(100vw - 36px));
+    max-height: min(430px, 65vh);
+    overflow-y: auto;
+
+    padding: 16px;
+
+    border: 1px solid #dce3eb;
+    border-radius: 13px;
+    background: #ffffff;
+
+    box-shadow: 0 12px 35px rgba(23, 43, 65, .18);
+}
+
+#fenixCalendar .cal-notifications-heading {
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+
+    border-bottom: 1px solid #e9edf2;
+    color: #153b60;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Tarjeta de cada notificación */
+
+#fenixCalendar .cal-notification-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 9px;
+
+    width: 100%;
+    padding: 12px 10px;
+    margin-bottom: 8px;
+
+    border: 1px solid #e6ebf1;
+    border-radius: 9px;
+    background: #ffffff;
+
+    box-sizing: border-box;
+}
+
+#fenixCalendar .cal-notification-item.is-read {
+    background: #f8fafc;
+}
+
+/* Botón que abre el evento */
+
+#fenixCalendar .cal-notification-open {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+
+    width: 100%;
+    padding: 2px;
+
+    border: 0;
+    background: transparent;
+    color: #344456;
+
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-notification-open strong {
+    color: #153b60;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#fenixCalendar .cal-notification-open span,
+#fenixCalendar .cal-notification-open small {
+    color: #778392;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Botones de acciones */
+
+#fenixCalendar .cal-notification-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 5px;
+}
+
+#fenixCalendar .cal-notification-actions button {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 35px;
+    padding: 8px 12px;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background .2s, transform .2s, box-shadow .2s;
+}
+
+#fenixCalendar .cal-notification-actions button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .10);
+}
+
+/* Completar: verde */
+
+#fenixCalendar [data-notification-complete] {
+    background: #159b68;
+    color: #ffffff;
+}
+
+#fenixCalendar [data-notification-complete]:hover {
+    background: #117b53;
+}
+
+/* Modificar: azul claro */
+
+#fenixCalendar [data-notification-edit] {
+    background: #edf2f7;
+    color: #153b60;
+    border-color: #dce3eb !important;
+}
+
+#fenixCalendar [data-notification-edit]:hover {
+    background: #e1eaf3;
+}
+
+/* Botones deshabilitados */
+
+#fenixCalendar .cal-notification-actions button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Estado vacío */
+
+#fenixCalendar .cal-notifications-panel .cal-empty-text {
+    margin: 0;
+    padding: 18px 8px;
+}
+
+/* Móviles */
+
+@media (max-width: 600px) {
+    #fenixCalendar .cal-header-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    #fenixCalendar .cal-notifications-panel {
+        right: 0;
+        width: min(370px, calc(100vw - 36px));
+    }
+
+    #fenixCalendar .cal-notification-actions button {
+        flex: 1 1 auto;
+    }
+}
+
+/* ==========================================
+   VENTANA EMERGENTE - DETALLE DEL EVENTO
+========================================== */
+
+#fenixCalendar .cal-detail-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10020;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+#fenixCalendar .cal-detail-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 28, 43, .58);
+    backdrop-filter: blur(3px);
+}
+
+#fenixCalendar .cal-detail-modal-content {
+    position: relative;
+    z-index: 1;
+
+    width: min(650px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 24px;
+
+    border: 1px solid #dce3eb;
+    border-radius: 15px;
+    background: #ffffff;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .25);
+}
+
+#fenixCalendar .cal-detail-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+
+    border-bottom: 1px solid #dce3eb;
+}
+
+#fenixCalendar .cal-detail-modal-header h2 {
+    margin: 0;
+    color: #153b60;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#fenixCalendar .cal-detail-modal-body .cal-detail-content {
+    gap: 12px;
+    font-size: 13px;
+}
+
+#fenixCalendar .cal-detail-modal-body .cal-detail-image {
+    max-height: 280px;
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+#fenixCalendar .cal-detail-modal-body .cal-detail-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    #fenixCalendar .cal-detail-modal {
+        padding: 12px;
+    }
+
+    #fenixCalendar .cal-detail-modal-content {
+        padding: 18px;
+        max-height: 94vh;
+    }
+
+    #fenixCalendar .cal-detail-modal-header h2 {
+        font-size: 17px;
+    }
+}
+
+/* ==========================================
+   CARGA DE IMÁGENES CON EFECTO SHIMMER
+========================================== */
+
+#fenixCalendar .cal-attachment {
+    width: 100%;
+}
+
+#fenixCalendar .cal-image-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 130px;
+    max-height: 280px;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    border-radius: 9px;
+    background: #edf2f7;
+}
+
+/* Destello de carga */
+
+#fenixCalendar .cal-image-frame.is-loading::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    background: linear-gradient(
+        110deg,
+        #edf2f7 20%,
+        #f8fbff 38%,
+        #dceafa 48%,
+        #f8fbff 58%,
+        #edf2f7 80%
+    );
+
+    background-size: 220% 100%;
+    animation: calImageShimmer 1.5s ease-in-out infinite;
+}
+
+/* Pequeños destellos */
+
+#fenixCalendar .cal-image-frame.is-loading::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    background:
+        radial-gradient(circle at 25% 35%, rgba(255,255,255,.95) 0 2px, transparent 4px),
+        radial-gradient(circle at 72% 28%, rgba(255,255,255,.85) 0 2px, transparent 5px),
+        radial-gradient(circle at 60% 72%, rgba(255,255,255,.9) 0 2px, transparent 4px);
+
+    animation: calImageSparkles 1.8s ease-in-out infinite;
+}
+
+/* Imagen */
+
+#fenixCalendar .cal-image-frame .cal-detail-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    max-height: none;
+
+    display: block;
+    object-fit: cover;
+    border-radius: 9px;
+
+    opacity: 0;
+    transition: opacity .45s ease;
+}
+
+#fenixCalendar .cal-image-frame.is-loaded .cal-detail-image {
+    opacity: 1;
+}
+
+#fenixCalendar .cal-image-frame.is-loaded::before,
+#fenixCalendar .cal-image-frame.is-loaded::after {
+    opacity: 0;
+    animation: none;
+    transition: opacity .4s ease;
+}
+
+/* Imagen que no pudo cargar: no reserva espacio */
+
+#fenixCalendar .cal-image-frame.is-error {
+    display: none !important;
+}
+
+/* Animaciones */
+
+@keyframes calImageShimmer {
+    from {
+        background-position: 100% 0;
+    }
+
+    to {
+        background-position: -120% 0;
+    }
+}
+
+@keyframes calImageSparkles {
+    0%, 100% {
+        opacity: .25;
+        transform: scale(.98);
+    }
+
+    50% {
+        opacity: .9;
+        transform: scale(1.02);
+    }
+}
+
+/* Respeta la preferencia de movimiento reducido */
+
+@media (prefers-reduced-motion: reduce) {
+    #fenixCalendar .cal-image-frame::before,
+    #fenixCalendar .cal-image-frame::after {
+        animation: none !important;
+    }
+}
+
+/* ==========================================
+   IMPORTACIÓN DE EVENTOS DESDE EXCEL
+========================================== */
+
+#fenixCalendar .cal-import-modal {
+    position: fixed;
+    z-index: 10030;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+#fenixCalendar .cal-import-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(13, 28, 43, .62);
+    backdrop-filter: blur(4px);
+}
+
+#fenixCalendar .cal-import-dialog {
+    position: relative;
+    z-index: 1;
+
+    width: min(1100px, 100%);
+    max-height: 92vh;
+    overflow-y: auto;
+
+    padding: 25px;
+
+    border: 1px solid var(--cal-border);
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .25);
+}
+
+#fenixCalendar .cal-import-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid var(--cal-border);
+}
+
+#fenixCalendar .cal-import-header h2 {
+    margin: 0 0 6px;
+    color: var(--cal-primary-dark);
+    font-size: 21px;
+}
+
+#fenixCalendar .cal-import-header p {
+    margin: 0;
+    color: var(--cal-muted);
+    font-size: 13px;
+}
+
+#fenixCalendar .cal-import-file-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding: 13px 15px;
+    margin-bottom: 16px;
+
+    background: #f3f7fb;
+    border: 1px solid var(--cal-border);
+    border-radius: 9px;
+
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-import-file-info strong {
+    color: var(--cal-primary-dark);
+}
+
+#fenixCalendar .cal-import-file-info span {
+    color: var(--cal-muted);
+}
+
+#fenixCalendar .cal-import-alert {
+    padding: 12px 15px;
+    margin-bottom: 14px;
+
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#fenixCalendar .cal-import-alert.warning {
+    color: #805b13;
+    background: #fff8e8;
+    border: 1px solid #f1dfb5;
+}
+
+#fenixCalendar .cal-import-alert.success {
+    color: #176b4d;
+    background: #eaf8f1;
+    border: 1px solid #c9ead9;
+}
+
+#fenixCalendar .cal-import-alert.error {
+    color: #a12d35;
+    background: #fff0f0;
+    border: 1px solid #f0caca;
+}
+
+#fenixCalendar .cal-import-preview {
+    min-height: 180px;
+}
+
+#fenixCalendar .cal-import-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid var(--cal-border);
+    border-radius: 10px;
+}
+
+#fenixCalendar .cal-import-table {
+    width: 100%;
+    min-width: 900px;
+
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-import-table th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    padding: 12px 10px;
+
+    background: #edf3f9;
+    color: var(--cal-primary-dark);
+
+    text-align: left;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+#fenixCalendar .cal-import-table td {
+    padding: 10px;
+    border-top: 1px solid #edf0f4;
+    vertical-align: top;
+}
+
+#fenixCalendar .cal-import-table tbody tr:hover {
+    background: #f8fbfe;
+}
+
+#fenixCalendar .cal-import-table input,
+#fenixCalendar .cal-import-table select,
+#fenixCalendar .cal-import-table textarea {
+    width: 100%;
+    min-width: 110px;
+
+    padding: 8px 9px;
+
+    border: 1px solid #ccd7e2;
+    border-radius: 6px;
+
+    background: white;
+    color: #344456;
+
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-import-table textarea {
+    min-width: 170px;
+    min-height: 55px;
+    resize: vertical;
+}
+
+#fenixCalendar .cal-import-table input:focus,
+#fenixCalendar .cal-import-table select:focus,
+#fenixCalendar .cal-import-table textarea:focus {
+    outline: 2px solid rgba(21, 59, 96, .15);
+    border-color: var(--cal-primary);
+}
+
+#fenixCalendar .cal-import-row-warning {
+    background: #fffaf0;
+}
+
+#fenixCalendar .cal-import-row-error {
+    background: #fff4f4;
+}
+
+#fenixCalendar .cal-import-status {
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+#fenixCalendar .cal-import-status.ready {
+    background: #e7f7ef;
+    color: #18734f;
+}
+
+#fenixCalendar .cal-import-status.review {
+    background: #fff2d8;
+    color: #8a6012;
+}
+
+#fenixCalendar .cal-import-status.error {
+    background: #ffe8e8;
+    color: #a12d35;
+}
+
+#fenixCalendar .cal-import-footer {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding-top: 18px;
+    margin-top: 20px;
+
+    border-top: 1px solid var(--cal-border);
+}
+
+#fenixCalendar #calImportConfirm:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+@media (max-width: 650px) {
+    #fenixCalendar .cal-import-modal {
+        padding: 10px;
+    }
+
+    #fenixCalendar .cal-import-dialog {
+        padding: 16px;
+        max-height: 95vh;
+    }
+
+    #fenixCalendar .cal-import-header h2 {
+        font-size: 17px;
+    }
+
+    #fenixCalendar .cal-import-footer {
+        flex-direction: column-reverse;
+    }
+
+    #fenixCalendar .cal-import-footer button {
+        width: 100%;
+    }
+}
+
+/* ELIMINAR EVENTOS DE LA IMPORTACIÓN */
+
+#fenixCalendar .cal-import-delete {
+    padding: 7px 10px;
+    border: 1px solid #efcaca;
+    border-radius: 6px;
+    background: #fff5f5;
+    color: #bb3434;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#fenixCalendar .cal-import-delete:hover {
+    background: #ffe5e5;
+    border-color: #d74747;
+}
+
+/* ==========================================
+   IMPORTADOR FÉNIX - TARJETAS DE EVENTOS
+========================================== */
+
+#fenixCalendar .cal-import-dialog {
+    width: min(1320px, 100%);
+    max-height: 94vh;
+    padding: 22px;
+}
+
+#fenixCalendar .cal-import-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+/* FILTROS SUPERIORES */
+
+#fenixCalendar .cal-import-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 3px 0;
+}
+
+#fenixCalendar .cal-import-tabs button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
+    border: 1px solid #dce3eb;
+    border-radius: 7px;
+    background: white;
+    color: #536173;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#fenixCalendar .cal-import-tabs button.active {
+    background: #153b60;
+    border-color: #153b60;
+    color: white;
+}
+
+#fenixCalendar .cal-import-tabs b {
+    font-size: 10px;
+    opacity: .8;
+}
+
+/* ASIGNACIÓN MASIVA */
+
+#fenixCalendar .cal-import-bulk {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    padding: 12px;
+    background: #f4f7fa;
+    border: 1px solid #dce3eb;
+    border-radius: 9px;
+
+    color: #536173;
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-import-bulk-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+#fenixCalendar .cal-import-bulk select {
+    min-width: 140px;
+    padding: 8px;
+    border: 1px solid #cbd6e2;
+    border-radius: 6px;
+    background: white;
+    color: #344456;
+    font-size: 11px;
+}
+
+#fenixCalendar .cal-import-bulk button {
+    padding: 8px 11px;
+    border: 0;
+    border-radius: 6px;
+    background: #153b60;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#fenixCalendar .cal-import-bulk button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+/* PROGRESO */
+
+#fenixCalendar .cal-import-progress {
+    width: 100%;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e8edf2;
+}
+
+#fenixCalendar .cal-import-progress > div {
+    height: 100%;
+    border-radius: inherit;
+    background: #159b68;
+    transition: width .25s ease;
+}
+
+/* AGRUPACIÓN POR MES */
+
+#fenixCalendar .cal-import-month-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#fenixCalendar .cal-import-month-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #e1e7ed;
+    color: #526274;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#fenixCalendar .cal-import-month-heading span {
+    color: #8995a3;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* TARJETAS */
+
+#fenixCalendar .cal-import-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 13px;
+
+    background: white;
+    border: 1px solid #dce3eb;
+    border-left: 4px solid #159b68;
+    border-radius: 9px;
+
+    min-width: 0;
+}
+
+#fenixCalendar .cal-import-card.state-incomplete {
+    border-left-color: #d74747;
+}
+
+#fenixCalendar .cal-import-card.state-review {
+    border-left-color: #d69a28;
+}
+
+#fenixCalendar .cal-import-card.state-ready {
+    border-left-color: #159b68;
+}
+
+/* PRIMERA LÍNEA */
+
+#fenixCalendar .cal-import-card-top {
+    display: grid;
+    grid-template-columns:
+        24px
+        minmax(190px, 2fr)
+        repeat(4, minmax(110px, 1fr));
+    align-items: start;
+    gap: 10px;
+}
+
+#fenixCalendar .cal-import-select {
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+}
+
+#fenixCalendar .cal-import-select input,
+#fenixCalendar .cal-import-review-check input {
+    accent-color: #153b60;
+    width: 14px;
+    height: 14px;
+}
+
+#fenixCalendar .cal-import-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+#fenixCalendar .cal-import-field > label,
+#fenixCalendar .cal-import-brands > label,
+#fenixCalendar .cal-import-description > label {
+    color: #697789;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+#fenixCalendar .cal-import-field input,
+#fenixCalendar .cal-import-field select {
+    width: 100%;
+    min-width: 0;
+    height: 37px;
+    padding: 7px 9px;
+
+    border: 1px solid #ccd7e2;
+    border-radius: 6px;
+
+    background: white;
+    color: #344456;
+    font-size: 11px;
+}
+
+#fenixCalendar .cal-import-field.is-invalid input,
+#fenixCalendar .cal-import-field.is-invalid select {
+    border-color: #df5555;
+    background: #fffafa;
+}
+
+#fenixCalendar .cal-import-field-error {
+    color: #c13e43;
+    font-size: 10px;
+    line-height: 1.35;
+}
+
+#fenixCalendar .cal-import-title-status {
+    min-height: 17px;
+}
+
+/* ESTADOS */
+
+#fenixCalendar .cal-import-status {
+    display: inline-block;
+    width: fit-content;
+    padding: 3px 7px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+#fenixCalendar .cal-import-status.ready {
+    background: #e7f7ef;
+    color: #18734f;
+}
+
+#fenixCalendar .cal-import-status.review {
+    background: #fff2d8;
+    color: #8a6012;
+}
+
+#fenixCalendar .cal-import-status.incomplete {
+    background: #ffe8e8;
+    color: #a12d35;
+}
+
+/* SEGUNDA LÍNEA */
+
+#fenixCalendar .cal-import-card-bottom {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(280px, 1.4fr);
+    gap: 16px;
+    align-items: start;
+}
+
+#fenixCalendar .cal-import-brands,
+#fenixCalendar .cal-import-description {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+#fenixCalendar .cal-import-brand-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+#fenixCalendar .cal-import-brand-chip {
+    padding: 6px 10px;
+    border: 1px solid #d5dde6;
+    border-radius: 20px;
+    background: white;
+    color: #5a6878;
+    font-size: 10px;
+    font-weight: 600;
+    transition: background .15s, color .15s;
+}
+
+#fenixCalendar .cal-import-brand-chip.selected {
+    border-color: #9fc5e9;
+    background: #eaf3fc;
+    color: #195b92;
+}
+
+#fenixCalendar .cal-import-description textarea {
+    width: 100%;
+    min-height: 37px;
+    max-height: 150px;
+    overflow-y: auto;
+    resize: vertical;
+
+    padding: 9px 10px;
+    border: 1px solid #ccd7e2;
+    border-radius: 6px;
+
+    background: white;
+    color: #344456;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* ADVERTENCIAS */
+
+#fenixCalendar .cal-import-brand-warning {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px;
+    border-radius: 7px;
+
+    background: #fff7e5;
+    color: #8a6012;
+    font-size: 11px;
+}
+
+#fenixCalendar .cal-import-brand-warning label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-import-brand-warning input {
+    accent-color: #c18b19;
+}
+
+#fenixCalendar .cal-import-review-box {
+    padding: 9px 12px;
+    border-radius: 7px;
+    background: #fff8e9;
+    color: #805b13;
+    font-size: 11px;
+}
+
+#fenixCalendar .cal-import-review-box ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+#fenixCalendar .cal-import-review-box li + li {
+    margin-top: 4px;
+}
+
+/* PIE DE TARJETA */
+
+#fenixCalendar .cal-import-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding-top: 9px;
+    border-top: 1px solid #edf0f4;
+}
+
+#fenixCalendar .cal-import-review-check {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #596675;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-import-delete {
+    padding: 7px 10px;
+    border: 1px solid #efcaca;
+    border-radius: 6px;
+    background: #fff5f5;
+    color: #bb3434;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#fenixCalendar .cal-import-delete:hover {
+    background: #ffe5e5;
+    border-color: #d74747;
+}
+
+/* FILAS IGNORADAS */
+
+#fenixCalendar .cal-import-ignored-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+#fenixCalendar .cal-import-ignored-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding: 13px;
+    border: 1px solid #dce3eb;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+#fenixCalendar .cal-import-ignored-item strong,
+#fenixCalendar .cal-import-ignored-item small {
+    display: block;
+}
+
+#fenixCalendar .cal-import-ignored-item small {
+    margin-top: 4px;
+    color: #778392;
+    font-size: 10px;
+}
+
+#fenixCalendar .cal-import-ignored-item button,
+#fenixCalendar .cal-import-month-alert button {
+    border: 0;
+    background: transparent;
+    color: #246eae;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+    #fenixCalendar .cal-import-card-top {
+        grid-template-columns: 22px repeat(2, minmax(130px, 1fr));
+    }
+
+    #fenixCalendar .cal-import-select {
+        grid-row: span 2;
+    }
+}
+
+@media (max-width: 650px) {
+    #fenixCalendar .cal-import-dialog {
+        padding: 13px;
+    }
+
+    #fenixCalendar .cal-import-card-top {
+        grid-template-columns: 22px minmax(0, 1fr);
+    }
+
+    #fenixCalendar .cal-import-card-top .cal-import-field {
+        grid-column: 2;
+    }
+
+    #fenixCalendar .cal-import-card-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    #fenixCalendar .cal-import-bulk {
+        align-items: stretch;
+    }
+
+    #fenixCalendar .cal-import-bulk-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #fenixCalendar .cal-import-bulk-actions select {
+        grid-column: span 2;
+    }
+}
+
+/* ==========================================
+   FOOTER FIJO DEL IMPORTADOR
+========================================== */
+
+#fenixCalendar .cal-import-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+
+    padding: 16px 22px;
+    margin: 20px -22px -22px;
+
+    background: rgba(255, 255, 255, .97);
+    border-top: 1px solid #dce3eb;
+
+    box-shadow: 0 -6px 18px rgba(20, 40, 60, .08);
+}
+/* ==========================================
+   AJUSTES VISUALES DEL IMPORTADOR (nov 2026)
+   - Solo la lista de eventos hace scroll; el pie
+     con los botones queda siempre visible abajo.
+   - Textos un poco más grandes y legibles.
+========================================== */
+
+#fenixCalendar .cal-import-dialog {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 94vh;
+}
+
+#fenixCalendar .cal-import-header,
+#fenixCalendar .cal-import-file-info,
+#fenixCalendar #calImportAlerts {
+    flex-shrink: 0;
+}
+
+#fenixCalendar .cal-import-preview {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    margin: 0 -22px;
+    padding: 0 22px 8px;
+}
+
+/* Filtros fijos arriba mientras se recorre la lista */
+#fenixCalendar .cal-import-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 8px 0;
+    background: #ffffff;
+}
+
+#fenixCalendar .cal-import-footer {
+    position: static;
+    flex-shrink: 0;
+    margin: 12px -22px -22px;
+    background: #ffffff;
+}
+
+/* Estado junto a la etiqueta "Evento" */
+#fenixCalendar .cal-import-title-field > label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 18px;
+}
+
+#fenixCalendar .cal-import-field > label,
+#fenixCalendar .cal-import-brands > label,
+#fenixCalendar .cal-import-description > label {
+    min-height: 18px;
+    font-size: 11px;
+}
+
+#fenixCalendar .cal-import-status {
+    font-size: 10px;
+}
+
+#fenixCalendar .cal-import-field input,
+#fenixCalendar .cal-import-field select,
+#fenixCalendar .cal-import-description textarea {
+    font-size: 13px;
+}
+
+#fenixCalendar .cal-import-field-error {
+    font-size: 11px;
+}
+
+#fenixCalendar .cal-import-brand-chip {
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-import-brand-chip:hover {
+    border-color: #9fc5e9;
+}
+
+#fenixCalendar .cal-import-select {
+    padding-top: 30px;
+}
+
+#fenixCalendar .cal-import-brand-warning,
+#fenixCalendar .cal-import-review-box,
+#fenixCalendar .cal-import-review-check,
+#fenixCalendar .cal-import-delete {
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-import-description textarea {
+    resize: none;
+}
+
+#fenixCalendar .cal-import-preview > * {
+    flex-shrink: 0;
+}
+
+/* Centrar el importador en el área de contenido,
+   sin taparse con el menú lateral (250px / 78px plegado). */
+@media (min-width: 701px) {
+    #fenixCalendar .cal-import-modal {
+        left: 250px;
+    }
+
+    .app-layout.sidebar-collapsed #fenixCalendar .cal-import-modal {
+        left: 78px;
+    }
+}
+
+/* Logo de Fénix junto al título del importador */
+#fenixCalendar .cal-import-brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+}
+
+#fenixCalendar .cal-import-logo {
+    flex-shrink: 0;
+    height: 34px;
+    width: auto;
+    padding-right: 18px;
+    border-right: 1px solid #dce3eb;
+}
+
+@media (max-width: 650px) {
+    #fenixCalendar .cal-import-logo {
+        display: none;
+    }
+}
+
+/* ==========================================
+   BARRA DE FILTROS DEL IMPORTADOR (v2)
+========================================== */
+
+/* Filtros y asignación masiva en una sola fila, fija arriba */
+#fenixCalendar .cal-import-tabs {
+    position: static;
+    padding: 0;
+    background: transparent;
+}
+
+#fenixCalendar .cal-import-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding: 10px 0;
+    background: #ffffff;
+}
+
+#fenixCalendar .cal-import-tabs {
+    gap: 4px;
+}
+
+#fenixCalendar .cal-import-tabs button {
+    gap: 7px;
+    padding: 7px 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: #4b5563;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-import-tabs button:hover {
+    background: #f1f4f8;
+}
+
+#fenixCalendar .cal-import-tabs button.active {
+    background: #153b60;
+    border-color: #153b60;
+    color: #ffffff;
+}
+
+#fenixCalendar .cal-import-tabs b {
+    min-width: 20px;
+    padding: 1px 7px;
+    border-radius: 999px;
+    background: #eef1f5;
+    color: #4b5563;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    opacity: 1;
+}
+
+#fenixCalendar .cal-import-tabs [data-import-filter="review"] b {
+    background: #fdf1d6;
+    color: #8a5a00;
+}
+
+#fenixCalendar .cal-import-tabs [data-import-filter="incomplete"] b {
+    background: #fde4e4;
+    color: #a32d2d;
+}
+
+#fenixCalendar .cal-import-tabs [data-import-filter="ready"] b {
+    background: #dcf3e7;
+    color: #14653f;
+}
+
+#fenixCalendar .cal-import-tabs button.active b {
+    background: rgba(255, 255, 255, .2);
+    color: #ffffff;
+}
+
+/* Asignación masiva compacta */
+#fenixCalendar .cal-import-bulk {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+
+#fenixCalendar .cal-import-bulk-count {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eaf3fc;
+    color: #195b92;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#fenixCalendar .cal-import-bulk select {
+    min-width: 0;
+    height: 36px;
+    padding: 0 30px 0 12px;
+    border: 1px solid #cfd6df;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #1f2937;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* Barra de progreso más fina */
+#fenixCalendar .cal-import-progress {
+    height: 4px;
+}
+
+/* Aviso de meses ignorados: discreto y neutro */
+#fenixCalendar .cal-import-alert.cal-import-month-alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    background: #f6f8fb;
+    border: 1px dashed #cfd6df;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+#fenixCalendar .cal-import-alert.cal-import-month-alert span::before {
+    content: "⊘";
+    margin-right: 8px;
+}
+
+#fenixCalendar .cal-import-month-alert button {
+    flex-shrink: 0;
+    font-size: 13px;
+}
+
+/* Encabezado de mes: cantidad alineada a la derecha */
+#fenixCalendar .cal-import-month-heading {
+    justify-content: space-between;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+}
+
+#fenixCalendar .cal-import-month-heading span {
+    font-size: 12px;
+    letter-spacing: 0;
+}
+
+#fenixCalendar .cal-import-toolbar .cal-import-bulk {
+    margin-left: auto;
+}
+
+/* ==========================================
+   VISTA MENSUAL - REDISEÑO (nov 2026)
+   Colores suaves por categoría, barras continuas
+   para eventos de varios días y casillas más aireadas.
+========================================== */
+
+.fenix-calendar {
+    --chip-campana-bg: #f1eafc;   --chip-campana-fg: #55278f;   --chip-campana-ac: #8244c5;
+    --chip-lanzam-bg: #fcf2dc;    --chip-lanzam-fg: #6f4a05;    --chip-lanzam-ac: #c18b19;
+    --chip-feria-bg: #fde9e9;     --chip-feria-fg: #962a2a;     --chip-feria-ac: #d74747;
+    --chip-activ-bg: #e2f5ec;     --chip-activ-fg: #125c41;     --chip-activ-ac: #159b68;
+    --chip-conten-bg: #e5f0fb;    --chip-conten-fg: #1b5688;    --chip-conten-ac: #3285c7;
+    --chip-entrega-bg: #edf1f5;   --chip-entrega-fg: #3a4b5c;   --chip-entrega-ac: #536779;
+}
+
+/* Encabezado de días */
+.cal-weekdays {
+    background: #f6f8fb;
+}
+
+.cal-weekdays span {
+    padding: 10px 4px;
+    color: #6b7686;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+/* Casillas */
+.cal-day {
+    min-height: 122px;
+    padding: 6px;
+}
+
+.cal-day:hover {
+    background: #f7fafd;
+}
+
+.cal-day.is-outside {
+    background: #fafbfc;
+}
+
+.cal-day.is-outside .cal-event-chip {
+    opacity: .55;
+}
+
+.cal-day-number {
+    width: 24px;
+    height: 24px;
+    margin: 0 0 4px;
+    border-radius: 50%;
+    color: #3a4757;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Hoy: número en círculo y fondo apenas tintado (sin recuadro grueso) */
+.cal-day.is-today {
+    background: #f3f8fe;
+    outline: none;
+}
+
+.cal-day.is-today .cal-day-number {
+    border-radius: 50%;
+    background: var(--cal-primary);
+    color: #ffffff;
+}
+
+/* Día seleccionado */
+.cal-day.is-selected:not(.is-today) {
+    background: #f3f8fe;
+    box-shadow: inset 0 0 0 1px #a9cbee;
+}
+
+/* Barras de eventos */
+.cal-event-chip,
+.cal-event-spacer {
+    display: block;
+    height: 22px;
+    margin-top: 3px;
+}
+
+.cal-event-chip {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0 8px;
+
+    border: 0;
+    border-left: 3px solid var(--chip-ac, var(--cal-primary));
+    border-radius: 6px;
+
+    background: var(--chip-bg, #e8eef5);
+    color: var(--chip-fg, #1f2f40);
+
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 22px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    cursor: pointer;
+    transition: filter .15s, box-shadow .15s;
+}
+
+.cal-event-chip:hover {
+    filter: brightness(.96);
+    box-shadow: 0 1px 3px rgba(20, 40, 60, .12);
+}
+
+.cal-event-chip:focus-visible {
+    outline: 2px solid #4a98df;
+    outline-offset: 1px;
+}
+
+/* Colores por categoría */
+.cal-event-chip.category-campana {
+    --chip-bg: var(--chip-campana-bg); --chip-fg: var(--chip-campana-fg); --chip-ac: var(--chip-campana-ac);
+    background: var(--chip-bg);
+}
+
+.cal-event-chip.category-lanzamiento {
+    --chip-bg: var(--chip-lanzam-bg); --chip-fg: var(--chip-lanzam-fg); --chip-ac: var(--chip-lanzam-ac);
+    background: var(--chip-bg);
+}
+
+.cal-event-chip.category-feria,
+.cal-event-chip.category-sucursal {
+    --chip-bg: var(--chip-feria-bg); --chip-fg: var(--chip-feria-fg); --chip-ac: var(--chip-feria-ac);
+    background: var(--chip-bg);
+}
+
+.cal-event-chip.category-activacion {
+    --chip-bg: var(--chip-activ-bg); --chip-fg: var(--chip-activ-fg); --chip-ac: var(--chip-activ-ac);
+    background: var(--chip-bg);
+}
+
+.cal-event-chip.category-contenido,
+.cal-event-chip.category-publicacion {
+    --chip-bg: var(--chip-conten-bg); --chip-fg: var(--chip-conten-fg); --chip-ac: var(--chip-conten-ac);
+    background: var(--chip-bg);
+}
+
+.cal-event-chip.category-entrega,
+.cal-event-chip.category-fecha_comercial {
+    --chip-bg: var(--chip-entrega-bg); --chip-fg: var(--chip-entrega-fg); --chip-ac: var(--chip-entrega-ac);
+    background: var(--chip-bg);
+}
+
+/* Eventos de varios días: la barra continúa hasta el borde de la casilla */
+.cal-event-chip.continues-left {
+    margin-left: -6px;
+    width: calc(100% + 6px);
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 10px;
+}
+
+.cal-event-chip.continues-right {
+    width: calc(100% + 7px);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.cal-event-chip.continues-left.continues-right {
+    width: calc(100% + 13px);
+}
+
+.cal-event-chip.is-dragging {
+    opacity: .5;
+}
+
+/* "+N más" */
+.cal-more-events {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: #eef2f6;
+    color: #3d5166;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+    .cal-day {
+        min-height: 84px;
+        padding: 4px;
+    }
+
+    .cal-event-chip,
+    .cal-event-spacer {
+        height: 18px;
+    }
+
+    .cal-event-chip {
+        padding: 0 4px;
+        font-size: 9px;
+        line-height: 18px;
+        border-left-width: 2px;
+    }
+
+    .cal-event-chip.continues-left {
+        margin-left: -4px;
+        width: calc(100% + 4px);
+        padding-left: 4px;
+    }
+
+    .cal-event-chip.continues-right {
+        width: calc(100% + 5px);
+    }
+
+    .cal-event-chip.continues-left.continues-right {
+        width: calc(100% + 9px);
+    }
+}
+
+/* ==========================================
+   VENTANA DE CONFIRMACIÓN FLOTANTE
+========================================== */
+
+#fenixCalendar .cal-confirm {
+    position: fixed;
+    inset: 0;
+    z-index: 10060;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    opacity: 0;
+    transition: opacity .16s ease;
+}
+
+#fenixCalendar .cal-confirm.is-open {
+    opacity: 1;
+}
+
+#fenixCalendar .cal-confirm-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 28, 43, .45);
+}
+
+#fenixCalendar .cal-confirm-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 14px 16px;
+
+    width: min(440px, 100%);
+    padding: 22px;
+
+    border: 1px solid #dce3eb;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 24px 60px rgba(13, 28, 43, .28);
+
+    transform: translateY(8px) scale(.98);
+    transition: transform .16s ease;
+}
+
+#fenixCalendar .cal-confirm.is-open .cal-confirm-card {
+    transform: none;
+}
+
+#fenixCalendar .cal-confirm-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #eaf3fc;
+    color: #153b60;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#fenixCalendar .cal-confirm-card.tone-danger .cal-confirm-icon {
+    background: #fde8e8;
+    color: #b42f2f;
+}
+
+#fenixCalendar .cal-confirm-text h3 {
+    margin: 2px 0 6px;
+    color: #102f4e;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+#fenixCalendar .cal-confirm-text p {
+    margin: 0;
+    color: #5b6878;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+#fenixCalendar .cal-confirm-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 4px;
+}
+
+#fenixCalendar .cal-confirm-actions button {
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-confirm-cancel {
+    border: 1px solid #cfd6df;
+    background: #ffffff;
+    color: #344456;
+}
+
+#fenixCalendar .cal-confirm-cancel:hover {
+    background: #f4f7fa;
+}
+
+#fenixCalendar .cal-confirm-ok {
+    border: 0;
+    background: #153b60;
+    color: #ffffff;
+}
+
+#fenixCalendar .cal-confirm-ok:hover {
+    background: #102f4e;
+}
+
+#fenixCalendar .cal-confirm-card.tone-danger .cal-confirm-ok {
+    background: #c43c3c;
+}
+
+#fenixCalendar .cal-confirm-card.tone-danger .cal-confirm-ok:hover {
+    background: #a83232;
+}
+
+@media (max-width: 480px) {
+    #fenixCalendar .cal-confirm-actions {
+        flex-direction: column-reverse;
+    }
+
+    #fenixCalendar .cal-confirm-actions button {
+        width: 100%;
+    }
+}
+
+/* Nombre del evento a lo largo de toda la barra de varios días */
+.cal-grid {
+    container-type: inline-size;
+}
+
+.cal-event-label {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cal-event-chip.is-multi:not(.continues-left) {
+    z-index: 2;
+    overflow: visible;
+}
+
+.cal-event-chip.is-multi .cal-event-label {
+    position: relative;
+    width: calc(var(--span, 1) * 100cqw / 7 - 22px);
+}
+
+/* "+N más" como botón */
+.cal-more-events {
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+}
+
+.cal-more-events:hover {
+    background: #dfe7f0;
+    color: #153b60;
+}
+
+/* Ventana con todos los eventos del día */
+#fenixCalendar .cal-day-popover {
+    position: fixed;
+    z-index: 10020;
+
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 12px;
+
+    border: 1px solid #dce3eb;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 16px 40px rgba(13, 28, 43, .22);
+}
+
+#fenixCalendar .cal-day-popover header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+#fenixCalendar .cal-day-popover header strong {
+    color: #102f4e;
+    font-size: 14px;
+}
+
+#fenixCalendar .cal-day-popover header span {
+    color: #7a8695;
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-day-popover-close {
+    margin-left: auto;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 7px;
+    background: #f1f4f8;
+    color: #536173;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-day-popover-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#fenixCalendar .cal-day-popover .cal-event-chip {
+    height: 26px;
+    margin: 0;
+    line-height: 26px;
+    font-size: 12.5px;
+}
+
+/* La ventana de confirmación se centra sobre el importador
+   (que deja libre el menú lateral). */
+@media (min-width: 701px) {
+    #fenixCalendar .cal-confirm {
+        left: 250px;
+    }
+
+    .app-layout.sidebar-collapsed #fenixCalendar .cal-confirm {
+        left: 78px;
+    }
+}
+
+/* Casillas un poco más altas para mostrar hasta 4 eventos */
+.cal-day {
+    min-height: 140px;
+}
+
+.cal-more-events {
+    font-family: inherit;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+#fenixCalendar .cal-day-popover header strong {
+    white-space: nowrap;
+}
+
+/* ==========================================
+   ARRASTRAR Y CAMBIAR DURACIÓN
+   - Arrastrar la barra: mueve el evento completo.
+   - Tiradores en los extremos (aparecen al pasar el mouse):
+     cambian solo el inicio o la finalización.
+========================================== */
+
+.cal-event-chip[draggable="true"] {
+    cursor: grab;
+}
+
+.cal-event-chip[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+.cal-resize-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 10px;
+    cursor: ew-resize;
+}
+
+.cal-resize-handle.edge-start {
+    left: -3px;
+}
+
+.cal-resize-handle.edge-end {
+    right: 0;
+}
+
+.cal-resize-handle::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 4px;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--chip-ac, #153b60);
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+.cal-event-chip:hover .cal-resize-handle::after {
+    opacity: .7;
+}
+
+.cal-resize-handle:hover::after {
+    opacity: 1;
+}
+
+/* La barra de varios días no recorta los tiradores */
+.cal-event-chip.is-multi {
+    overflow: visible;
+}
+
+.cal-event-chip.is-multi .cal-event-label {
+    overflow: hidden;
+}
+
+/* X del detalle del evento */
+#fenixCalendar .cal-detail-modal-header .cal-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #536173;
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* ==========================================
+   OPCIÓN A + C: AGARRADERAS, VISTA PREVIA,
+   VENTANITA DE FECHAS Y COLORES POR CATEGORÍA
+========================================== */
+
+/* Agarraderas en las puntas (aparecen al pasar el mouse) */
+.cal-resize-handle {
+    top: -3px;
+    bottom: -3px;
+    width: 12px;
+    z-index: 4;
+    touch-action: none;
+}
+
+.cal-resize-handle.edge-start { left: -6px; }
+.cal-resize-handle.edge-end { right: -6px; }
+
+.cal-resize-handle::after {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 12px;
+    border: 2px solid var(--chip-ac, #153b60);
+    border-radius: 7px;
+    background:
+        radial-gradient(circle, var(--chip-ac, #153b60) 1.2px, transparent 1.6px)
+        center / 4px 5px repeat-y,
+        #ffffff;
+    opacity: 0;
+    transform: scale(.85);
+    transition: opacity .15s, transform .15s;
+}
+
+.cal-event-chip:hover .cal-resize-handle::after,
+.cal-event-chip.is-active .cal-resize-handle::after,
+.cal-event-chip.is-resizing .cal-resize-handle::after {
+    opacity: 1;
+    transform: none;
+}
+
+/* Las barras de un día también muestran la agarradera completa */
+.cal-event-chip:not(.is-multi) {
+    overflow: visible;
+}
+
+.cal-event-chip:not(.is-multi) .cal-event-label {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cal-event-chip:hover,
+.cal-event-chip.is-active,
+.cal-event-chip.is-resizing {
+    box-shadow: 0 0 0 2px var(--chip-ac, #153b60) inset;
+    filter: none;
+}
+
+.cal-event-chip.continues-left:hover,
+.cal-event-chip.continues-left.is-active {
+    box-shadow:
+        0 2px 0 0 var(--chip-ac, #153b60) inset,
+        0 -2px 0 0 var(--chip-ac, #153b60) inset;
+}
+
+html.cal-is-resizing,
+html.cal-is-resizing * {
+    cursor: ew-resize !important;
+    user-select: none !important;
+}
+
+/* Vista previa de los días al mover o estirar */
+.cal-day.is-range-preview {
+    background: #eaf3fd !important;
+    box-shadow: inset 0 0 0 2px #8fbbe8;
+}
+
+.cal-day.is-drop-target {
+    outline: none !important;
+    background-color: transparent;
+}
+
+#fenixCalendar .cal-range-tip {
+    position: fixed;
+    z-index: 10040;
+    transform: translate(-50%, -100%);
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #102f4e;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .2);
+}
+
+#fenixCalendar .cal-range-tip::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-bottom: 0;
+    border-top-color: #102f4e;
+}
+
+/* Ventanita rápida de fechas */
+#fenixCalendar .cal-quick-dates {
+    position: fixed;
+    z-index: 10020;
+    width: 320px;
+    padding: 16px;
+    border: 1px solid #dce3eb;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 16px 40px rgba(13, 28, 43, .22);
+}
+
+#fenixCalendar .cal-quick-dates header,
+#fenixCalendar .cal-colors-panel header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+#fenixCalendar .cal-quick-dates header strong,
+#fenixCalendar .cal-colors-panel header strong {
+    display: block;
+    color: #102f4e;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+#fenixCalendar .cal-quick-dates header span {
+    display: block;
+    margin-top: 2px;
+    color: #7a8695;
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-quick-close {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 7px;
+    background: #f1f4f8;
+    color: #536173;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-quick-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#fenixCalendar .cal-quick-row label {
+    color: #6b7686;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#fenixCalendar .cal-quick-stepper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#fenixCalendar .cal-quick-stepper button {
+    width: 30px;
+    height: 32px;
+    border: 1px solid #cfd6df;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #344456;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-quick-stepper button:hover {
+    background: #f1f4f8;
+}
+
+#fenixCalendar .cal-quick-stepper input {
+    width: 140px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #cfd6df;
+    border-radius: 7px;
+    color: #1f2937;
+    font-size: 13px;
+}
+
+#fenixCalendar .cal-quick-error {
+    margin: 0 0 8px;
+    color: #c13e43;
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-quick-dates footer {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+#fenixCalendar .cal-quick-dates footer button {
+    flex: 1;
+    height: 38px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-quick-detail {
+    border: 1px solid #cfd6df;
+    background: #ffffff;
+    color: #344456;
+}
+
+#fenixCalendar .cal-quick-save {
+    border: 0;
+    background: #153b60;
+    color: #ffffff;
+}
+
+#fenixCalendar .cal-quick-save:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+/* Referencias de colores debajo del calendario */
+#fenixCalendar .cal-legend {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-top: 12px;
+}
+
+#fenixCalendar .cal-legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+}
+
+#fenixCalendar .cal-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #4b5563;
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: #8a96a3;
+}
+
+#fenixCalendar .cal-legend-edit {
+    padding: 7px 12px;
+    border: 1px solid #cfd6df;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #344456;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-legend-edit:hover {
+    background: #f4f7fa;
+}
+
+/* Panel para elegir colores */
+#fenixCalendar .cal-colors-panel {
+    position: fixed;
+    z-index: 10020;
+    width: min(560px, calc(100vw - 24px));
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 18px;
+    border: 1px solid #dce3eb;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 20px 50px rgba(13, 28, 43, .25);
+}
+
+#fenixCalendar .cal-colors-hint {
+    margin: -6px 0 14px;
+    color: #6b7686;
+    font-size: 12px;
+}
+
+#fenixCalendar .cal-colors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#fenixCalendar .cal-colors-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+    gap: 12px;
+}
+
+#fenixCalendar .cal-colors-sample {
+    margin: 0;
+    cursor: default;
+    box-shadow: none !important;
+}
+
+#fenixCalendar .cal-colors-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+#fenixCalendar .cal-swatch {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #d5dde6;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-swatch.selected {
+    box-shadow: 0 0 0 2px #102f4e;
+}
+
+#fenixCalendar .cal-swatch-custom {
+    overflow: hidden;
+    background: conic-gradient(#d74747, #e0b51f, #159b68, #3285c7, #8244c5, #d74747);
+}
+
+#fenixCalendar .cal-swatch-custom input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#fenixCalendar .cal-colors-panel footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+#fenixCalendar .cal-colors-reset {
+    padding: 8px 14px;
+    border: 1px solid #cfd6df;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #344456;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Resaltado de la barra completa (sin líneas entre días) */
+.cal-event-chip:hover,
+.cal-event-chip.is-hover,
+.cal-event-chip.is-active,
+.cal-event-chip.is-resizing,
+.cal-event-chip.continues-left:hover,
+.cal-event-chip.continues-left.is-active {
+    box-shadow: none;
+    filter: brightness(.93) saturate(1.15);
+}
+
+.cal-event-chip.is-active {
+    filter: brightness(.88) saturate(1.25);
+}
+
+.cal-event-chip.is-hover .cal-resize-handle::after {
+    opacity: 1;
+    transform: none;
+}
+
+/* Vista previa más liviana */
+.cal-day.is-range-preview {
+    background: #edf5fe !important;
+    box-shadow: inset 0 -3px 0 0 #6aa5e0;
+}
+
+/* Resaltado con el mismo tono de la categoría (sin oscurecer a gris) */
+.fenix-calendar .cal-grid .cal-event-chip.is-hover,
+.fenix-calendar .cal-grid .cal-event-chip:hover,
+.fenix-calendar .cal-grid .cal-event-chip.is-resizing {
+    filter: none;
+    background: color-mix(in srgb, var(--chip-ac) 22%, #ffffff);
+}
+
+.fenix-calendar .cal-grid .cal-event-chip.is-active {
+    filter: none;
+    background: color-mix(in srgb, var(--chip-ac) 32%, #ffffff);
+}
+
+/* ==========================================
+   ARRASTRE EN VIVO
+========================================== */
+
+.fenix-calendar .cal-grid .cal-event-chip {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+html.cal-is-moving,
+html.cal-is-moving * {
+    cursor: grabbing !important;
+    user-select: none !important;
+}
+
+.fenix-calendar .cal-grid .cal-event-chip.is-live-dragging {
+    background: color-mix(in srgb, var(--chip-ac) 30%, #ffffff);
+    box-shadow: 0 4px 12px rgba(20, 40, 60, .18);
+    z-index: 5;
+}
+
+.fenix-calendar .cal-grid .cal-event-chip.is-live-dragging .cal-resize-handle::after {
+    opacity: 1;
+    transform: none;
+}
+
+/* El tramo con el nombre queda por encima para que no se corte */
+.fenix-calendar .cal-grid .cal-event-chip.is-live-dragging:not(.continues-left) {
+    z-index: 6;
+}
+
+/* No seleccionar texto (números de días) al arrastrar */
+.fenix-calendar .cal-grid {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#fenixCalendar .cal-range-tip {
+    pointer-events: none;
+}
+
+/* PESTAÑAS DE EVENTOS DEL PANEL LATERAL */
+
+.cal-upcoming-tabs {
+    display: flex;
+    gap: 5px;
+    padding: 4px;
+    margin-bottom: 10px;
+    border: 1px solid var(--cal-border);
+    border-radius: 9px;
+    background: #f5f8fb;
+}
+
+.cal-upcoming-tabs button {
+    flex: 1;
+    border: 0;
+    border-radius: 6px;
+    padding: 9px 10px;
+    background: transparent;
+    color: #536173;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.cal-upcoming-tabs button:hover {
+    background: #e8eef5;
+}
+
+.cal-upcoming-tabs button.active {
+    background: var(--cal-primary);
+    color: white;
+    box-shadow: 0 2px 5px rgba(21, 59, 96, .2);
+}
+
+.cal-upcoming-tabs button:focus-visible {
+    outline: 2px solid #428bc9;
+    outline-offset: 2px;
+}

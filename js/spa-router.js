@@ -5,7 +5,7 @@
 (function () {
     const TODAS_LAS_RUTAS = [
     "index.html", "B2B.html", "B2C.html", "Enerbike.html",
-    "BATAS.html", "ECOM.html", "Inventario.html",
+    "BATAS.html", "ECOM.html", "Inventario.html", "Calendario.html",
     "CerroAlto.html", "Estrella.html", "Galeria.html",
     "MariscalLopez.html", "MartelSanLorenzo.html",
     "PaseoLambare.html", "ShoppingMariano.html",
@@ -25,10 +25,10 @@ const ROLE_ROUTES = {
         ruta => ruta !== "BATAS.html"
     ),
 
-    b2b: ["index.html", "B2B.html", "Inventario.html"],
+    b2b: ["index.html", "B2B.html", "Inventario.html", "Calendario.html"],
 
     b2c: [
-        "index.html", "B2C.html", "Enerbike.html", "Inventario.html",
+        "index.html", "B2C.html", "Enerbike.html", "Inventario.html", "Calendario.html",
         "CerroAlto.html", "Estrella.html", "Galeria.html",
         "MariscalLopez.html", "MartelSanLorenzo.html",
         "PaseoLambare.html", "ShoppingMariano.html",
@@ -37,7 +37,7 @@ const ROLE_ROUTES = {
         "Tiendas_prueba.html", "Tiendas_retail.html"
     ],
 
-    ao: ["index.html", "B2C.html", "Inventario.html"]
+    ao: ["index.html", "B2C.html", "Inventario.html", "Calendario.html"]
 };
 
 const ROUTE_TITLES = {
@@ -48,6 +48,7 @@ const ROUTE_TITLES = {
     "BATAS.html": "Batas",
     "ECOM.html": "ECOM",
     "Inventario.html": "Inventario",
+    "Calendario.html": "Calendario/Eventos",
     "CerroAlto.html": "Cerro Alto",
     "Estrella.html": "Estrella",
     "Galeria.html": "Galería",
@@ -285,6 +286,10 @@ if (aoLink) aoLink.hidden = !["admin_gerencia", "b2c", "mkt", "brands"].includes
             window.FENIX_VIEWS.b2c(view, route.query.get("vista"));
         }
         document.title = `${ROUTE_TITLES[route.page] || "Reportes Fénix"} | Fénix Brands`;
+       
+        if (route.page === "Calendario.html" && window.FENIX_VIEWS?.calendar) {
+    window.FENIX_VIEWS.calendar(view);
+}
     }
 
     async function navegar(route, pushState) {

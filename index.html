@@ -7,6 +7,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Dashboard INTEGRAL</title>
 <link href="css/estilos.css" rel="stylesheet"/>
+<link href="css/calendario.css" rel="stylesheet"/>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/supabase-client.js"></script><script src="js/spa-auth.js"></script><meta content="Portal interno de reportes Fénix Brands." name="description"/></head>
 <body>
@@ -63,6 +64,12 @@
 <span class="icono">📦</span>
 <span class="texto">Inventario</span>
 </a>
+
+<a data-route="Calendario.html" href="Calendario.html">
+    <span class="icono">🗓️</span>
+    <span class="texto">Calendario / Eventos</span>
+</a>
+
 </nav>
 <button class="logout-btn" id="logoutBtn">
 <span class="icono">
@@ -136,5 +143,9 @@
 </footer>
 
 
-<script src="js/dashboard.js"></script><script src="js/sidebar.js"></script><script src="js/b2c.js"></script><script src="js/spa-router.js"></script></body>
+<script src="js/dashboard.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/b2c.js"></script>
+<script src="js/calendario.js"></script>
+<script src="js/spa-router.js"></script>
 </html>
